@@ -163,12 +163,24 @@ style="width:100%;padding:12px;margin:8px 0;">
 
 <input type="text" id="drop" placeholder="Drop Location" required
 style="width:100%;padding:12px;margin:8px 0;">
+<input type="date" id="date"
+style="width:100%;padding:12px;margin:8px 0;border-radius:8px;" required>
 
-<input type="date" id="date" required
-style="width:100%;padding:12px;margin:8px 0;">
+<input type="time" id="time"
+style="width:100%;padding:12px;margin:8px 0;border-radius:8px;" required>
+
+<select id="tripType"
+style="width:100%;padding:12px;margin:8px 0;border-radius:8px;">
+<option>One Way</option>
+<option>Round Trip</option>
+</select>
+
+<input type="text" id="destination"
+placeholder="If Round Trip, Where do you want to go?"
+style="width:100%;padding:12px;margin:8px 0;border-radius:8px;">
 
 <select id="car"
-style="width:100%;padding:12px;margin:8px 0;">
+style="width:100%;padding:12px;margin:8px 0;border-radius:8px;">
 <option>Sedan</option>
 <option>SUV</option>
 </select>
@@ -177,8 +189,10 @@ style="width:100%;padding:12px;margin:8px 0;">
 style="width:100%;padding:15px;background:#25D366;color:white;border:none;border-radius:8px;font-size:18px;">
 Book on WhatsApp
 </button>
+
 </form>
 </section>
+
 
 <script>
 function sendWhatsApp(){
@@ -188,7 +202,9 @@ var pickup=document.getElementById("pickup").value;
 var drop=document.getElementById("drop").value;
 var date=document.getElementById("date").value;
 var car=document.getElementById("car").value;
-
+var time = document.getElementById("time").value;
+var tripType = document.getElementById("tripType").value;
+var destination = document.getElementById("destination").value;
 var msg =
 "🚖 *New Cab Booking*%0A%0A"+
 "👤 Name: "+name+"%0A"+
@@ -196,6 +212,9 @@ var msg =
 "📍 Pickup: "+pickup+"%0A"+
 "📍 Drop: "+drop+"%0A"+
 "📅 Date: "+date+"%0A"+
+"⏰ Pickup Time: " + time + "%0A" +
+"🚕 Trip Type: " + tripType + "%0A" +
+"📍 Destination: " + destination + "%0A" +     
 "🚗 Car: "+car;
 
 window.open("https://wa.me/916353886346?text="+msg,"_blank");
