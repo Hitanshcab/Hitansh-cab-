@@ -1,28 +1,154 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Hitansh Cab</title></head>
-<body style="font-family:Arial;max-width:700px;margin:auto;padding:20px">
-<h2>🚖 Hitansh Cab Service</h2>
-<form onsubmit="return sendWhatsApp()">
-<input id="name" placeholder="Name" required><br><br>
-<input id="mobile" placeholder="Mobile" required><br><br>
-<input id="pickup" placeholder="Pickup" required><br><br>
-<input id="drop" placeholder="Drop" required><br><br>
-<input id="date" type="date" required><br><br>
-<input id="time" type="time" required><br><br>
-<select id="tripType"><option>One Way</option><option>Round Trip</option></select><br><br>
-<select id="car"><option>Sedan</option><option>SUV</option></select><br><br>
-<button type="submit">Book on WhatsApp</button></form>
-<script>
-function sendWhatsApp(){
-var n=document.getElementById('name').value;
-var m=document.getElementById('mobile').value;
-var p=document.getElementById('pickup').value;
-var d=document.getElementById('drop').value;
-var dt=document.getElementById('date').value;
-var t=document.getElementById('time').value;
-var tr=document.getElementById('tripType').value;
-var c=document.getElementById('car').value;
-var msg="New Cab Booking%0AName:"+n+"%0AMobile:"+m+"%0APickup:"+p+"%0ADrop:"+d+"%0ADate:"+dt+"%0ATime:"+t+"%0ATrip:"+tr+"%0ACar:"+c;
-window.open("https://wa.me/916353886346?text="+msg,"_blank");
-return false;
-}
-</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Hitansh Cab Service | One Way Cab | Airport Taxi | Vadodara</title>
+
+<meta name="description" content="Hitansh Cab Service - One Way Cab, Airport Transfer, Outstation Taxi from Vadodara. Book on WhatsApp.">
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+
+<div class="logo">
+
+<i class="fa-solid fa-taxi"></i>
+
+<h2>Hitansh Cab Service</h2>
+
+</div>
+
+<nav>
+
+<ul>
+
+<li><a href="#home">Home</a></li>
+
+<li><a href="#booking">Book Cab</a></li>
+
+<li><a href="#fare">Fare</a></li>
+
+<li><a href="#gallery">Gallery</a></li>
+
+<li><a href="#reviews">Reviews</a></li>
+
+<li><a href="#contact">Contact</a></li>
+
+</ul>
+
+</nav>
+
+</header>
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+<div class="hero-content">
+
+<h1>Safe • Reliable • Affordable Cab Service</h1>
+
+<p>
+
+One Way Cab | Airport Transfer | Outstation Taxi
+
+Available 24×7 Across Gujarat
+
+</p>
+
+<div class="hero-buttons">
+
+<a href="#booking" class="btn book-btn">
+
+Book Now
+
+</a>
+
+<a href="tel:6353886346" class="btn call-btn">
+
+<i class="fa-solid fa-phone"></i>
+
+Call Now
+
+</a>
+
+</div>
+
+</div>
+
+<div class="hero-image">
+
+<img src="images/poster.jpg"
+
+alt="Hitansh Cab Service">
+
+</div>
+
+</section>
+
+<!-- ================= SERVICES ================= -->
+
+<section class="services">
+
+<h2>Our Services</h2>
+
+<div class="service-box">
+
+<div class="card">
+
+<i class="fa-solid fa-road"></i>
+
+<h3>One Way Cab</h3>
+
+<p>
+
+Affordable One Way Taxi Service Across Gujarat.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-plane"></i>
+
+<h3>Airport Transfer</h3>
+
+<p>
+
+Vadodara • Ahmedabad • Surat Airport Pickup & Drop
+
+</p>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-map-location-dot"></i>
+
+<h3>Outstation Taxi</h3>
+
+<p>
+
+Comfortable Long Distance Trips
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- Booking Form Part-2 -->
