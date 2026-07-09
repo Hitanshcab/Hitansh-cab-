@@ -197,41 +197,35 @@ Book on WhatsApp
 </table>
 
 </div>
+function sendWhatsApp() {
 
-<footer>
-<p>📞 Call: <a href="tel:6353886346">6353886346</a></p>
-<p>💬 WhatsApp: <a href="https://wa.me/916353886346">Book Now</a></p>
-<p>© 2026 Hitansh Cab Service - Vadodara</p>
-</footer>
+  var name = document.getElementById("name").value;
+  var mobile = document.getElementById("mobile").value;
+  var pickup = document.getElementById("pickup").value;
+  var drop = document.getElementById("drop").value;
+  var date = document.getElementById("date").value;
+  var time = document.getElementById("time").value;
+  var trip = document.getElementById("tripType").value;
+  var returnLocation = document.getElementById("returnLocation").value;
+  var car = document.getElementById("carType").value;
 
-<script>
-function sendWhatsApp(){
+  var message =
+`🚖 *New Cab Booking*
 
-var name=document.getElementById("name").value;
-var mobile=document.getElementById("mobile").value;
-var pickup=document.getElementById("pickup").value;
-var drop=document.getElementById("drop").value;
-var date=document.getElementById("date").value;
-var time=document.getElementById("time").value;
-var trip=document.getElementById("tripType").value;
-var ret=document.getElementById("returnLocation").value;
-var car=document.getElementById("car").value;
+👤 Name: ${name}
+📱 Mobile: ${mobile}
+📍 Pickup: ${pickup}
+📍 Drop: ${drop}
+📅 Date: ${date}
+⏰ Time: ${time}
+🚗 Trip: ${trip}
+🔁 Return: ${returnLocation}
+🚘 Car: ${car}`;
 
-var msg=
-"🚖 *Hitansh Cab Booking*%0A%0A"+
-"👤 Name: "+name+"%0A"+
-"📞 Mobile: "+mobile+"%0A"+
-"📍 Pickup: "+pickup+"%0A"+
-"📍 Drop: "+drop+"%0A"+
-"📅 Date: "+date+"%0A"+
-"🕒 Pickup Time: "+time+"%0A"+
-"🚕 Trip Type: "+trip+"%0A"+
-"🔁 Return Location: "+ret+"%0A"+
-"🚗 Car: "+car;
-
-window.open("https://wa.me/916353886346?text="+msg,"_blank");
-}
-</script>
-
+  window.open(
+    "https://wa.me/916353886346?text=" + encodeURIComponent(message),
+    "_blank"
+  );
+}     
 </body>
 </html>
