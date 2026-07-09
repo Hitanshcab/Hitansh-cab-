@@ -1,231 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Hitansh Cab Service</title>
-
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
-
-body{
-background:#f5f5f5;
-color:#222;
-}
-
-header{
-background:#0b3d91;
-color:#fff;
-padding:15px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
-
-.logo{
-font-size:24px;
-font-weight:bold;
-}
-
-.call-btn{
-background:#28a745;
-color:#fff;
-padding:10px 18px;
-border-radius:8px;
-text-decoration:none;
-font-weight:bold;
-}
-
-.hero{
-background:#0b3d91;
-color:#fff;
-text-align:center;
-padding:40px 20px;
-}
-
-.hero h1{
-font-size:36px;
-margin-bottom:10px;
-}
-
-.hero p{
-font-size:18px;
-margin-bottom:20px;
-}
-
-.book-btn{
-background:#FFC107;
-color:#000;
-padding:14px 24px;
-text-decoration:none;
-border-radius:8px;
-font-weight:bold;
-}
-
-.container{
-max-width:700px;
-margin:auto;
-padding:20px;
-}
-
-table{
-width:100%;
-border-collapse:collapse;
-margin-top:20px;
-}
-
-th{
-background:#FFC107;
-padding:12px;
-}
-
-td{
-padding:12px;
-border-bottom:1px solid #ddd;
-text-align:center;
-}
-
-input,select{
-width:100%;
-padding:12px;
-margin:8px 0;
-border:1px solid #ccc;
-border-radius:8px;
-font-size:16px;
-}
-
-label{
-font-weight:bold;
-display:block;
-margin-top:10px;
-}
-
-.whatsapp-btn{
-width:100%;
-background:#25D366;
-color:#fff;
-padding:15px;
-font-size:20px;
-border:none;
-border-radius:8px;
-margin-top:15px;
-cursor:pointer;
-}
-
-footer{
-background:#111;
-color:#fff;
-text-align:center;
-padding:20px;
-margin-top:30px;
-}
-</style>
-</head>
-
-<body>
-
-<header>
-<div class="logo">🚖 HITANSH CAB SERVICE</div>
-<a class="call-btn" href="tel:6353886346">📞 Call Now</a>
-</header>
-
-<section class="hero">
-<h1>Hitansh Cab Service</h1>
-<p>One Way Cab | Airport Transfer | Outstation Taxi</p>
-<a class="book-btn" href="#booking">Book Now</a>
-</section>
-
+body{font-family:Arial;margin:0;background:#f5f5f5}.top{background:#0b3d91;color:#fff;padding:16px;text-align:center}
+.container{max-width:700px;margin:auto;padding:16px}
+input,select,button{width:100%;padding:12px;margin:8px 0}
+button{background:#25D366;color:#fff;border:0;border-radius:6px}
+table{width:100%;border-collapse:collapse}th,td{border:1px solid #ddd;padding:8px;text-align:center}
+th{background:#ffc107}
+</style></head><body>
+<div class="top"><h2>🚖 Hitansh Cab Service</h2><a href="tel:6353886346" style="color:white">📞 6353886346</a></div>
 <div class="container">
-
-<h2 style="text-align:center;">Book Your Cab</h2>
-
-<form id="booking" onsubmit="sendWhatsApp(); return false;">
-
-<input type="text" id="name" placeholder="Your Name" required>
-
-<input type="tel" id="mobile" placeholder="Mobile Number" required>
-
-<input type="text" id="pickup" placeholder="Pickup Location" required>
-
-<input type="text" id="drop" placeholder="Drop Location" required>
-
-<label>Pickup Date</label>
-<input type="date" id="date" required>
-
-<label>Pickup Time</label>
-<input type="time" id="time" required>
-
-<label>Trip Type</label>
-<select id="tripType">
-<option>One Way</option>
-<option>Round Trip</option>
-</select>
-
-<input type="text" id="returnLocation" placeholder="If Round Trip, Return Location">
-
-<label>Car Type</label>
-<select id="car">
-<option>Sedan</option>
-<option>SUV</option>
-</select>
-
-<button class="whatsapp-btn" type="submit">
-Book on WhatsApp
-</button>
+<form onsubmit="sendWhatsApp();return false;">
+<input id="name" placeholder="Name" required>
+<input id="mobile" placeholder="Mobile" required>
+<input id="pickup" placeholder="Pickup" required>
+<input id="drop" placeholder="Drop" required>
+<input id="date" type="date" required>
+<input id="time" type="time" required>
+<select id="tripType"><option>One Way</option><option>Round Trip</option></select>
+<input id="returnLocation" placeholder="Return Location (optional)">
+<select id="car"><option>Sedan</option><option>SUV</option></select>
+<button type="submit">Book on WhatsApp</button>
 </form>
-     <h2 style="text-align:center;margin-top:30px;">Fare List</h2>
-
-<table>
-<tr>
-<th>Route</th>
-<th>Sedan</th>
-<th>SUV</th>
-</tr>
-
-<tr><td>Vadodara → Ahmedabad</td><td>₹1799</td><td>₹2399</td></tr>
-<tr><td>Vadodara → Surat</td><td>₹2499</td><td>₹2999</td></tr>
-<tr><td>Vadodara → Gandhinagar</td><td>₹1999</td><td>₹2699</td></tr>
-<tr><td>Vadodara → Rajkot</td><td>₹4399</td><td>₹5999</td></tr>
-<tr><td>Vadodara → Jamnagar</td><td>₹7000</td><td>₹8000</td></tr>
-<tr><td>Vadodara → Dwarka</td><td>₹8000</td><td>₹9000</td></tr>
-<tr><td>Vadodara → Somnath</td><td>₹8000</td><td>₹9000</td></tr>
-</table>
-
+<h3>Fare List</h3>
+<table><tr><th>Route</th><th>Sedan</th><th>SUV</th></tr>
+<tr><td>Vadodara → Ahmedabad</td><td>1799</td><td>2399</td></tr>
+<tr><td>Vadodara → Surat</td><td>2499</td><td>2999</td></tr>
+<tr><td>Vadodara → Gandhinagar</td><td>1999</td><td>2699</td></tr>
+<tr><td>Vadodara → Rajkot</td><td>4399</td><td>5999</td></tr>
+<tr><td>Vadodara → Jamnagar</td><td>7000</td><td>8000</td></tr>
+<tr><td>Vadodara → Dwarka</td><td>8000</td><td>9000</td></tr>
+<tr><td>Vadodara → Somnath</td><td>8000</td><td>9000</td></tr></table>
 </div>
-function sendWhatsApp() {
-
-  var name = document.getElementById("name").value;
-  var mobile = document.getElementById("mobile").value;
-  var pickup = document.getElementById("pickup").value;
-  var drop = document.getElementById("drop").value;
-  var date = document.getElementById("date").value;
-  var time = document.getElementById("time").value;
-  var trip = document.getElementById("tripType").value;
-  var returnLocation = document.getElementById("returnLocation").value;
-  var car = document.getElementById("carType").value;
-
-  var message =
-`🚖 *New Cab Booking*
-
-👤 Name: ${name}
-📱 Mobile: ${mobile}
-📍 Pickup: ${pickup}
-📍 Drop: ${drop}
-📅 Date: ${date}
-⏰ Time: ${time}
-🚗 Trip: ${trip}
-🔁 Return: ${returnLocation}
-🚘 Car: ${car}`;
-
-  window.open(
-    "https://wa.me/916353886346?text=" + encodeURIComponent(message),
-    "_blank"
-  );
-}     
-</body>
-</html>
+<script>
+function sendWhatsApp(){
+let m=`🚖 *New Cab Booking*%0A👤 Name: ${name.value}%0A📱 Mobile: ${mobile.value}%0A📍 Pickup: ${pickup.value}%0A📍 Drop: ${drop.value}%0A📅 Date: ${date.value}%0A⏰ Time: ${time.value}%0A🚗 Trip: ${tripType.value}%0A🔁 Return: ${returnLocation.value}%0A🚘 Car: ${car.value}`;
+window.open("https://wa.me/916353886346?text="+m,"_blank");
+}
+</script></body></html>
