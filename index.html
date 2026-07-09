@@ -152,3 +152,172 @@ Comfortable Long Distance Trips
 </section>
 
 <!-- Booking Form Part-2 -->
+<!-- ================= BOOKING ================= -->
+
+<section class="booking" id="booking">
+
+<div class="container">
+
+<h2>Book Your Cab</h2>
+
+<form id="bookingForm">
+
+<div class="row">
+
+<input type="text" id="name" placeholder="Full Name" required>
+
+<input type="tel" id="mobile" placeholder="Mobile Number" required>
+
+</div>
+
+<div class="row">
+
+<input type="text" id="pickup" placeholder="Pickup Location" required>
+
+<input type="text" id="drop" placeholder="Drop Location" required>
+
+</div>
+
+<div class="row">
+
+<input type="date" id="date" required>
+
+<input type="time" id="time" required>
+
+</div>
+
+<div class="row">
+
+<select id="tripType">
+
+<option value="One Way">One Way</option>
+
+<option value="Round Trip">Round Trip</option>
+
+</select>
+
+<select id="carType">
+
+<option value="Sedan">Sedan</option>
+
+<option value="SUV">SUV</option>
+
+</select>
+
+</div>
+
+<button type="button" onclick="sendWhatsApp()" class="book-btn">
+
+<i class="fa-brands fa-whatsapp"></i>
+
+Book on WhatsApp
+
+</button>
+
+</form>
+
+</div>
+
+</section>
+
+<!-- ================= FARE CALCULATOR ================= -->
+
+<section class="fare" id="fare">
+
+<div class="container">
+
+<h2>Instant Fare Calculator</h2>
+
+<div class="calculator">
+
+<select id="route">
+
+<option value="">Select Route</option>
+
+<option value="Ahmedabad">Vadodara → Ahmedabad</option>
+
+<option value="Surat">Vadodara → Surat</option>
+
+<option value="Gandhinagar">Vadodara → Gandhinagar</option>
+
+<option value="Rajkot">Vadodara → Rajkot</option>
+
+<option value="Jamnagar">Vadodara → Jamnagar</option>
+
+<option value="Dwarka">Vadodara → Dwarka</option>
+
+<option value="Somnath">Vadodara → Somnath</option>
+
+</select>
+
+<select id="cab">
+
+<option value="Sedan">Sedan</option>
+
+<option value="SUV">SUV</option>
+
+</select>
+
+<button onclick="calculateFare()">
+
+Check Fare
+
+</button>
+
+<h3 id="fareResult">
+
+Select Route & Car Type
+
+</h3>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= OUR POPULAR ROUTES ================= -->
+
+<section class="routes">
+
+<h2>Popular Routes</h2>
+
+<div class="route-grid">
+
+<div class="route-card">
+
+<h3>Ahmedabad</h3>
+
+<p>Starting ₹1799</p>
+
+</div>
+
+<div class="route-card">
+
+<h3>Surat</h3>
+
+<p>Starting ₹2499</p>
+
+</div>
+
+<div class="route-card">
+
+<h3>Rajkot</h3>
+
+<p>Starting ₹4399</p>
+
+</div>
+
+<div class="route-card">
+
+<h3>Dwarka</h3>
+
+<p>Starting ₹8000</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- Gallery Part-3 Starts Below -->  
