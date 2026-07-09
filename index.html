@@ -1000,3 +1000,242 @@ nav ul li a:hover{
     font-size:22px;
     font-weight:bold;
 }
+/* ===========================
+   GALLERY
+=========================== */
+
+.gallery{
+    padding:70px 8%;
+    background:#fff;
+}
+
+.gallery h2{
+    text-align:center;
+    color:#003366;
+    font-size:36px;
+    margin-bottom:15px;
+}
+
+.gallery p{
+    text-align:center;
+    margin-bottom:35px;
+    color:#666;
+}
+
+.gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.gallery-item{
+    overflow:hidden;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,.12);
+}
+
+.gallery-item img{
+    width:100%;
+    height:240px;
+    object-fit:cover;
+    transition:.4s;
+}
+
+.gallery-item:hover img{
+    transform:scale(1.08);
+}
+
+/* ===========================
+   REVIEWS
+=========================== */
+
+.reviews{
+    padding:70px 8%;
+    background:#eef5ff;
+}
+
+.review-box{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+.review-card{
+    background:#fff;
+    padding:25px;
+    border-radius:12px;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,.12);
+}
+
+.review-card h3{
+    margin:15px 0;
+    color:#003366;
+}
+
+/* ===========================
+   OFFERS
+=========================== */
+
+.offers{
+    padding:70px 8%;
+    background:#fff;
+}
+
+.offer-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.offer-card{
+    background:#003366;
+    color:#fff;
+    padding:30px;
+    border-radius:12px;
+    text-align:center;
+}
+
+.offer-card h1{
+    color:#FFD700;
+    margin:15px 0;
+}
+
+/* ===========================
+   WHY US
+=========================== */
+
+.why-us{
+    padding:70px 8%;
+    background:#eef5ff;
+}
+
+.features{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.feature{
+    background:#fff;
+    padding:20px;
+    border-radius:10px;
+    text-align:center;
+    font-weight:bold;
+}
+
+/* ===========================
+   CONTACT
+=========================== */
+
+.contact{
+    padding:70px 8%;
+    background:#fff;
+}
+
+.contact-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.contact-card{
+    background:#f8f9fa;
+    padding:25px;
+    border-radius:12px;
+    text-align:center;
+}
+
+.contact-card a{
+    text-decoration:none;
+    color:#003366;
+    font-weight:bold;
+}
+
+/* ===========================
+   FLOATING BUTTONS
+=========================== */
+
+.floating-call,
+.floating-whatsapp{
+    position:fixed;
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#fff;
+    font-size:28px;
+    text-decoration:none;
+    box-shadow:0 5px 15px rgba(0,0,0,.3);
+    z-index:999;
+}
+
+.floating-call{
+    left:20px;
+    bottom:20px;
+    background:#007bff;
+}
+
+.floating-whatsapp{
+    right:20px;
+    bottom:20px;
+    background:#25D366;
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+
+footer{
+    background:#003366;
+    color:#fff;
+    text-align:center;
+    padding:40px 20px;
+}
+
+footer h2{
+    color:#FFD700;
+    margin-bottom:15px;
+}
+
+footer p{
+    margin:8px 0;
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media(max-width:768px){
+
+.header{
+    flex-direction:column;
+    gap:15px;
+    padding:15px;
+}
+
+nav ul{
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.hero{
+    flex-direction:column;
+    text-align:center;
+}
+
+.hero h1{
+    font-size:32px;
+}
+
+.hero-buttons{
+    justify-content:center;
+}
+
+.hero-image{
+    margin-top:30px;
+}
+
+}
