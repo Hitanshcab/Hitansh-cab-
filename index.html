@@ -15,43 +15,42 @@ font-family:Arial,sans-serif;
 
 body{
 background:#f5f5f5;
+color:#222;
 }
 
 header{
-background:#0b1f3a;
+background:#0b3d91;
 color:#fff;
 padding:15px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-flex-wrap:wrap;
 }
 
 .logo{
-font-size:28px;
+font-size:24px;
 font-weight:bold;
-color:#FFC107;
 }
 
 .call-btn{
-background:#25D366;
+background:#28a745;
+color:#fff;
 padding:10px 18px;
 border-radius:8px;
-color:white;
 text-decoration:none;
 font-weight:bold;
 }
 
 .hero{
-background:#0b1f3a;
-color:white;
-padding:40px 20px;
+background:#0b3d91;
+color:#fff;
 text-align:center;
+padding:40px 20px;
 }
 
 .hero h1{
-font-size:38px;
-margin-bottom:15px;
+font-size:36px;
+margin-bottom:10px;
 }
 
 .hero p{
@@ -67,167 +66,172 @@ text-decoration:none;
 border-radius:8px;
 font-weight:bold;
 }
-</style>
 
+.container{
+max-width:700px;
+margin:auto;
+padding:20px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+}
+
+th{
+background:#FFC107;
+padding:12px;
+}
+
+td{
+padding:12px;
+border-bottom:1px solid #ddd;
+text-align:center;
+}
+
+input,select{
+width:100%;
+padding:12px;
+margin:8px 0;
+border:1px solid #ccc;
+border-radius:8px;
+font-size:16px;
+}
+
+label{
+font-weight:bold;
+display:block;
+margin-top:10px;
+}
+
+.whatsapp-btn{
+width:100%;
+background:#25D366;
+color:#fff;
+padding:15px;
+font-size:20px;
+border:none;
+border-radius:8px;
+margin-top:15px;
+cursor:pointer;
+}
+
+footer{
+background:#111;
+color:#fff;
+text-align:center;
+padding:20px;
+margin-top:30px;
+}
+</style>
 </head>
 
 <body>
 
 <header>
-
-<div class="logo">
-🚖 HITANSH CAB SERVICE
-</div>
-
-<a class="call-btn" href="tel:6353886346">
-📞 Call Now
-</a>
-
+<div class="logo">🚖 HITANSH CAB SERVICE</div>
+<a class="call-btn" href="tel:6353886346">📞 Call Now</a>
 </header>
 
 <section class="hero">
+<h1>Hitansh Cab Service</h1>
+<p>One Way Cab | Airport Transfer | Outstation Taxi</p>
+<a class="book-btn" href="#booking">Book Now</a>
+</section>
 
-<h1>Vadodara's Trusted Cab Service</h1>
-<img src="./20240731_165803.jpg"
-     alt="Hitansh Cab Service"
-     style="width:90%;max-width:500px;
-     border-radius:10px;margin:20px
-          auto;display:block;">
-<p>One Way • Round Trip • Airport Pickup</p>
+<div class="container">
 
-<a class="book-btn"
-href="https://wa.me/916353886346">
+<h2 style="text-align:center;">Book Your Cab</h2>
+
+<form id="booking" onsubmit="sendWhatsApp(); return false;">
+
+<input type="text" id="name" placeholder="Your Name" required>
+
+<input type="tel" id="mobile" placeholder="Mobile Number" required>
+
+<input type="text" id="pickup" placeholder="Pickup Location" required>
+
+<input type="text" id="drop" placeholder="Drop Location" required>
+
+<label>Pickup Date</label>
+<input type="date" id="date" required>
+
+<label>Pickup Time</label>
+<input type="time" id="time" required>
+
+<label>Trip Type</label>
+<select id="tripType">
+<option>One Way</option>
+<option>Round Trip</option>
+</select>
+
+<input type="text" id="returnLocation" placeholder="If Round Trip, Return Location">
+
+<label>Car Type</label>
+<select id="car">
+<option>Sedan</option>
+<option>SUV</option>
+</select>
+
+<button class="whatsapp-btn" type="submit">
 Book on WhatsApp
-<section style="padding:30px;background:#ffffff;color:#000;">
-<h2 style="text-align:center;">Cab Fare List</h2>
+</button>
+</form>
+     <h2 style="text-align:center;margin-top:30px;">Fare List</h2>
 
-<table style="width:100%;border-collapse:collapse;">
-<tr style="background:#ffc107;">
+<table>
+<tr>
 <th>Route</th>
 <th>Sedan</th>
 <th>SUV</th>
 </tr>
 
-<tr>
-<td>Vadodara → Ahmedabad</td>
-<td>₹1799</td>
-<td>₹2399</td>
-</tr>
+<tr><td>Vadodara → Ahmedabad</td><td>₹1799</td><td>₹2399</td></tr>
+<tr><td>Vadodara → Surat</td><td>₹2499</td><td>₹2999</td></tr>
+<tr><td>Vadodara → Gandhinagar</td><td>₹1999</td><td>₹2699</td></tr>
+<tr><td>Vadodara → Rajkot</td><td>₹4399</td><td>₹5999</td></tr>
+<tr><td>Vadodara → Jamnagar</td><td>₹7000</td><td>₹8000</td></tr>
+<tr><td>Vadodara → Dwarka</td><td>₹8000</td><td>₹9000</td></tr>
+<tr><td>Vadodara → Somnath</td><td>₹8000</td><td>₹9000</td></tr>
+</table>
 
-<tr>
-<td>Vadodara → Gandhinagar</td>
-<td>₹1999</td>
-<td>₹2699</td>
-</tr>
+</div>
 
-<tr>
-<td>Vadodara → Surat</td>
-<td>₹2699</td>
-<td>₹2699</td>
-</tr>
-
-<tr>
-<td>Vadodara → Rajkot</td>
-<td>₹4399</td>
-<td>₹4399</td>
-</tr>
-
-<tr>
-<td>Vadodara → Jamnagar</td>
-<td>₹7000</td>
-<td>₹7000</td>
-</tr>
-
-<tr>
-<td>Vadodara → Dwarka</td>
-<td>₹8000</td>
-<td>₹8000</td>
-</tr>
-
-<tr>
-<td>Vadodara → Somnath</td>
-<td>₹8000</td>
-<td>₹8000</td>
-<section style="padding:30px;background:#f5f5f5;">
-<h2 style="text-align:center;">Book Your Cab</h2>
-
-<form onsubmit="sendWhatsApp(); return false;">
-<input type="text" id="name" placeholder="Your Name" required
-style="width:100%;padding:12px;margin:8px 0;">
-
-<input type="tel" id="mobile" placeholder="Mobile Number" required
-style="width:100%;padding:12px;margin:8px 0;">
-
-<input type="text" id="pickup" placeholder="Pickup Location" required
-style="width:100%;padding:12px;margin:8px 0;">
-
-<input type="text" id="drop" placeholder="Drop Location" required
-style="width:100%;padding:12px;margin:8px 0;border-radius:8px;">
-<label>Pickup Time</label>
-<label>Pickup Time</label>
-<input type="time" id="time" style="width:100%;padding:12px;margin:8px 0;border-radius:8px;" required>
-
-<input type="date" id="date" style="width:100%;padding:12px;margin:8px 0;border-radius:8px;" required>
-
-
-
-<select id="tripType"
-style="width:100%;padding:12px;margin:8px 0;border-radius:8px;">
-<option>One Way</option>
-<option>Round Trip</option>
-</select>
-
-<input type="text" id="destination"
-placeholder="If Round Trip, Where do you want to go?"
-style="width:100%;padding:12px;margin:8px 0;border-radius:8px;">
-
-<select id="car"
-style="width:100%;padding:12px;margin:8px 0;border-radius:8px;">
-<option>Sedan</option>
-<option>SUV</option>
-</select>
-
-<button type="submit"
-style="width:100%;padding:15px;background:#25D366;color:white;border:none;border-radius:8px;font-size:18px;">
-Book on WhatsApp
-</button>
-
-</form>
-</section>
-
+<footer>
+<p>📞 Call: <a href="tel:6353886346">6353886346</a></p>
+<p>💬 WhatsApp: <a href="https://wa.me/916353886346">Book Now</a></p>
+<p>© 2026 Hitansh Cab Service - Vadodara</p>
+</footer>
 
 <script>
 function sendWhatsApp(){
+
 var name=document.getElementById("name").value;
 var mobile=document.getElementById("mobile").value;
 var pickup=document.getElementById("pickup").value;
 var drop=document.getElementById("drop").value;
 var date=document.getElementById("date").value;
+var time=document.getElementById("time").value;
+var trip=document.getElementById("tripType").value;
+var ret=document.getElementById("returnLocation").value;
 var car=document.getElementById("car").value;
-var time = document.getElementById("time").value;
-var tripType = document.getElementById("tripType").value;
-var destination = document.getElementById("destination").value;
-var msg =
-"🚖 *New Cab Booking*%0A%0A"+
+
+var msg=
+"🚖 *Hitansh Cab Booking*%0A%0A"+
 "👤 Name: "+name+"%0A"+
 "📞 Mobile: "+mobile+"%0A"+
 "📍 Pickup: "+pickup+"%0A"+
 "📍 Drop: "+drop+"%0A"+
 "📅 Date: "+date+"%0A"+
-"⏰ Pickup Time: " + time + "%0A" +
-"🚕 Trip Type: " + tripType + "%0A" +
-"📍 Destination: " + destination + "%0A" +     
+"🕒 Pickup Time: "+time+"%0A"+
+"🚕 Trip Type: "+trip+"%0A"+
+"🔁 Return Location: "+ret+"%0A"+
 "🚗 Car: "+car;
 
 window.open("https://wa.me/916353886346?text="+msg,"_blank");
 }
-</script>         
-</tr>
-</table>
-</section>     
-</a>
-
-</section>
+</script>
 
 </body>
 </html>
