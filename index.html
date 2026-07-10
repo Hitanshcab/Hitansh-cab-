@@ -222,47 +222,61 @@ alt="Hitansh Cab Service">
 
 <h2 class="section-title">Book Your Cab</h2>
 
-<form id="bookingForm">
+  <form id="bookingForm">
 
-<input type="text"
-placeholder="Full Name"
-required>
+<input type="text" id="name" placeholder="Full Name" required>
 
-<input type="tel"
-placeholder="Mobile Number"
-required>
+<input type="tel" id="phone" placeholder="Mobile Number" required>
 
-<input type="text"
-placeholder="Pickup Location"
-required>
+<input type="text" id="pickup" placeholder="Pickup Location" required>
 
-<input type="text"
-placeholder="Drop Location"
-required>
+<input type="text" id="drop" placeholder="Drop Location" required>
 
-<input type="date"
-required>
+<label><strong>Trip Type</strong></label>
 
-<input type="time"
-required>
+<div class="trip-type">
 
-<select required>
+<label>
+<input type="radio" name="tripType" value="One Way" checked>
+One Way
+</label>
 
+<label>
+<input type="radio" name="tripType" value="Round Trip">
+Round Trip
+</label>
+
+</div>
+
+<input type="date" id="pickupDate" required>
+
+<div id="returnDateBox" style="display:none;">
+<input type="date" id="returnDate">
+</div>
+
+<input type="time" id="pickupTime" required>
+
+<select id="carType" required>
 <option value="">Select Car</option>
-
 <option>Sedan</option>
-
 <option>SUV</option>
+</select>
 
+<select id="passengers" required>
+<option value="">Passengers</option>
+<option>1</option>
+<option>2</option>
+<option>3</option>
+<option>4</option>
+<option>5</option>
+<option>6</option>
 </select>
 
 <button type="submit" class="book-btn">
-
 Book on WhatsApp
-
 </button>
 
-</form>
+  </form>
 
 </section>
   <!-- ================= FARE CALCULATOR ================= -->
