@@ -65,49 +65,75 @@ fareResult.innerHTML="Estimated Fare : ₹"+fare;
 
 }
 
-// ===== WhatsApp Booking =====
+// Trip Type
 
-const bookingForm = document.getElementById("bookingForm");
+const tripType = document.querySelectorAll("input[name='tripType']");
+const returnDateBox = document.getElementById("returnDateBox");
 
-if(bookingForm){
+tripType.forEach(radio=>{
+radio.addEventListener("change",()=>{
+
+if(radio.value==="Round Trip" && radio.checked){
+returnDateBox.style.display="block";
+}else{
+returnDateBox.style.display="none";
+}
+
+});
+});
+
+// WhatsApp Booking
+
+const bookingForm=document.getElementById("bookingForm");
 
 bookingForm.addEventListener("submit",function(e){
 
 e.preventDefault();
 
-const name=this.querySelectorAll("input")[0].value;
+const name=document.getElementById("name").value;
+const phone=document.getElementById("phone").value;
+const pickup=document.getElementById("pickup").value;
+const drop=document.getElementById("drop").value;
 
-const phone=this.querySelectorAll("input")[1].value;
+const trip=document.querySelector("input[name='tripType']:checked").value;
 
-const pickup=this.querySelectorAll("input")[2].value;
+const pickupDate=document.getElementById("pickupDate").value;
+const returnDate=document.getElementById("returnDate").value;
+const time=document.getElementById("pickupTime").value;
+const car=document.getElementById("carType").value;
+const passengers=document.getElementById("passengers").value;
 
-const drop=this.querySelectorAll("input")[3].value;
+let message=`🚖 *New Cab Booking*
 
-const date=this.querySelectorAll("input")[4].value;
+👤 Name : ${name}
+📱 Phone : ${phone}
 
-const time=this.querySelectorAll("input")[5].value;
+🚕 Trip : ${trip}
 
-const car=this.querySelector("select").value;
+📍 Pickup : ${pickup}
 
-const message=
+🏁 Drop : ${drop}
 
-`*New Cab Booking*%0A%0A
-Name : ${name}%0A
-Phone : ${phone}%0A
-Pickup : ${pickup}%0A
-Drop : ${drop}%0A
-Date : ${date}%0A
-Time : ${time}%0A
-Car : ${car}`;
+📅 Pickup Date : ${pickupDate}`;
+
+if(trip==="Round Trip"){
+message+=`\n🔁 Return Date : ${returnDate}`;
+}
+
+message+=`
+
+🕒 Time : ${time}
+
+🚘 Car : ${car}
+
+👥 Passengers : ${passengers}`;
 
 window.open(
-"https://wa.me/916353886346?text="+message,
+"https://wa.me/916353886346?text="+encodeURIComponent(message),
 "_blank"
 );
 
 });
-
-}
 
 // ===== Scroll Animation =====
 
