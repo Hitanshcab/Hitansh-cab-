@@ -1,151 +1,132 @@
-/* ===========================
-   HITANSH CAB SERVICE
-   script.js
-=========================== */
+// ==========================================
+// Hitansh Cab Service V2.0
+// script.js
+// ==========================================
 
-// WhatsApp Booking
+// ===== Mobile Menu =====
 
-function sendWhatsApp() {
+const menuBtn = document.querySelector(".menu-btn");
+const navbar = document.querySelector(".navbar");
 
-let name = document.getElementById("name").value;
-let mobile = document.getElementById("mobile").value;
-let pickup = document.getElementById("pickup").value;
-let drop = document.getElementById("drop").value;
-let date = document.getElementById("date").value;
-let time = document.getElementById("time").value;
-let trip = document.getElementById("tripType").value;
-let car = document.getElementById("carType").value;
+menuBtn.addEventListener("click", () => {
+    navbar.classList.toggle("active");
+});
 
-if(name=="" || mobile=="" || pickup=="" || drop==""){
+// ===== Smooth Scroll =====
 
-alert("Please fill all details");
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener("click", function(e){
+
+        e.preventDefault();
+
+        const target = document.querySelector(this.getAttribute("href"));
+
+        if(target){
+            target.scrollIntoView({
+                behavior:"smooth"
+            });
+        }
+
+        navbar.classList.remove("active");
+
+    });
+});
+
+// ===== Fare Calculator =====
+
+const route = document.getElementById("route");
+const carType = document.getElementById("carType");
+const fareResult = document.getElementById("fareResult");
+const calculateFare = document.getElementById("calculateFare");
+
+if(calculateFare){
+
+calculateFare.addEventListener("click",()=>{
+
+let fare = Number(route.value);
+
+if(!fare){
+
+fareResult.innerHTML="Please Select Route";
 
 return;
 
 }
 
-let message =
-`🚖 *New Cab Booking*
+if(carType.value==="SUV"){
 
-👤 Name : ${name}
-
-📞 Mobile : ${mobile}
-
-📍 Pickup : ${pickup}
-
-📍 Drop : ${drop}
-
-📅 Date : ${date}
-
-⏰ Time : ${time}
-
-🚗 Car : ${car}
-
-🛣 Trip : ${trip}`;
-
-let url =
-"https://wa.me/916353886346?text=" +
-encodeURIComponent(message);
-
-window.open(url,"_blank");
+fare +=700;
 
 }
 
-/* ===========================
-   Fare Calculator
-=========================== */
+fareResult.innerHTML="Estimated Fare : ₹"+fare;
 
-function calculateFare(){
-
-let route =
-document.getElementById("route").value;
-
-let cab =
-document.getElementById("cab").value;
-
-let fare = "";
-
-const rates = {
-
-Ahmedabad:{
-Sedan:1799,
-SUV:2399
-},
-
-Surat:{
-Sedan:2499,
-SUV:2699
-},
-
-Gandhinagar:{
-Sedan:1999,
-SUV:2699
-},
-
-Rajkot:{
-Sedan:4399,
-SUV:4399
-},
-
-Jamnagar:{
-Sedan:7000,
-SUV:7000
-},
-
-Dwarka:{
-Sedan:8000,
-SUV:8000
-},
-
-Somnath:{
-Sedan:8000,
-SUV:8000
-}
-
-};
-
-if(route==""){
-
-fare = "Please Select Route";
+});
 
 }
 
-else{
+// ===== WhatsApp Booking =====
 
-fare = "₹ " + rates[route][cab];
+const bookingForm = document.getElementById("bookingForm");
 
-}
+if(bookingForm){
 
-document.getElementById("fareResult").innerHTML = fare;
-
-}
-
-/* ===========================
-   Smooth Scroll
-=========================== */
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
-
-anchor.addEventListener("click",function(e){
+bookingForm.addEventListener("submit",function(e){
 
 e.preventDefault();
 
-document.querySelector(this.getAttribute("href")).scrollIntoView({
+const name=this.querySelectorAll("input")[0].value;
 
-behavior:"smooth"
+const phone=this.querySelectorAll("input")[1].value;
+
+const pickup=this.querySelectorAll("input")[2].value;
+
+const drop=this.querySelectorAll("input")[3].value;
+
+const date=this.querySelectorAll("input")[4].value;
+
+const time=this.querySelectorAll("input")[5].value;
+
+const car=this.querySelector("select").value;
+
+const message=
+
+`*New Cab Booking*%0A%0A
+Name : ${name}%0A
+Phone : ${phone}%0A
+Pickup : ${pickup}%0A
+Drop : ${drop}%0A
+Date : ${date}%0A
+Time : ${time}%0A
+Car : ${car}`;
+
+window.open(
+"https://wa.me/916353886346?text="+message,
+"_blank"
+);
+
+});
+
+}
+
+// ===== Scroll Animation =====
+
+const sections=document.querySelectorAll("section");
+
+window.addEventListener("scroll",()=>{
+
+sections.forEach(sec=>{
+
+const top=window.scrollY;
+
+const offset=sec.offsetTop-350;
+
+if(top>offset){
+
+sec.classList.add("fade-up");
+
+}
 
 });
 
 });
-
-});
-
-/* ===========================
-   Welcome Message
-=========================== */
-
-window.onload=function(){
-
-console.log("Hitansh Cab Service Website Loaded");
-
-};
