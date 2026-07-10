@@ -758,3 +758,17 @@ grid-template-columns:1fr;
 /* ===============================
    END OF STYLE.CSS
 ================================= */
+.car-card,
+.fare-card,
+.review-card,
+.feature-box,
+.contact-box{
+opacity:0;
+transform:translateY(30px);
+transition:.6s;
+}
+
+.show{
+opacity:1;
+transform:translateY(0);
+}
