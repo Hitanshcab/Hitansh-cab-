@@ -1,712 +1,760 @@
-/* =========================================
-   Hitansh Cab Service V2.0
-   Part 1
-========================================= */
+/* ===============================
+   HITANSH CAB SERVICE V3.0
+   PART 1
+================================= */
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
 }
 
 body{
-    font-family:'Poppins',sans-serif;
-    background:#f8f9fc;
-    color:#222;
-    line-height:1.6;
+font-family:'Poppins',sans-serif;
+background:#f8f9fa;
+color:#222;
+line-height:1.6;
+overflow-x:hidden;
+}
+
+a{
+text-decoration:none;
+color:inherit;
+}
+
+img{
+max-width:100%;
+display:block;
+}
+
+.section-title{
+font-size:32px;
+font-weight:700;
+text-align:center;
+margin-bottom:40px;
+color:#111;
 }
 
 /* ================= HEADER ================= */
 
 .header{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    background:#0b3d91;
-    color:#fff;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:15px 8%;
-    z-index:1000;
-    box-shadow:0 3px 12px rgba(0,0,0,.15);
+position:fixed;
+top:0;
+left:0;
+width:100%;
+background:#ffffff;
+padding:15px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+box-shadow:0 3px 15px rgba(0,0,0,.1);
+z-index:999;
 }
 
 .logo{
-    display:flex;
-    align-items:center;
-    gap:10px;
+display:flex;
+align-items:center;
+gap:10px;
+font-size:22px;
+font-weight:700;
+color:#ff9800;
 }
 
 .logo i{
-    color:#ffd700;
-    font-size:28px;
-}
-
-.logo h2{
-    font-size:24px;
-    font-weight:700;
+font-size:30px;
 }
 
 .navbar ul{
-    display:flex;
-    list-style:none;
-    gap:30px;
+display:flex;
+gap:30px;
+list-style:none;
 }
 
-.navbar ul li a{
-    color:#fff;
-    text-decoration:none;
-    font-weight:500;
-    transition:.3s;
+.navbar a{
+font-weight:500;
+transition:.3s;
 }
 
-.navbar ul li a:hover{
-    color:#ffd700;
+.navbar a:hover{
+color:#ff9800;
 }
 
 .menu-btn{
-    display:none;
-    font-size:28px;
-    cursor:pointer;
+display:none;
+font-size:28px;
+cursor:pointer;
 }
 
 /* ================= HERO ================= */
 
 .hero{
-    min-height:100vh;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:120px 8% 60px;
-    gap:50px;
-    background:linear-gradient(135deg,#0b3d91,#1e88e5);
-    color:#fff;
-}
-
-.hero-content{
-    flex:1;
+padding:140px 8% 80px;
+display:grid;
+grid-template-columns:1fr 1fr;
+align-items:center;
+gap:40px;
+background:linear-gradient(135deg,#fff8ec,#ffffff);
 }
 
 .hero-tag{
-    display:inline-block;
-    background:#ffd700;
-    color:#000;
-    padding:8px 18px;
-    border-radius:30px;
-    font-weight:600;
-    margin-bottom:20px;
+display:inline-block;
+background:#ff9800;
+color:#fff;
+padding:8px 18px;
+border-radius:30px;
+margin-bottom:18px;
+font-weight:600;
 }
 
 .hero h1{
-    font-size:52px;
-    line-height:1.2;
-    margin-bottom:20px;
+font-size:54px;
+line-height:1.2;
+margin-bottom:20px;
 }
 
 .hero p{
-    font-size:18px;
-    margin-bottom:30px;
+font-size:18px;
+color:#666;
+margin-bottom:30px;
 }
 
 .hero-buttons{
-    display:flex;
-    gap:15px;
-    flex-wrap:wrap;
+display:flex;
+gap:15px;
+flex-wrap:wrap;
 }
 
 .btn{
-    display:inline-block;
-    padding:14px 28px;
-    border-radius:50px;
-    text-decoration:none;
-    font-weight:600;
-    transition:.3s;
+padding:14px 30px;
+border-radius:8px;
+font-weight:600;
+transition:.3s;
+display:inline-block;
 }
 
 .primary-btn{
-    background:#ffd700;
-    color:#000;
+background:#ff9800;
+color:#fff;
 }
 
 .primary-btn:hover{
-    background:#ffbf00;
+background:#e68900;
 }
 
 .whatsapp-btn{
-    background:#25D366;
-    color:#fff;
+background:#25D366;
+color:#fff;
 }
 
 .whatsapp-btn:hover{
-    background:#1faa52;
+background:#1fb958;
 }
 
 .hero-stats{
-    display:flex;
-    gap:25px;
-    margin-top:40px;
-    flex-wrap:wrap;
+display:flex;
+gap:30px;
+margin-top:40px;
 }
 
 .hero-stats div{
-    background:rgba(255,255,255,.15);
-    padding:18px;
-    border-radius:15px;
-    text-align:center;
-    min-width:120px;
+background:#fff;
+padding:20px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+text-align:center;
+min-width:120px;
 }
 
 .hero-stats h3{
-    color:#ffd700;
-    font-size:28px;
-}
-
-.hero-image{
-    flex:1;
-    text-align:center;
+font-size:28px;
+color:#ff9800;
+margin-bottom:5px;
 }
 
 .hero-image img{
-    width:100%;
-    max-width:550px;
-    border-radius:20px;
-    box-shadow:0 10px 30px rgba(0,0,0,.35);
+width:100%;
+border-radius:20px;
+box-shadow:0 15px 40px rgba(0,0,0,.15);
 }
-
-/* ================= SECTION TITLE ================= */
-
-.section-title{
-    text-align:center;
-    font-size:34px;
-    color:#0b3d91;
-    margin-bottom:40px;
-}
-
-/* ================= MOBILE ================= */
-
-@media(max-width:768px){
-
-.header{
-    padding:15px 20px;
-}
-
-.navbar{
-    display:none;
-}
-
-.menu-btn{
-    display:block;
-}
-
-.hero{
-    flex-direction:column;
-    text-align:center;
-    padding:110px 20px 60px;
-}
-
-.hero h1{
-    font-size:36px;
-}
-
-.hero-buttons{
-    justify-content:center;
-}
-
-.hero-stats{
-    justify-content:center;
-}
-
-.hero-image img{
-    max-width:100%;
-   
-}
-
-}
-/* =========================================
-   Part 2 - Fare Cards + Why Us + Booking
-========================================= */
-
-/* ===== Fare Cards ===== */
-
-.fare-cards{
-    padding:80px 8%;
-    background:#ffffff;
-}
-
-.fare-container{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:25px;
-}
-
-.fare-card{
-    background:#fff;
-    border-radius:18px;
-    padding:25px;
-    text-align:center;
-    box-shadow:0 10px 25px rgba(0,0,0,.08);
-    transition:.3s;
-    border-top:5px solid #0b3d91;
-}
-
-.fare-card:hover{
-    transform:translateY(-8px);
-}
-
-.fare-card h3{
-    color:#0b3d91;
-    margin-bottom:12px;
-}
-
-.fare-card p{
-    font-size:28px;
-    font-weight:700;
-    color:#25D366;
-}
-
-/* ===== Why Choose Us ===== */
-
-.why-us{
-    padding:80px 8%;
-    background:#f8f9fc;
-}
-
-.features{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:25px;
-}
-
-.feature-box{
-    background:#fff;
-    padding:30px;
-    text-align:center;
-    border-radius:18px;
-    box-shadow:0 8px 20px rgba(0,0,0,.08);
-    transition:.3s;
-}
-
-.feature-box:hover{
-    transform:translateY(-8px);
-}
-
-.feature-box i{
-    font-size:42px;
-    color:#0b3d91;
-    margin-bottom:18px;
-}
-
-.feature-box h3{
-    margin-bottom:10px;
-    color:#222;
-}
-
-.feature-box p{
-    color:#666;
-}
-
-/* ===== Booking Form ===== */
+/* ===============================
+   BOOKING SECTION
+================================= */
 
 .booking{
-    padding:80px 8%;
-    background:#ffffff;
+padding:80px 8%;
+background:#ffffff;
 }
 
 #bookingForm{
-    max-width:700px;
-    margin:auto;
-    display:grid;
-    gap:18px;
+max-width:700px;
+margin:auto;
+display:grid;
+gap:18px;
+background:#fff;
+padding:30px;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,.1);
 }
 
 #bookingForm input,
 #bookingForm select{
-    width:100%;
-    padding:15px;
-    border:1px solid #ddd;
-    border-radius:12px;
-    font-size:16px;
-    outline:none;
-    transition:.3s;
+width:100%;
+padding:14px;
+border:1px solid #ddd;
+border-radius:8px;
+font-size:16px;
+outline:none;
+transition:.3s;
 }
 
 #bookingForm input:focus,
 #bookingForm select:focus{
-    border-color:#0b3d91;
-    box-shadow:0 0 8px rgba(11,61,145,.2);
+border-color:#ff9800;
+box-shadow:0 0 8px rgba(255,152,0,.3);
+}
+
+.trip-type{
+display:flex;
+gap:20px;
+margin:10px 0;
+}
+
+.trip-type label{
+display:flex;
+align-items:center;
+gap:8px;
+font-weight:600;
+cursor:pointer;
+}
+
+#returnDateBox{
+display:none;
 }
 
 .book-btn{
-    background:#25D366;
-    color:#fff;
-    border:none;
-    padding:16px;
-    border-radius:50px;
-    font-size:18px;
-    font-weight:600;
-    cursor:pointer;
-    transition:.3s;
+background:#25D366;
+color:#fff;
+border:none;
+padding:15px;
+font-size:18px;
+font-weight:600;
+border-radius:8px;
+cursor:pointer;
+transition:.3s;
 }
 
 .book-btn:hover{
-    background:#1faa52;
+background:#1ebd5a;
 }
 
-/* ===== Mobile ===== */
+/* ===============================
+   FARE CALCULATOR
+================================= */
 
-@media(max-width:768px){
-
-.fare-cards,
-.why-us,
-.booking{
-    padding:60px 20px;
+.fare-section{
+padding:80px 8%;
+background:#f8f9fa;
 }
 
-.fare-container,
-.features{
-    grid-template-columns:1fr;
+.fare-box{
+max-width:700px;
+margin:auto;
+background:#fff;
+padding:30px;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
 }
 
+.fare-box label{
+display:block;
+font-weight:600;
+margin:15px 0 8px;
 }
-/* =========================================
-   Part 3 - Cars + Drivers + Gallery
-========================================= */
 
-/* ===== Available Cars ===== */
+.fare-box select{
+width:100%;
+padding:14px;
+border:1px solid #ddd;
+border-radius:8px;
+font-size:16px;
+outline:none;
+margin-bottom:15px;
+}
+
+#calculateFare{
+width:100%;
+padding:15px;
+border:none;
+background:#ff9800;
+color:#fff;
+font-size:18px;
+font-weight:600;
+border-radius:8px;
+cursor:pointer;
+transition:.3s;
+}
+
+#calculateFare:hover{
+background:#e68900;
+}
+
+#fareResult{
+margin-top:25px;
+text-align:center;
+font-size:28px;
+font-weight:700;
+color:#28a745;
+}
+
+/* ===============================
+   POPULAR FARE CARDS
+================================= */
+
+.fare-container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+margin-top:30px;
+}
+
+.fare-card{
+background:#fff;
+padding:25px;
+border-radius:15px;
+text-align:center;
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+transition:.3s;
+}
+
+.fare-card:hover{
+transform:translateY(-5px);
+}
+
+.fare-card h3{
+font-size:20px;
+margin-bottom:10px;
+}
+
+.fare-card p{
+font-size:26px;
+font-weight:700;
+color:#ff9800;
+   }
+/* ===============================
+   CARS SECTION
+================================= */
 
 .cars{
-    padding:80px 8%;
-    background:#f8f9fc;
+padding:80px 8%;
+background:#ffffff;
 }
 
 .car-container{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:30px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+margin-top:40px;
 }
 
 .car-card{
-    background:#fff;
-    border-radius:20px;
-    overflow:hidden;
-    text-align:center;
-    box-shadow:0 10px 25px rgba(0,0,0,.08);
-    transition:.3s;
+background:#fff;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+transition:.3s;
 }
 
 .car-card:hover{
-    transform:translateY(-10px);
-    box-shadow:0 18px 35px rgba(0,0,0,.15);
+transform:translateY(-8px);
 }
 
 .car-card img{
-    width:100%;
-    height:220px;
-    object-fit:cover;
+width:100%;
+height:220px;
+object-fit:cover;
 }
 
 .car-card h3{
-    color:#0b3d91;
-    margin:20px 0 10px;
+font-size:24px;
+text-align:center;
+margin:15px 0;
+color:#ff9800;
 }
 
 .car-card p{
-    color:#666;
-    margin-bottom:20px;
+text-align:center;
+margin-bottom:10px;
 }
 
-.car-card .btn{
-    margin-bottom:25px;
+.car-card ul{
+list-style:none;
+padding:0 20px 20px;
 }
 
-/* ===== Driver Details ===== */
-
-.drivers{
-    padding:80px 8%;
-    background:#ffffff;
+.car-card ul li{
+padding:8px 0;
+border-bottom:1px solid #eee;
 }
 
-.driver-container{
-    display:flex;
-    justify-content:center;
-}
-
-.driver-card{
-    max-width:350px;
-    width:100%;
-    background:#fff;
-    border-radius:20px;
-    text-align:center;
-    padding:30px;
-    box-shadow:0 10px 25px rgba(0,0,0,.08);
-    transition:.3s;
-}
-
-.driver-card:hover{
-    transform:translateY(-10px);
-}
-
-.driver-card img{
-    width:140px;
-    height:140px;
-    border-radius:50%;
-    object-fit:cover;
-    border:5px solid #ffd700;
-    margin-bottom:20px;
-}
-
-.driver-card h3{
-    color:#0b3d91;
-    margin-bottom:15px;
-}
-
-.driver-card p{
-    color:#555;
-    margin:8px 0;
-}
-
-/* ===== Gallery ===== */
+/* ===============================
+   GALLERY
+================================= */
 
 .gallery{
-    padding:80px 8%;
-    background:#f8f9fc;
+padding:80px 8%;
+background:#f8f9fa;
 }
 
 .gallery-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+margin-top:40px;
 }
 
 .gallery-grid img{
-    width:100%;
-    height:220px;
-    object-fit:cover;
-    border-radius:15px;
-    cursor:pointer;
-    transition:.4s;
-    box-shadow:0 8px 20px rgba(0,0,0,.08);
+width:100%;
+height:220px;
+object-fit:cover;
+border-radius:12px;
+transition:.3s;
+cursor:pointer;
 }
 
 .gallery-grid img:hover{
-    transform:scale(1.05);
-    box-shadow:0 15px 30px rgba(0,0,0,.15);
+transform:scale(1.05);
 }
 
-/* ===== Mobile ===== */
-
-@media(max-width:768px){
-
-.cars,
-.drivers,
-.gallery{
-    padding:60px 20px;
-}
-
-.car-container,
-.gallery-grid{
-    grid-template-columns:1fr;
-}
-
-.driver-card{
-    max-width:100%;
-}
-
-}
-/* ==========================================
-   Part 4 - Reviews + Contact + Footer
-========================================== */
-
-/* ===== Reviews ===== */
+/* ===============================
+   REVIEWS
+================================= */
 
 .reviews{
-    padding:80px 8%;
-    background:#ffffff;
+padding:80px 8%;
+background:#fff;
 }
 
 .review-container{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:25px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+margin-top:40px;
 }
 
 .review-card{
-    background:#f8f9fc;
-    padding:30px;
-    border-radius:20px;
-    text-align:center;
-    box-shadow:0 10px 25px rgba(0,0,0,.08);
-    transition:.3s;
+background:#f9f9f9;
+padding:25px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+transition:.3s;
 }
 
 .review-card:hover{
-    transform:translateY(-8px);
+transform:translateY(-6px);
+}
+
+.review-card p{
+margin:15px 0;
+line-height:1.6;
 }
 
 .review-card h4{
-    color:#0b3d91;
-    margin-top:15px;
+color:#ff9800;
 }
 
-.review-button{
-    text-align:center;
-    margin-top:35px;
+/* ===============================
+   DRIVER CARD
+================================= */
+
+.driver{
+padding:80px 8%;
+background:#f8f9fa;
 }
 
-/* ===== Google Map ===== */
-
-.location{
-    padding:80px 8%;
-    background:#f8f9fc;
+.driver-card{
+max-width:400px;
+margin:auto;
+background:#fff;
+padding:30px;
+text-align:center;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
 }
 
-.map-box iframe{
-    width:100%;
-    height:400px;
-    border:0;
-    border-radius:20px;
-    box-shadow:0 10px 25px rgba(0,0,0,.08);
+.driver-card img{
+width:160px;
+height:160px;
+border-radius:50%;
+object-fit:cover;
+margin:auto;
+margin-bottom:20px;
+border:5px solid #ff9800;
 }
 
-/* ===== Contact ===== */
-
-.contact{
-    padding:80px 8%;
-    background:#ffffff;
+.driver-card h3{
+margin-bottom:15px;
+color:#ff9800;
 }
 
-.contact-box{
-    max-width:700px;
-    margin:auto;
-    background:#f8f9fc;
-    padding:35px;
-    border-radius:20px;
-    box-shadow:0 10px 25px rgba(0,0,0,.08);
+.driver-card p{
+margin:8px 0;
 }
 
-.contact-box p{
-    margin:18px 0;
-    font-size:18px;
+/* ===============================
+   CAB AVAILABILITY
+================================= */
+
+.availability{
+padding:80px 8%;
+background:#ffffff;
+text-align:center;
 }
 
-.contact-box a{
-    color:#0b3d91;
-    text-decoration:none;
-    font-weight:600;
+.status-card{
+display:inline-block;
+padding:20px 35px;
+background:#28a745;
+color:#fff;
+font-size:22px;
+font-weight:700;
+border-radius:50px;
+box-shadow:0 8px 20px rgba(40,167,69,.3);
+animation:pulse 2s infinite;
 }
 
-/* ===== Footer ===== */
-
-footer{
-    background:#0b3d91;
-    color:#fff;
-    text-align:center;
-    padding:25px;
-}
-
-/* ===== Floating Buttons ===== */
-
-.floating-whatsapp,
-.floating-call{
-    position:fixed;
-    right:20px;
-    width:60px;
-    height:60px;
-    border-radius:50%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    color:#fff;
-    text-decoration:none;
-    font-size:28px;
-    box-shadow:0 8px 20px rgba(0,0,0,.25);
-    z-index:999;
-}
-
-.floating-whatsapp{
-    bottom:95px;
-    background:#25D366;
-}
-
-.floating-call{
-    bottom:20px;
-    background:#0b3d91;
-}
-
-/* ===== Mobile Menu ===== */
-
-@media(max-width:768px){
-
-.navbar{
-    position:fixed;
-    top:70px;
-    right:-100%;
-    width:260px;
-    height:100vh;
-    background:#0b3d91;
-    transition:.4s;
-    padding-top:30px;
-}
-
-.navbar.active{
-    right:0;
-}
-
-.navbar ul{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:25px;
-}
-
-.menu-btn{
-    display:block;
-}
-
-.section-title{
-    font-size:28px;
-}
-
-.review-container{
-    grid-template-columns:1fr;
-}
-
-.contact-box{
-    padding:25px;
-}
-
-.contact-box p{
-    font-size:16px;
-}
-
-.map-box iframe{
-    height:300px;
-}
-
-}
-
-/* ===== Animation ===== */
-
-.fade-up{
-    animation:fadeUp .8s ease;
-}
-
-@keyframes fadeUp{
+@keyframes pulse{
 
 0%{
-opacity:0;
-transform:translateY(40px);
+transform:scale(1);
+}
+
+50%{
+transform:scale(1.05);
 }
 
 100%{
-opacity:1;
-transform:translateY(0);
+transform:scale(1);
 }
 
-   }
+}
+/* ===============================
+   CONTACT SECTION
+================================= */
+
+.contact{
+padding:80px 8%;
+background:#f8f9fa;
+}
+
+.contact-box{
+max-width:700px;
+margin:auto;
+background:#fff;
+padding:35px;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+text-align:center;
+}
+
+.contact-box p{
+font-size:18px;
+margin:15px 0;
+}
+
+.contact-box i{
+color:#ff9800;
+margin-right:10px;
+}
+
+.contact-box .btn{
+margin-top:20px;
+display:inline-block;
+}
+
+/* ===============================
+   FOOTER
+================================= */
+
+footer{
+background:#111;
+color:#fff;
+text-align:center;
+padding:40px 20px;
+}
+
+footer h2{
+color:#ff9800;
+margin-bottom:15px;
+}
+
+footer p{
+margin:8px 0;
+color:#ccc;
+}
+
+/* ===============================
+   FLOATING BUTTONS
+================================= */
+
+.floating-whatsapp,
+.floating-call{
+position:fixed;
+right:20px;
+width:60px;
+height:60px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:28px;
+color:#fff;
+text-decoration:none;
+z-index:999;
+box-shadow:0 5px 15px rgba(0,0,0,.25);
+transition:.3s;
+}
+
+.floating-whatsapp{
+bottom:95px;
+background:#25D366;
+}
+
+.floating-call{
+bottom:20px;
+background:#ff9800;
+}
+
+.floating-whatsapp:hover,
+.floating-call:hover{
+transform:scale(1.1);
+}
+
+/* ===============================
+   SCROLL TO TOP
+================================= */
+
+#topBtn{
+position:fixed;
+left:20px;
+bottom:20px;
+width:55px;
+height:55px;
+border:none;
+border-radius:50%;
+background:#111;
+color:#fff;
+font-size:22px;
+cursor:pointer;
+display:none;
+z-index:999;
+box-shadow:0 5px 15px rgba(0,0,0,.25);
+}
+
+#topBtn:hover{
+background:#ff9800;
+}
+
+/* ===============================
+   RESPONSIVE
+================================= */
+
+@media (max-width:992px){
+
+.hero{
+grid-template-columns:1fr;
+text-align:center;
+}
+
+.hero h1{
+font-size:38px;
+}
+
+.hero-buttons{
+justify-content:center;
+}
+
+.hero-stats{
+justify-content:center;
+flex-wrap:wrap;
+}
+
+.navbar{
+display:none;
+}
+
+.menu-btn{
+display:block;
+}
+
+}
+
+@media (max-width:768px){
+
+.section-title{
+font-size:28px;
+}
+
+.header{
+padding:15px 20px;
+}
+
+#bookingForm,
+.fare-box,
+.contact-box{
+padding:20px;
+}
+
+.trip-type{
+flex-direction:column;
+gap:10px;
+}
+
+.floating-whatsapp,
+.floating-call{
+width:55px;
+height:55px;
+font-size:24px;
+}
+
+}
+
+@media (max-width:480px){
+
+.hero{
+padding:120px 20px 60px;
+}
+
+.hero h1{
+font-size:30px;
+}
+
+.hero p{
+font-size:16px;
+}
+
+.btn{
+width:100%;
+text-align:center;
+}
+
+.hero-buttons{
+flex-direction:column;
+}
+
+.hero-stats{
+flex-direction:column;
+}
+
+.car-container,
+.review-container,
+.gallery-grid,
+.fare-container{
+grid-template-columns:1fr;
+}
+
+}
+
+/* ===============================
+   END OF STYLE.CSS
+================================= */
