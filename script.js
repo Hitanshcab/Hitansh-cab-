@@ -297,18 +297,29 @@ const routes = {
 "Nakhatrana",
 "Lakh
  /* ==========================================
-   PART 3
-   SMART ROUTE SEARCH
+/* ==========================================
+   V7.1 SMART SEARCH UPGRADE
 ========================================== */
 
 const searchBox = document.getElementById("routeSearch");
 const resultBox = document.getElementById("searchResults");
 
+function normalizeText(text) {
+    return text
+        .toLowerCase()
+        .replace(/→/g, " ")
+        .replace(/to/g, " ")
+        .replace(/-/g, " ")
+        .replace(/\s+/g, " ")
+        .replace("ahemdabad", "ahmedabad")
+        .trim();
+}
+
 if (searchBox && resultBox) {
 
     searchBox.addEventListener("input", function () {
 
-        const keyword = this.value.trim().toLowerCase();
+        const keyword = normalizeText(this.value);
 
         resultBox.innerHTML = "";
 
@@ -317,41 +328,49 @@ if (searchBox && resultBox) {
             return;
         }
 
-        let matches = Object.keys(routes).filter(route =>
-            route.toLowerCase().includes(keyword)
+        const matches = Object.keys(routes).filter(route =>
+            normalizeText(route).includes(keyword)
         );
 
         if (matches.length === 0) {
-
             resultBox.innerHTML =
-            `<div>No Route Found</div>`;
-
+                '<div class="no-result">No Route Found</div>';
             resultBox.style.display = "block";
             return;
-
         }
 
         matches.forEach(route => {
 
-            const item = document.createElement("div");
+            const div = document.createElement("div");
 
-            item.textContent = route;
+            div.className = "search-item";
 
-            item.onclick = () => {
+            div.textContent = route;
+
+            div.onclick = function () {
 
                 searchBox.value = route;
-
-                resultBox.innerHTML = "";
 
                 resultBox.style.display = "none";
 
             };
 
-            resultBox.appendChild(item);
+            resultBox.appendChild(div);
 
         });
 
         resultBox.style.display = "block";
+
+    });
+
+    document.addEventListener("click", function(e){
+
+        if(
+            !searchBox.contains(e.target) &&
+            !resultBox.contains(e.target)
+        ){
+            resultBox.style.display="none";
+        }
 
     });
 
