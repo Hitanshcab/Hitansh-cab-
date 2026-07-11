@@ -282,12 +282,6 @@ Popular One Way Fares
 
 <section class="fare-section" id="fare">
 
-<h2 class="section-title">
-Instant Fare Calculator
-</h2>
-  <h2 class="section-title">
-    Instant Fare Calculator
-</h2>
 
 <!-- Search Box Start -->
 <div class="search-route">
@@ -308,17 +302,30 @@ Instant Fare Calculator
 
 <label>Select Route</label>
 
-<select id="route">
+<sele
+<!-- ================= SMART FARE CALCULATOR V5.1 ================= -->
 
-<option value="">Choose Route</option>
+<section class="fare-section" id="fare">
 
-<option value="1700">Vadodara → Ahmedabad</option>
-<option value="2200">Vadodara → Surat</option>
-<option value="3700">Vadodara → Rajkot</option>
-<option value="6000">Vadodara → Jamnagar</option>
-<option value="7500">Vadodara → Dwarka</option>
-<option value="7500">Vadodara → Somnath</option>
+<h2 class="section-title">Smart Fare Calculator</h2>
 
+<div class="fare-box">
+
+<label>Search Destination</label>
+
+<input
+type="text"
+id="routeSearch"
+placeholder="Search Ahmedabad, Surat, Rajkot..."
+autocomplete="off">
+
+<div id="searchResults"></div>
+
+<label>Select Car</label>
+
+<select id="fareCarType">
+<option value="Sedan">Sedan</option>
+<option value="SUV">SUV</option>
 </select>
 
 <label>Trip Type</label>
@@ -328,6 +335,27 @@ Instant Fare Calculator
 <option value="round">Round Trip</option>
 </select>
 
+<button
+type="button"
+id="calculateFare"
+class="btn primary-btn">
+
+Calculate Fare
+
+</button>
+
+<h3 id="selectedRoute">
+Route : -
+</h3>
+
+<h3 id="fareResult">
+Estimated Fare : ₹0
+</h3>
+
+</div>
+
+</section>k
+  
 <label>Select Car</label>
 
 <select id="fareCarType">
