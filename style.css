@@ -750,3 +750,38 @@ font-size:16px;
 }
 
 }
+
+.search-route{
+max-width:600px;
+margin:20px auto;
+}
+
+#routeSearch{
+width:100%;
+padding:15px;
+font-size:17px;
+border:2px solid #ff9800;
+border-radius:10px;
+outline:none;
+}
+
+#searchResults{
+background:#fff;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,.15);
+margin-top:10px;
+max-height:250px;
+overflow-y:auto;
+}
+
+#searchResults div{
+padding:12px;
+cursor:pointer;
+border-bottom:1px solid #eee;
+}
+
+#searchResults div:hover{
+background:#ff9800;
+color:#fff;
+}
+
