@@ -489,7 +489,322 @@ if (calculateBtn) {
   sedan:4500,
   suv:5300
 },  
+    // ==========================
+// PART 11 - More Gujarat Routes
+// ==========================
 
+"Vadodara → Amreli": {
+    sedan: 5200,
+    suv: 6200
+},
+
+"Vadodara → Botad": {
+    sedan: 4300,
+    suv: 5200
+},
+
+"Vadodara → Surendranagar": {
+    sedan: 4500,
+    suv: 5400
+},
+
+"Vadodara → Morbi": {
+    sedan: 5200,
+    suv: 6200
+},
+
+"Vadodara → Wankaner": {
+    sedan: 5400,
+    suv: 6400
+},
+
+"Vadodara → Gondal": {
+    sedan: 4700,
+    suv: 5700
+},
+
+"Vadodara → Jetpur": {
+    sedan: 5600,
+    suv: 6600
+},
+
+"Vadodara → Veraval": {
+    sedan: 7600,
+    suv: 8600
+},
+
+"Vadodara → Diu": {
+    sedan: 8200,
+    suv: 9300
+},
+
+"Vadodara → Bhuj": {
+    sedan: 9200,
+    suv: 10500
+},
+
+"Vadodara → Gandhidham": {
+    sedan: 8600,
+    suv: 9800
+},
+
+"Vadodara → Mandvi": {
+    sedan: 9800,
+    suv: 11200
+},
+
+"Vadodara → Kandla": {
+    sedan: 8800,
+    suv: 10000
+},
+
+"Vadodara → Okha": {
+    sedan: 8400,
+    suv: 9500
+},
+
+"Vadodara → Khambhalia": {
+    sedan: 7200,
+    suv: 8300
+}
+    // ==========================
+// PART 11 - Gujarat Routes
+// ==========================
+
+"Vadodara → Amreli": {
+    sedan: 5200,
+    suv: 6200
+},
+
+"Vadodara → Botad": {
+    sedan: 4300,
+    suv: 5200
+},
+
+"Vadodara → Surendranagar": {
+    sedan: 4500,
+    suv: 5400
+},
+
+"Vadodara → Morbi": {
+    sedan: 5200,
+    suv: 6200
+},
+
+"Vadodara → Wankaner": {
+    sedan: 5000,
+    suv: 6000
+},
+
+"Vadodara → Veraval": {
+    sedan: 7600,
+    suv: 8600
+},
+
+"Vadodara → Diu": {
+    sedan: 8200,
+    suv: 9300
+},
+
+"Vadodara → Bhuj": {
+    sedan: 9200,
+    suv: 10500
+},
+
+"Vadodara → Gandhidham": {
+    sedan: 8600,
+    suv: 9800
+},
+
+"Vadodara → Mandvi": {
+    sedan: 9800,
+    suv: 11200
+},
+
+"Vadodara → Kandla": {
+    sedan: 8800,
+    suv: 10000
+},
+
+"Vadodara → Khambhalia": {
+    sedan: 7200,
+    suv: 8300
+},
+
+"Vadodara → Okha": {
+    sedan: 8400,
+    suv: 9500
+},
+
+"Vadodara → Halol": {
+    sedan: 900,
+    suv: 1300
+},
+
+"Vadodara → Kalol": {
+    sedan: 1500,
+    suv: 2100
+},
+// ==========================
+// PART 12 - Vadodara & Nearby Taluka Routes
+// ==========================
+
+,
+
+"Vadodara → Padra": {
+    sedan: 700,
+    suv: 1100
+},
+
+"Vadodara → Dabhoi": {
+    sedan: 800,
+    suv: 1200
+},
+
+"Vadodara → Karjan": {
+    sedan: 900,
+    suv: 1300
+},
+
+"Vadodara → Savli": {
+    sedan: 700,
+    suv: 1100
+},
+
+"Vadodara → Waghodia": {
+    sedan: 700,
+    suv: 1100
+},
+
+"Vadodara → Shinor": {
+    sedan: 1000,
+    suv: 1400
+},
+
+"Vadodara → Desar": {
+    sedan: 1000,
+    suv: 1400
+},
+
+"Vadodara → Bodeli": {
+    sedan: 1500,
+    suv: 2100
+},
+
+"Vadodara → Chhota Udepur": {
+    sedan: 1800,
+    suv: 2500
+},
+
+"Vadodara → Rajpipla": {
+    sedan: 1700,
+    suv: 2400
+},
+
+"Vadodara → Kevadia": {
+    sedan: 1900,
+    suv: 2600
+},
+
+"Vadodara → Tilakwada": {
+    sedan: 1300,
+    suv: 1800
+},
+
+"Vadodara → Naswadi": {
+    sedan: 1700,
+    suv: 2400
+},
+
+"Vadodara → Sankheda": {
+    sedan: 1400,
+    suv: 2000
+},
+
+"Vadodara → Jetpur Pavi": {
+    sedan: 2000,
+    suv: 2700
+    }u
+    // ==========================
+// PART 13 - Central Gujarat Routes
+// ==========================
+
+,
+
+"Vadodara → Ahmedabad": {
+    sedan: 1700,
+    suv: 2399
+},
+
+"Vadodara → Gandhinagar": {
+    sedan: 1900,
+    suv: 2600
+},
+
+"Vadodara → Kheda": {
+    sedan: 1400,
+    suv: 1900
+},
+
+"Vadodara → Matar": {
+    sedan: 1500,
+    suv: 2000
+},
+
+"Vadodara → Mahemdabad": {
+    sedan: 1500,
+    suv: 2000
+},
+
+"Vadodara → Kapadvanj": {
+    sedan: 1800,
+    suv: 2400
+},
+
+"Vadodara → Balasinor": {
+    sedan: 1700,
+    suv: 2300
+},
+
+"Vadodara → Lunawada": {
+    sedan: 2200,
+    suv: 2900
+},
+
+"Vadodara → Santrampur": {
+    sedan: 3000,
+    suv: 3800
+},
+
+"Vadodara → Godhra": {
+    sedan: 1500,
+    suv: 2000
+},
+
+"Vadodara → Halol": {
+    sedan: 900,
+    suv: 1300
+},
+
+"Vadodara → Kalol (Panchmahal)": {
+    sedan: 1300,
+    suv: 1800
+},
+
+"Vadodara → Dahod": {
+    sedan: 2500,
+    suv: 3200
+},
+
+"Vadodara → Himmatnagar": {
+    sedan: 3200,
+    suv: 4000
+},
+
+"Vadodara → Modasa": {
+    sedan: 2900,
+    suv: 3500
+}
   });
 
 }
