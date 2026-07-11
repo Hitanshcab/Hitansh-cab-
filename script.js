@@ -135,3 +135,185 @@ navbar.classList.remove("active");
 });
 
 console.log("Hitansh Cab Service V4.0 Loaded Successfully");
+// ===============================
+// GUJARAT ROUTES DATABASE - PART 1
+// ===============================
+
+const routes = {
+
+"Vadodara → Ahmedabad":1700,
+"Vadodara → Gandhinagar":1900,
+"Vadodara → Nadiad":900,
+"Vadodara → Anand":700,
+"Vadodara → Kheda":1000,
+"Vadodara → Mehsana":2600,
+"Vadodara → Kalol":2200,
+"Vadodara → Sanand":2100,
+"Vadodara → Viramgam":2800,
+"Vadodara → Bavla":2400,
+"Vadodara → Dholka":2300,
+"Vadodara → Dehgam":2100,
+"Vadodara → Kapadvanj":1500,
+"Vadodara → Dakor":1200,
+"Vadodara → Thasra":1300,
+"Vadodara → Umreth":1000,
+"Vadodara → Petlad":1100,
+"Vadodara → Borsad":900,
+"Vadodara → Tarapur":1300,
+"Vadodara → Khambhat":1500
+
+// Part 2 में आगे जारी रहेगा...
+// ===============================
+// GUJARAT ROUTES DATABASE - PART 2
+// ===============================
+
+"Vadodara → Surat":2200,
+"Vadodara → Bharuch":1200,
+"Vadodara → Ankleshwar":1400,
+"Vadodara → Navsari":2800,
+"Vadodara → Valsad":3500,
+"Vadodara → Vapi":3800,
+"Vadodara → Bardoli":2400,
+"Vadodara → Vyara":2500,
+"Vadodara → Songadh":3000,
+"Vadodara → Dang (Ahwa)":4200,
+"Vadodara → Bilimora":3000,
+"Vadodara → Chikhli":3200,
+"Vadodara → Pardi":3600,
+"Vadodara → Umbergaon":4200,
+"Vadodara → Sachin":2300,
+"Vadodara → Hazira":2600,
+"Vadodara → Kim":1800,
+"Vadodara → Kosamba":1700,
+"Vadodara → Olpad":2400,
+"Vadodara → Mandvi (Surat)":2600,
+// ===============================
+// GUJARAT ROUTES DATABASE - PART 3
+// Saurashtra Routes
+// ===============================
+
+"Vadodara → Rajkot":3700,
+"Vadodara → Morbi":4800,
+"Vadodara → Wankaner":4500,
+"Vadodara → Gondal":4100,
+"Vadodara → Jetpur":4300,
+"Vadodara → Junagadh":5200,
+"Vadodara → Keshod":5600,
+"Vadodara → Veraval":7000,
+"Vadodara → Somnath":7500,
+"Vadodara → Porbandar":6500,
+"Vadodara → Jamnagar":6000,
+"Vadodara → Dwarka":7500,
+"Vadodara → Khambhalia":6800,
+"Vadodara → Dhrol":5600,
+"Vadodara → Lalpur":6200,
+"Vadodara → Upleta":4500,
+"Vadodara → Dhoraji":4400,
+"Vadodara → Amreli":4800,
+"Vadodara → Bhavnagar":3500,
+"Vadodara → Palitana":3900,
+// ===============================
+// GUJARAT ROUTES DATABASE - PART 4
+// North & Kutch Routes
+// ===============================
+
+"Vadodara → Bhuj":8500,
+"Vadodara → Gandhidham":7800,
+"Vadodara → Mandvi (Kutch)":9200,
+"Vadodara → Mundra":9000,
+"Vadodara → Anjar":7900,
+"Vadodara → Nakhatrana":9300,
+"Vadodara → Rapar":7600,
+"Vadodara → Palanpur":4200,
+"Vadodara → Deesa":4600,
+"Vadodara → Ambaji":5200,
+"Vadodara → Patan":3400,
+"Vadodara → Siddhpur":3500,
+"Vadodara → Mehsana":2900,
+"Vadodara → Visnagar":3100,
+"Vadodara → Unjha":3000,
+"Vadodara → Vadnagar":3200,
+"Vadodara → Becharaji":3300,
+"Vadodara → Himmatnagar":2800,
+"Vadodara → Idar":3400,
+"Vadodara → Modasa":2600,
+// ===============================
+// GUJARAT ROUTES DATABASE - PART 5
+// East Gujarat & South Gujarat
+// ===============================
+
+"Vadodara → Godhra":1700,
+"Vadodara → Halol":900,
+"Vadodara → Kalol (Panchmahal)":1400,
+"Vadodara → Dahod":2500,
+"Vadodara → Limkheda":2300,
+"Vadodara → Jhalod":2700,
+"Vadodara → Chhota Udepur":1600,
+"Vadodara → Bodeli":1400,
+"Vadodara → Kawant":1800,
+"Vadodara → Rajpipla":1600,
+"Vadodara → Garudeshwar":1800,
+"Vadodara → Kevadia (Statue of Unity)":1800,
+"Vadodara → Dediapada":2200,
+"Vadodara → Dabhoi":700,
+"Vadodara → Waghodia":500,
+"Vadodara → Padra":700,
+"Vadodara → Karjan":900,
+"Vadodara → Savli":700,
+"Vadodara → Desar":900,
+"Vadodara → Shinor":900
+
+};
+// ===============================
+// HITANSH CAB SERVICE V5.1
+// SMART ROUTE SEARCH
+// ===============================
+
+const searchBox = document.getElementById("routeSearch");
+const resultBox = document.getElementById("searchResults");
+const routeSelect = document.getElementById("route");
+
+if (searchBox && resultBox && routeSelect) {
+
+    searchBox.addEventListener("keyup", function () {
+
+        const text = this.value.toLowerCase().trim();
+
+        resultBox.innerHTML = "";
+
+        if (text.length < 2) return;
+
+        Object.keys(routes).forEach(route => {
+
+            if (route.toLowerCase().includes(text)) {
+
+                const div = document.createElement("div");
+
+                div.textContent = route;
+
+                div.onclick = function () {
+
+                    searchBox.value = route;
+
+                    resultBox.innerHTML = "";
+
+                    // अगर route dropdown में option मौजूद है तो उसे select करें
+                    for (let i = 0; i < routeSelect.options.length; i++) {
+                        if (routeSelect.options[i].text === route) {
+                            routeSelect.selectedIndex = i;
+                            break;
+                        }
+                    }
+
+                };
+
+                resultBox.appendChild(div);
+
+            }
+
+        });
+
+    });
+
+}
+
