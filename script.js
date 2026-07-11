@@ -1,104 +1,96 @@
-// ==========================
-// HITANSH CAB SERVICE
-// SCRIPT.JS V4.0
-// ==========================
+/* ==========================================
+   HITANSH CAB SERVICE
+   SCRIPT.JS V7.0
+   PART 1
+========================================== */
 
-// Mobile Menu
+// ===========================
+// MOBILE MENU
+// ===========================
 
-const menuBtn = document.querySelector(".menu-btn");
-const navbar = document.querySelector(".navbar");
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
 
-menuBtn.addEventListener("click", () => {
-    navbar.classList.toggle("active");
+if (menuToggle && navLinks) {
+
+menuToggle.addEventListener("click", () => {
+
+navLinks.classList.toggle("active");
+
+menuToggle.innerHTML = navLinks.classList.contains("active")
+
+? '<i class="fa-solid fa-xmark"></i>'
+
+: '<i class="fa-solid fa-bars"></i>';
+
 });
 
-// Show Return Date
+}
 
-const tripType = document.querySelectorAll("input[name='tripType']");
-const returnDateBox = document.getElementById("returnDateBox");
+// ===========================
+// CLOSE MENU AFTER CLICK
+// ===========================
 
-tripType.forEach(item => {
-    item.addEventListener("change", () => {
-        if (item.value === "Round Trip" && item.checked) {
-            returnDateBox.style.display = "block";
-        } else if (item.value === "One Way" && item.checked) {
-            returnDateBox.style.display = "none";
-        }
-    });
+document.querySelectorAll(".nav-links a").forEach(link => {
+
+link.addEventListener("click", () => {
+
+if(navLinks){
+
+navLinks.classList.remove("active");
+
+}
+
+if(menuToggle){
+
+menuToggle.innerHTML =
+'<i class="fa-solid fa-bars"></i>';
+
+}
+
 });
 
-// WhatsApp Booking
+});
 
-document.getElementById("bookingForm").addEventListener("submit", function(e){
+// ===========================
+// SMOOTH SCROLL
+// ===========================
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+
+anchor.addEventListener("click", function(e){
+
+const target=document.querySelector(this.getAttribute("href"));
+
+if(target){
 
 e.preventDefault();
 
-let trip = document.querySelector("input[name='tripType']:checked").value;
+window.scrollTo({
 
-let message =
-`🚖 *New Cab Booking*
+top:target.offsetTop-70,
 
-👤 Name : ${document.getElementById("name").value}
-📞 Mobile : ${document.getElementById("phone").value}
-
-📍 Pickup : ${document.getElementById("pickup").value}
-📍 Drop : ${document.getElementById("drop").value}
-
-🚘 Car : ${document.getElementById("carType").value}
-👥 Passengers : ${document.getElementById("passengers").value}
-
-🛣 Trip : ${trip}
-
-📅 Pickup Date : ${document.getElementById("pickupDate").value}
-⏰ Pickup Time : ${document.getElementById("pickupTime").value}`;
-
-if(trip==="Round Trip"){
-message += `
-
-🔄 Return Date : ${document.getElementById("returnDate").value}`;
-}
-
-window.open(
-"https://wa.me/916353886346?text="+encodeURIComponent(message),
-"_blank"
-);
+behavior:"smooth"
 
 });
 
-// Fare Calculator
-
-document.getElementById("calculateFare").addEventListener("click",function(){
-
-let fare = Number(document.getElementById("route").value);
-
-if(fare===0){
-alert("Please Select Route");
-return;
 }
-
-let trip = document.getElementById("tripMode").value;
-let car = document.getElementById("fareCarType").value;
-
-if(car==="SUV"){
-fare += 700;
-}
-
-if(trip==="round"){
-fare = fare * 2;
-}
-
-document.getElementById("fareResult").innerHTML =
-"Estimated Fare : ₹"+fare;
 
 });
 
-// Scroll Top
+});
 
-const topBtn = document.getElementById("topBtn");
+// ===========================
+// SCROLL TO TOP
+// ===========================
 
-window.onscroll = function(){
+const topBtn=document.getElementById("topBtn");
 
-if(document.body.scrollTop>300 || document.documentElement.scrollTop>300){
+if(topBtn){
+
+window.addEventListener("scroll",()=>{
+
+if(window.scrollY>300){
 
 topBtn.style.display="block";
 
@@ -108,9 +100,9 @@ topBtn.style.display="none";
 
 }
 
-};
+});
 
-topBtn.onclick=function(){
+topBtn.addEventListener("click",()=>{
 
 window.scrollTo({
 
@@ -120,692 +112,685 @@ behavior:"smooth"
 
 });
 
-};
-
-// Smooth Menu Scroll
-
-document.querySelectorAll(".navbar a").forEach(link=>{
-
-link.addEventListener("click",function(){
-
-navbar.classList.remove("active");
-
 });
-
-});
-
-console.log("Hitansh Cab Service V4.0 Loaded Successfully");
-// ===============================
-// GUJARAT ROUTES DATABASE - PART 1
-// ===============================
-
-const routes = {
-
-"Vadodara → Ahmedabad":1700,
-"Vadodara → Gandhinagar":1900,
-"Vadodara → Nadiad":900,
-"Vadodara → Anand":700,
-"Vadodara → Kheda":1000,
-"Vadodara → Mehsana":2600,
-"Vadodara → Kalol":2200,
-"Vadodara → Sanand":2100,
-"Vadodara → Viramgam":2800,
-"Vadodara → Bavla":2400,
-"Vadodara → Dholka":2300,
-"Vadodara → Dehgam":2100,
-"Vadodara → Kapadvanj":1500,
-"Vadodara → Dakor":1200,
-"Vadodara → Thasra":1300,
-"Vadodara → Umreth":1000,
-"Vadodara → Petlad":1100,
-"Vadodara → Borsad":900,
-"Vadodara → Tarapur":1300,
-"Vadodara → Khambhat":1500
-
-// Part 2 में आगे जारी रहेगा...
-// ===============================
-// GUJARAT ROUTES DATABASE - PART 2
-// ===============================
-
-"Vadodara → Surat":2200,
-"Vadodara → Bharuch":1200,
-"Vadodara → Ankleshwar":1400,
-"Vadodara → Navsari":2800,
-"Vadodara → Valsad":3500,
-"Vadodara → Vapi":3800,
-"Vadodara → Bardoli":2400,
-"Vadodara → Vyara":2500,
-"Vadodara → Songadh":3000,
-"Vadodara → Dang (Ahwa)":4200,
-"Vadodara → Bilimora":3000,
-"Vadodara → Chikhli":3200,
-"Vadodara → Pardi":3600,
-"Vadodara → Umbergaon":4200,
-"Vadodara → Sachin":2300,
-"Vadodara → Hazira":2600,
-"Vadodara → Kim":1800,
-"Vadodara → Kosamba":1700,
-"Vadodara → Olpad":2400,
-"Vadodara → Mandvi (Surat)":2600,
-// ===============================
-// GUJARAT ROUTES DATABASE - PART 3
-// Saurashtra Routes
-// ===============================
-
-"Vadodara → Rajkot":3700,
-"Vadodara → Morbi":4800,
-"Vadodara → Wankaner":4500,
-"Vadodara → Gondal":4100,
-"Vadodara → Jetpur":4300,
-"Vadodara → Junagadh":5200,
-"Vadodara → Keshod":5600,
-"Vadodara → Veraval":7000,
-"Vadodara → Somnath":7500,
-"Vadodara → Porbandar":6500,
-"Vadodara → Jamnagar":6000,
-"Vadodara → Dwarka":7500,
-"Vadodara → Khambhalia":6800,
-"Vadodara → Dhrol":5600,
-"Vadodara → Lalpur":6200,
-"Vadodara → Upleta":4500,
-"Vadodara → Dhoraji":4400,
-"Vadodara → Amreli":4800,
-"Vadodara → Bhavnagar":3500,
-"Vadodara → Palitana":3900,
-// ===============================
-// GUJARAT ROUTES DATABASE - PART 4
-// North & Kutch Routes
-// ===============================
-
-"Vadodara → Bhuj":8500,
-"Vadodara → Gandhidham":7800,
-"Vadodara → Mandvi (Kutch)":9200,
-"Vadodara → Mundra":9000,
-"Vadodara → Anjar":7900,
-"Vadodara → Nakhatrana":9300,
-"Vadodara → Rapar":7600,
-"Vadodara → Palanpur":4200,
-"Vadodara → Deesa":4600,
-"Vadodara → Ambaji":5200,
-"Vadodara → Patan":3400,
-"Vadodara → Siddhpur":3500,
-"Vadodara → Mehsana":2900,
-"Vadodara → Visnagar":3100,
-"Vadodara → Unjha":3000,
-"Vadodara → Vadnagar":3200,
-"Vadodara → Becharaji":3300,
-"Vadodara → Himmatnagar":2800,
-"Vadodara → Idar":3400,
-"Vadodara → Modasa":2600,
-// ===============================
-// GUJARAT ROUTES DATABASE - PART 5
-// East Gujarat & South Gujarat
-// ===============================
-
-"Vadodara → Godhra":1700,
-"Vadodara → Halol":900,
-"Vadodara → Kalol (Panchmahal)":1400,
-"Vadodara → Dahod":2500,
-"Vadodara → Limkheda":2300,
-"Vadodara → Jhalod":2700,
-"Vadodara → Chhota Udepur":1600,
-"Vadodara → Bodeli":1400,
-"Vadodara → Kawant":1800,
-"Vadodara → Rajpipla":1600,
-"Vadodara → Garudeshwar":1800,
-"Vadodara → Kevadia (Statue of Unity)":1800,
-"Vadodara → Dediapada":2200,
-"Vadodara → Dabhoi":700,
-"Vadodara → Waghodia":500,
-"Vadodara → Padra":700,
-"Vadodara → Karjan":900,
-"Vadodara → Savli":700,
-"Vadodara → Desar":900,
-"Vadodara → Shinor":900
-
-};
-// ===============================
-// HITANSH CAB SERVICE V5.1
-// SMART ROUTE SEARCH
-// ===============================
-
-const searchBox = document.getElementById("routeSearch");
-const resultBox = document.getElementById("searchResults");
-const routeSelect = document.getElementById("route");
-
-if (searchBox && resultBox && routeSelect) {
-
-    searchBox.addEventListener("keyup", function () {
-
-        const text = this.value.toLowerCase().trim();
-
-        resultBox.innerHTML = "";
-
-        if (text.length < 2) return;
-
-        Object.keys(routes).forEach(route => {
-
-            if (route.toLowerCase().includes(text)) {
-
-                const div = document.createElement("div");
-
-                div.textContent = route;
-
-                div.onclick = function () {
-
-                    searchBox.value = route;
-
-                    resultBox.innerHTML = "";
-
-                    // अगर route dropdown में option मौजूद है तो उसे select करें
-                    for (let i = 0; i < routeSelect.options.length; i++) {
-                        if (routeSelect.options[i].text === route) {
-                            routeSelect.selectedIndex = i;
-                            break;
-                        }
-                    }
-
-                };
-
-                resultBox.appendChild(div);
-
-            }
-
-        });
-
-    });
 
 }
 
-// आपका पुराना पूरा script...
+// ===========================
+// ACTIVE NAV LINK
+// ===========================
+
+const sections=document.querySelectorAll("section");
+
+const navItems=document.querySelectorAll(".nav-links a");
+
+window.addEventListener("scroll",()=>{
+
+let current="";
+
+sections.forEach(section=>{
+
+const sectionTop=section.offsetTop-120;
+
+if(window.scrollY>=sectionTop){
+
+current=section.getAttribute("id");
+
+}
+
+});
+
+navItems.forEach(link=>{
+
+link.classList.remove("active");
+
+if(link.getAttribute("href")==="#"+current){
+
+link.classList.add("active");
+
+}
+
+});
+
+});
 
 // ===========================
-// SMART ROUTES DATABASE
+// CURRENT YEAR
 // ===========================
+
+document.querySelectorAll(".year").forEach(el=>{
+
+el.textContent=new Date().getFullYear();
+
+});
+
+console.log("Hitansh Cab Service V7.0 Loaded");
+/* ==========================================
+   PART 2
+   GUJARAT ROUTES DATABASE
+========================================== */
 
 const routes = {
-  "Vadodara → Ahmedabad": {
-    sedan:1700,
-    suv:2399
-  },
 
-  "Vadodara → Surat": {
-    sedan:2200,
-    suv:2699
-  },
+"Vadodara → Ahmedabad": { sedan:1700, suv:2399 },
 
-  // बाकी सभी routes...
+"Vadodara → Ahmedabad Airport": { sedan:1900, suv:2600 },
+
+"Vadodara → Gandhinagar": { sedan:2000, suv:2700 },
+
+"Vadodara → Anand": { sedan:1200, suv:1700 },
+
+"Vadodara → Nadiad": { sedan:1400, suv:1900 },
+
+"Vadodara → Bharuch": { sedan:1500, suv:2000 },
+
+"Vadodara → Ankleshwar": { sedan:1700, suv:2200 },
+
+"Vadodara → Surat": { sedan:2200, suv:2699 },
+
+"Vadodara → Navsari": { sedan:3000, suv:3600 },
+
+"Vadodara → Valsad": { sedan:3600, suv:4300 },
+
+"Vadodara → Vapi": { sedan:4200, suv:4900 },
+
+"Vadodara → Silvassa": { sedan:4500, suv:5200 },
+
+"Vadodara → Rajkot": { sedan:3700, suv:4399 },
+
+"Vadodara → Jamnagar": { sedan:6000, suv:7000 },
+
+"Vadodara → Dwarka": { sedan:7500, suv:8000 },
+
+"Vadodara → Somnath": { sedan:7500, suv:8000 },
+
+"Vadodara → Junagadh": { sedan:6500, suv:7500 },
+
+"Vadodara → Porbandar": { sedan:7200, suv:8200 },
+
+"Vadodara → Bhavnagar": { sedan:4300, suv:5200 },
+
+"Vadodara → Amreli": { sedan:5200, suv:6200 },
+
+"Vadodara → Botad": { sedan:4300, suv:5100 },
+
+"Vadodara → Surendranagar": { sedan:4200, suv:5000 },
+
+"Vadodara → Morbi": { sedan:5000, suv:6000 },
+
+"Vadodara → Palanpur": { sedan:4700, suv:5600 },
+
+"Vadodara → Mehsana": { sedan:3000, suv:3700 },
+
+"Vadodara → Patan": { sedan:3900, suv:4700 },
+
+"Vadodara → Modasa": { sedan:3200, suv:3900 },
+
+"Vadodara → Godhra": { sedan:1500, suv:2000 },
+
+"Vadodara → Dahod": { sedan:2500, suv:3200 },
+
+"Vadodara → Lunawada": { sedan:2300, suv:2900 },
+
+"Vadodara → Himmatnagar": { sedan:3500, suv:4300 },
+
+"Vadodara → Statue of Unity": { sedan:2200, suv:2800 },
+
+"Vadodara → Kevadia": { sedan:2200, suv:2800 },
+
+"Vadodara → Saputara": { sedan:5600, suv:6600 },
+
+"Vadodara → Mount Abu": { sedan:7800, suv:9000 },
+
+"Vadodara → Udaipur": { sedan:6500, suv:7600 },
+
+"Vadodara → Mumbai": { sedan:7000, suv:9000 },
+
+"Vadodara → Pune": { sedan:11000, suv:13000 }
+
 };
-// ===========================
-// SEARCH ROUTE
-// ===========================
+
+/* ==========================================
+   ADDITIONAL ROUTES
+========================================== */
+
+[
+"Kalol",
+"Halol",
+"Karjan",
+"Dabhoi",
+"Padra",
+"Borsad",
+"Petlad",
+"Umreth",
+"Kheda",
+"Khambhat",
+"Mandvi",
+"Vyara",
+"Bardoli",
+"Songadh",
+"Chikhli",
+"Bilimora",
+"Gondal",
+"Jetpur",
+"Veraval",
+"Keshod",
+"Mahuva",
+"Dholka",
+"Sanand",
+"Viramgam",
+"Wankaner",
+"Tankara",
+"Deesa",
+"Ambaji",
+"Idar",
+"Visnagar",
+"Unjha",
+"Sidhpur",
+"Tharad",
+"Radhanpur",
+"Bhuj",
+"Gandhidham",
+"Anjar",
+"Mundra",
+"Mandvi Kutch",
+"Nakhatrana",
+"Lakh
+ /* ==========================================
+   PART 3
+   SMART ROUTE SEARCH
+========================================== */
 
 const searchBox = document.getElementById("routeSearch");
 const resultBox = document.getElementById("searchResults");
 
 if (searchBox && resultBox) {
 
-  searchBox.addEventListener("keyup", function () {
+    searchBox.addEventListener("input", function () {
 
-    const text = this.value.toLowerCase().trim();
-    resultBox.innerHTML = "";
+        const keyword = this.value.trim().toLowerCase();
 
-    if (text.length < 2) return;
+        resultBox.innerHTML = "";
 
-    Object.keys(routes).forEach(route => {
+        if (keyword.length < 2) {
+            resultBox.style.display = "none";
+            return;
+        }
 
-      if (route.toLowerCase().includes(text)) {
+        let matches = Object.keys(routes).filter(route =>
+            route.toLowerCase().includes(keyword)
+        );
 
-        const div = document.createElement("div");
-        div.textContent = route;
+        if (matches.length === 0) {
 
-        div.onclick = function () {
-          searchBox.value = route;
-          resultBox.innerHTML = "";
-        };
+            resultBox.innerHTML =
+            `<div>No Route Found</div>`;
 
-        resultBox.appendChild(div);
-
-      }
-
-    });
-      // ===========================
-// CALCULATE FARE
-// ===========================
-
-const calculateBtn = document.getElementById("calculateFare");
-
-if (calculateBtn) {
-
-  calculateBtn.addEventListener("click", function () {
-
-    const route = document.getElementById("routeSearch").value.trim();
-    const car = document.getElementById("fareCarType").value;
-    const trip = document.getElementById("tripMode").value;
-
-    if (!routes[route]) {
-      alert("Route not found.");
-      return;
-    }
-
-    let fare = routes[route][car.toLowerCase()];
-
-    if (trip === "round") {
-      fare = fare * 2;
-    }
-
-    document.getElementById("selectedRoute").innerHTML =
-      "Route : " + route;
-
-    document.getElementById("fareResult").innerHTML =
-      "Estimated Fare : ₹" + fare.toLocaleString("en-IN");
-
-  });
+            resultBox.style.display = "block";
+            return;
 
         }
-    // ===== Gujarat Routes Part 10 =====
 
-"Vadodara → Bhavnagar": {
-  sedan:4800,
-  suv:5500
-},
+        matches.forEach(route => {
 
-"Vadodara → Amreli": {
-  sedan:5200,
-  suv:6000
-},
+            const item = document.createElement("div");
 
-"Vadodara → Junagadh": {
-  sedan:5800,
-  suv:6700
-},
+            item.textContent = route;
 
-"Vadodara → Porbandar": {
-  sedan:6900,
-  suv:7800
-},
+            item.onclick = () => {
 
-"Vadodara → Morbi": {
-  sedan:4700,
-  suv:5500
-},
+                searchBox.value = route;
 
-"Vadodara → Surendranagar": {
-  sedan:4200,
-  suv:5000
-},
+                resultBox.innerHTML = "";
 
-"Vadodara → Bhuj": {
-  sedan:8500,
-  suv:9500
-},
+                resultBox.style.display = "none";
 
-"Vadodara → Gandhidham": {
-  sedan:8200,
-  suv:9200
-},
+            };
 
-"Vadodara → Palanpur": {
-  sedan:4300,
-  suv:5200
-},
+            resultBox.appendChild(item);
 
-"Vadodara → Mehsana": {
-  sedan:2800,
-  suv:3400
-},
+        });
 
-"Vadodara → Patan": {
-  sedan:3900,
-  suv:4700
-},
+        resultBox.style.display = "block";
 
-"Vadodara → Himmatnagar": {
-  sedan:3000,
-  suv:3600
-},
-
-"Vadodara → Modasa": {
-  sedan:2900,
-  suv:3500
-},
-
-"Vadodara → Vapi": {
-  sedan:3400,
-  suv:4100
-},
-
-"Vadodara → Navsari": {
-  sedan:2500,
-  suv:3100
-},
-
-"Vadodara → Valsad": {
-  sedan:3000,
-  suv:3600
-},
-
-"Vadodara → Saputara": {
-  sedan:4500,
-  suv:5300
-},  
-    // ==========================
-// PART 11 - More Gujarat Routes
-// ==========================
-
-"Vadodara → Amreli": {
-    sedan: 5200,
-    suv: 6200
-},
-
-"Vadodara → Botad": {
-    sedan: 4300,
-    suv: 5200
-},
-
-"Vadodara → Surendranagar": {
-    sedan: 4500,
-    suv: 5400
-},
-
-"Vadodara → Morbi": {
-    sedan: 5200,
-    suv: 6200
-},
-
-"Vadodara → Wankaner": {
-    sedan: 5400,
-    suv: 6400
-},
-
-"Vadodara → Gondal": {
-    sedan: 4700,
-    suv: 5700
-},
-
-"Vadodara → Jetpur": {
-    sedan: 5600,
-    suv: 6600
-},
-
-"Vadodara → Veraval": {
-    sedan: 7600,
-    suv: 8600
-},
-
-"Vadodara → Diu": {
-    sedan: 8200,
-    suv: 9300
-},
-
-"Vadodara → Bhuj": {
-    sedan: 9200,
-    suv: 10500
-},
-
-"Vadodara → Gandhidham": {
-    sedan: 8600,
-    suv: 9800
-},
-
-"Vadodara → Mandvi": {
-    sedan: 9800,
-    suv: 11200
-},
-
-"Vadodara → Kandla": {
-    sedan: 8800,
-    suv: 10000
-},
-
-"Vadodara → Okha": {
-    sedan: 8400,
-    suv: 9500
-},
-
-"Vadodara → Khambhalia": {
-    sedan: 7200,
-    suv: 8300
-}
-    // ==========================
-// PART 11 - Gujarat Routes
-// ==========================
-
-"Vadodara → Amreli": {
-    sedan: 5200,
-    suv: 6200
-},
-
-"Vadodara → Botad": {
-    sedan: 4300,
-    suv: 5200
-},
-
-"Vadodara → Surendranagar": {
-    sedan: 4500,
-    suv: 5400
-},
-
-"Vadodara → Morbi": {
-    sedan: 5200,
-    suv: 6200
-},
-
-"Vadodara → Wankaner": {
-    sedan: 5000,
-    suv: 6000
-},
-
-"Vadodara → Veraval": {
-    sedan: 7600,
-    suv: 8600
-},
-
-"Vadodara → Diu": {
-    sedan: 8200,
-    suv: 9300
-},
-
-"Vadodara → Bhuj": {
-    sedan: 9200,
-    suv: 10500
-},
-
-"Vadodara → Gandhidham": {
-    sedan: 8600,
-    suv: 9800
-},
-
-"Vadodara → Mandvi": {
-    sedan: 9800,
-    suv: 11200
-},
-
-"Vadodara → Kandla": {
-    sedan: 8800,
-    suv: 10000
-},
-
-"Vadodara → Khambhalia": {
-    sedan: 7200,
-    suv: 8300
-},
-
-"Vadodara → Okha": {
-    sedan: 8400,
-    suv: 9500
-},
-
-"Vadodara → Halol": {
-    sedan: 900,
-    suv: 1300
-},
-
-"Vadodara → Kalol": {
-    sedan: 1500,
-    suv: 2100
-},
-// ==========================
-// PART 12 - Vadodara & Nearby Taluka Routes
-// ==========================
-
-,
-
-"Vadodara → Padra": {
-    sedan: 700,
-    suv: 1100
-},
-
-"Vadodara → Dabhoi": {
-    sedan: 800,
-    suv: 1200
-},
-
-"Vadodara → Karjan": {
-    sedan: 900,
-    suv: 1300
-},
-
-"Vadodara → Savli": {
-    sedan: 700,
-    suv: 1100
-},
-
-"Vadodara → Waghodia": {
-    sedan: 700,
-    suv: 1100
-},
-
-"Vadodara → Shinor": {
-    sedan: 1000,
-    suv: 1400
-},
-
-"Vadodara → Desar": {
-    sedan: 1000,
-    suv: 1400
-},
-
-"Vadodara → Bodeli": {
-    sedan: 1500,
-    suv: 2100
-},
-
-"Vadodara → Chhota Udepur": {
-    sedan: 1800,
-    suv: 2500
-},
-
-"Vadodara → Rajpipla": {
-    sedan: 1700,
-    suv: 2400
-},
-
-"Vadodara → Kevadia": {
-    sedan: 1900,
-    suv: 2600
-},
-
-"Vadodara → Tilakwada": {
-    sedan: 1300,
-    suv: 1800
-},
-
-"Vadodara → Naswadi": {
-    sedan: 1700,
-    suv: 2400
-},
-
-"Vadodara → Sankheda": {
-    sedan: 1400,
-    suv: 2000
-},
-
-"Vadodara → Jetpur Pavi": {
-    sedan: 2000,
-    suv: 2700
-    }u
-    // ==========================
-// PART 13 - Central Gujarat Routes
-// ==========================
-
-,
-
-"Vadodara → Ahmedabad": {
-    sedan: 1700,
-    suv: 2399
-},
-
-"Vadodara → Gandhinagar": {
-    sedan: 1900,
-    suv: 2600
-},
-
-"Vadodara → Kheda": {
-    sedan: 1400,
-    suv: 1900
-},
-
-"Vadodara → Matar": {
-    sedan: 1500,
-    suv: 2000
-},
-
-"Vadodara → Mahemdabad": {
-    sedan: 1500,
-    suv: 2000
-},
-
-"Vadodara → Kapadvanj": {
-    sedan: 1800,
-    suv: 2400
-},
-
-"Vadodara → Balasinor": {
-    sedan: 1700,
-    suv: 2300
-},
-
-"Vadodara → Lunawada": {
-    sedan: 2200,
-    suv: 2900
-},
-
-"Vadodara → Santrampur": {
-    sedan: 3000,
-    suv: 3800
-},
-
-"Vadodara → Godhra": {
-    sedan: 1500,
-    suv: 2000
-},
-
-"Vadodara → Halol": {
-    sedan: 900,
-    suv: 1300
-},
-
-"Vadodara → Kalol (Panchmahal)": {
-    sedan: 1300,
-    suv: 1800
-},
-
-"Vadodara → Dahod": {
-    sedan: 2500,
-    suv: 3200
-},
-
-"Vadodara → Himmatnagar": {
-    sedan: 3200,
-    suv: 4000
-},
-
-"Vadodara → Modasa": {
-    sedan: 2900,
-    suv: 3500
-}
-  });
+    });
 
 }
 
+/* ===========================
+   CLOSE SEARCH RESULT
+=========================== */
+
+document.addEventListener("click", function(e){
+
+    if(
+        searchBox &&
+        resultBox &&
+        !searchBox.contains(e.target) &&
+        !resultBox.contains(e.target)
+    ){
+
+        resultBox.style.display = "none";
+
+    }
+
+});
+
+/* ===========================
+   POPULAR ROUTE CLICK
+=========================== */
+
+document.querySelectorAll(".route-card").forEach(card=>{
+
+    card.addEventListener("click",()=>{
+
+        if(searchBox){
+
+            searchBox.value =
+            card.innerText.trim();
+
+            window.location.hash = "#fare";
+
+        }
+
+    });
+
+});
+
+/* ===========================
+   SEARCH WITH ENTER KEY
+=========================== */
+
+if(searchBox){
+
+searchBox.addEventListener("keydown",function(e){
+
+if(e.key==="Enter"){
+
+e.preventDefault();
+
+const btn=document.getElementById("calculateFare");
+
+if(btn){
+
+btn.click();
+
+}
+
+}
+
+});
+
+}
+
+/* ===========================
+   SEARCH CLEAR
+=========================== */
+
+function clearSearch(){
+
+if(searchBox){
+
+searchBox.value="";
+
+}
+
+if(resultBox){
+
+resultBox.innerHTML="";
+
+resultBox.style.display="none";
+
+}
+
+}
+
+console.log("Smart Search Ready");
+/* ==========================================
+   PART 4
+   SMART FARE CALCULATOR
+========================================== */
+
+const calculateFareBtn = document.getElementById("calculateFare");
+const carType = document.getElementById("fareCarType");
+const tripMode = document.getElementById("tripMode");
+const selectedRoute = document.getElementById("selectedRoute");
+const fareResult = document.getElementById("fareResult");
+
+if (calculateFareBtn) {
+
+calculateFareBtn.addEventListener("click", function () {
+
+const route = searchBox.value.trim();
+
+if (route === "") {
+
+alert("Please search and select your destination.");
+
+searchBox.focus();
+
+return;
+
+}
+
+if (!routes[route]) {
+
+selectedRoute.innerHTML = "Route : Not Available";
+
+fareResult.innerHTML = "Estimated Fare : ₹0";
+
+alert("Sorry! This route is not available.");
+
+return;
+
+}
+
+const vehicle = carType.value.toLowerCase();
+
+let fare = routes[route][vehicle];
+
+if (tripMode.value === "round") {
+
+fare = fare * 2;
+
+}
+
+selectedRoute.innerHTML =
+"Route : " + route;
+
+fareResult.innerHTML =
+"Estimated Fare : ₹" +
+fare.toLocaleString("en-IN");
+
+});
+
+}
+
+/* ===========================
+   RESET RESULT WHEN ROUTE CHANGES
+=========================== */
+
+if (searchBox) {
+
+searchBox.addEventListener("input", () => {
+
+selectedRoute.innerHTML = "Route : -";
+
+fareResult.innerHTML = "Estimated Fare : ₹0";
+
+});
+
+}
+
+/* ===========================
+   CHANGE VEHICLE
+=========================== */
+
+if (carType) {
+
+carType.addEventListener("change", () => {
+
+if (searchBox.value !== "") {
+
+calculateFareBtn.click();
+
+}
+
+});
+
+}
+
+/* ===========================
+   CHANGE TRIP TYPE
+=========================== */
+
+if (tripMode) {
+
+tripMode.addEventListener("change", () => {
+
+if (searchBox.value !== "") {
+
+calculateFareBtn.click();
+
+}
+
+});
+
+}
+
+/* ===========================
+   FORMAT PRICE
+=========================== */
+
+function formatPrice(price){
+
+return "₹" + Number(price).toLocaleString("en-IN");
+
+}
+
+console.log("Smart Fare Calculator Ready");
+/* ==========================================
+   PART 5
+   WHATSAPP BOOKING + COPY FARE
+========================================== */
+
+const whatsappNumber = "916353886346";
+
+/* ===========================
+   WHATSAPP BOOKING
+=========================== */
+
+function sendWhatsAppBooking() {
+
+    const route = searchBox.value.trim();
+
+    if (!route || !routes[route]) {
+
+        alert("Please select a valid route.");
+        return;
+
+    }
+
+    const vehicle = carType.value;
+
+    let fare = routes[route][vehicle.toLowerCase()];
+
+    let trip = "One Way";
+
+    if (tripMode.value === "round") {
+
+        fare = fare * 2;
+        trip = "Round Trip";
+
+    }
+
+    const message =
+`🚖 *Hitansh Cab Service Booking*
+
+📍 Route : ${route}
+
+🚘 Vehicle : ${vehicle}
+
+🔁 Trip : ${trip}
+
+💰 Estimated Fare : ₹${fare.toLocaleString("en-IN")}
+
+📞 Contact : 63538 86346
+
+Please confirm my booking.`;
+
+    window.open(
+        "https://wa.me/" +
+        whatsappNumber +
+        "?text=" +
+        encodeURIComponent(message),
+        "_blank"
+    );
+
+}
+
+/* ===========================
+   WHATSAPP BUTTON
+=========================== */
+
+const whatsappBtn = document.createElement("button");
+
+whatsappBtn.className = "btn whatsapp-btn";
+
+whatsappBtn.id = "whatsappBooking";
+
+whatsappBtn.innerHTML =
+'<i class="fab fa-whatsapp"></i> Book on WhatsApp';
+
+if (calculateFareBtn) {
+
+    calculateFareBtn.insertAdjacentElement(
+        "afterend",
+        whatsappBtn
+    );
+
+}
+
+whatsappBtn.addEventListener(
+    "click",
+    sendWhatsAppBooking
+);
+
+/* ===========================
+   COPY FARE
+=========================== */
+
+function copyFare() {
+
+    const text =
+selectedRoute.innerText +
+"\n" +
+fareResult.innerText;
+
+    navigator.clipboard.writeText(text);
+
+    alert("Fare copied successfully.");
+
+}
+
+const copyBtn = document.createElement("button");
+
+copyBtn.className = "btn secondary-btn";
+
+copyBtn.innerHTML =
+'<i class="fa-solid fa-copy"></i> Copy Fare';
+
+whatsappBtn.insertAdjacentElement(
+    "afterend",
+    copyBtn
+);
+
+copyBtn.addEventListener(
+    "click",
+    copyFare
+);
+
+/* ===========================
+   QUICK BOOK FROM POPULAR ROUTE
+=========================== */
+
+document.querySelectorAll(".route-card").forEach(card=>{
+
+card.addEventListener("dblclick",()=>{
+
+searchBox.value=card.innerText.trim();
+
+calculateFareBtn.click();
+
+});
+
+});
+
+console.log("WhatsApp Booking Ready");
+/* ==========================================
+   PART 6
+   FINAL ANIMATION & OPTIMIZATION
+========================================== */
+
+// ===========================
+// SCROLL ANIMATION
+// ===========================
+
+const observer = new IntersectionObserver((entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("show");
+
+}
+
+});
+
+},{
+threshold:0.2
+});
+
+document.querySelectorAll(
+".service-card,.fleet-card,.why-card,.review-card,.route-card,.feature-card,.faq-item"
+).forEach(item=>{
+
+observer.observe(item);
+
+});
+
+// ===========================
+// LAZY LOAD IMAGES
+// ===========================
+
+document.querySelectorAll("img").forEach(img=>{
+
+img.loading="lazy";
+
+});
+
+// ===========================
+// PAGE LOADER
+// ===========================
+
+window.addEventListener("load",()=>{
+
+document.body.classList.add("loaded");
+
+});
+
+// ===========================
+// ERROR HANDLER
+// ===========================
+
+window.onerror=function(message,file,line){
+
+console.error(
+"JavaScript Error:",
+message,
+"Line:",
+line
+);
+
+};
+
+// ===========================
+// TOTAL ROUTES
+// ===========================
+
+console.log(
+"Total Routes :",
+Object.keys(routes).length
+);
+
+// ===========================
+// VERSION INFO
+// ===========================
+
+console.log("================================");
+console.log("Hitansh Cab Service");
+console.log("Website Version : 7.0");
+console.log("Developer : ChatGPT");
+console.log("Status : Ready");
+console.log("================================");
