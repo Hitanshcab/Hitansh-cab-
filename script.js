@@ -317,3 +317,180 @@ if (searchBox && resultBox && routeSelect) {
 
 }
 
+// आपका पुराना पूरा script...
+
+// ===========================
+// SMART ROUTES DATABASE
+// ===========================
+
+const routes = {
+  "Vadodara → Ahmedabad": {
+    sedan:1700,
+    suv:2399
+  },
+
+  "Vadodara → Surat": {
+    sedan:2200,
+    suv:2699
+  },
+
+  // बाकी सभी routes...
+};
+// ===========================
+// SEARCH ROUTE
+// ===========================
+
+const searchBox = document.getElementById("routeSearch");
+const resultBox = document.getElementById("searchResults");
+
+if (searchBox && resultBox) {
+
+  searchBox.addEventListener("keyup", function () {
+
+    const text = this.value.toLowerCase().trim();
+    resultBox.innerHTML = "";
+
+    if (text.length < 2) return;
+
+    Object.keys(routes).forEach(route => {
+
+      if (route.toLowerCase().includes(text)) {
+
+        const div = document.createElement("div");
+        div.textContent = route;
+
+        div.onclick = function () {
+          searchBox.value = route;
+          resultBox.innerHTML = "";
+        };
+
+        resultBox.appendChild(div);
+
+      }
+
+    });
+      // ===========================
+// CALCULATE FARE
+// ===========================
+
+const calculateBtn = document.getElementById("calculateFare");
+
+if (calculateBtn) {
+
+  calculateBtn.addEventListener("click", function () {
+
+    const route = document.getElementById("routeSearch").value.trim();
+    const car = document.getElementById("fareCarType").value;
+    const trip = document.getElementById("tripMode").value;
+
+    if (!routes[route]) {
+      alert("Route not found.");
+      return;
+    }
+
+    let fare = routes[route][car.toLowerCase()];
+
+    if (trip === "round") {
+      fare = fare * 2;
+    }
+
+    document.getElementById("selectedRoute").innerHTML =
+      "Route : " + route;
+
+    document.getElementById("fareResult").innerHTML =
+      "Estimated Fare : ₹" + fare.toLocaleString("en-IN");
+
+  });
+
+        }
+    // ===== Gujarat Routes Part 10 =====
+
+"Vadodara → Bhavnagar": {
+  sedan:4800,
+  suv:5500
+},
+
+"Vadodara → Amreli": {
+  sedan:5200,
+  suv:6000
+},
+
+"Vadodara → Junagadh": {
+  sedan:5800,
+  suv:6700
+},
+
+"Vadodara → Porbandar": {
+  sedan:6900,
+  suv:7800
+},
+
+"Vadodara → Morbi": {
+  sedan:4700,
+  suv:5500
+},
+
+"Vadodara → Surendranagar": {
+  sedan:4200,
+  suv:5000
+},
+
+"Vadodara → Bhuj": {
+  sedan:8500,
+  suv:9500
+},
+
+"Vadodara → Gandhidham": {
+  sedan:8200,
+  suv:9200
+},
+
+"Vadodara → Palanpur": {
+  sedan:4300,
+  suv:5200
+},
+
+"Vadodara → Mehsana": {
+  sedan:2800,
+  suv:3400
+},
+
+"Vadodara → Patan": {
+  sedan:3900,
+  suv:4700
+},
+
+"Vadodara → Himmatnagar": {
+  sedan:3000,
+  suv:3600
+},
+
+"Vadodara → Modasa": {
+  sedan:2900,
+  suv:3500
+},
+
+"Vadodara → Vapi": {
+  sedan:3400,
+  suv:4100
+},
+
+"Vadodara → Navsari": {
+  sedan:2500,
+  suv:3100
+},
+
+"Vadodara → Valsad": {
+  sedan:3000,
+  suv:3600
+},
+
+"Vadodara → Saputara": {
+  sedan:4500,
+  suv:5300
+},  
+
+  });
+
+}
+
