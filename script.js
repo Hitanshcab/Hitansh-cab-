@@ -1,357 +1,320 @@
 /* ==========================================
    HITANSH CAB SERVICE
-   SCRIPT.JS V8.0
+   SCRIPT.JS V9.0 ULTRA
    PART 1
+   LOADER + MENU + SCROLL + UI
 ========================================== */
 
-// ==========================
+// ===========================
+// LOADER
+// ===========================
+
+window.addEventListener("load", () => {
+
+document.body.classList.add("loaded");
+
+});
+
+// ===========================
 // MOBILE MENU
-// ==========================
+// ===========================
 
-const menuToggle = document.getElementById("menuToggle");
-const navLinks = document.getElementById("navLinks");
+const menuBtn = document.getElementById("menuBtn");
+const navMenu = document.getElementById("navMenu");
 
-if (menuToggle && navLinks) {
+if(menuBtn){
 
-    menuToggle.addEventListener("click", () => {
-        navLinks.classList.toggle("active");
-    });
+menuBtn.addEventListener("click",()=>{
 
-    document.querySelectorAll(".nav-links a").forEach(link => {
-        link.addEventListener("click", () => {
-            navLinks.classList.remove("active");
-        });
-    });
+navMenu.classList.toggle("active");
+
+});
 
 }
 
-// ==========================
-// SCROLL TO TOP BUTTON
-// ==========================
+document.querySelectorAll("#navMenu a").forEach(link=>{
 
-const topBtn = document.getElementById("topBtn");
+link.addEventListener("click",()=>{
 
-window.addEventListener("scroll", () => {
-
-    if (!topBtn) return;
-
-    if (window.scrollY > 300) {
-        topBtn.style.display = "flex";
-    } else {
-        topBtn.style.display = "none";
-    }
+navMenu.classList.remove("active");
 
 });
 
-if (topBtn) {
+});
 
-    topBtn.addEventListener("click", () => {
+// ===========================
+// HEADER SHADOW
+// ===========================
 
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
+const header=document.querySelector(".header");
 
-    });
+window.addEventListener("scroll",()=>{
+
+if(window.scrollY>30){
+
+header.style.background="rgba(17,17,17,.97)";
+header.style.boxShadow="0 10px 30px rgba(0,0,0,.18)";
+
+}else{
+
+header.style.background="rgba(17,17,17,.92)";
+header.style.boxShadow="none";
 
 }
 
-// ==========================
-// ACTIVE NAVIGATION
-// ==========================
+});
 
-const sections = document.querySelectorAll("section");
-const navItems = document.querySelectorAll(".nav-links a");
+// ===========================
+// SCROLL TO TOP
+// ===========================
 
-window.addEventListener("scroll", () => {
+const topBtn=document.getElementById("topBtn");
 
-    let current = "";
+window.addEventListener("scroll",()=>{
 
-    sections.forEach(section => {
+if(window.scrollY>500){
 
-        const sectionTop = section.offsetTop - 120;
-        const sectionHeight = section.offsetHeight;
+topBtn.style.display="flex";
 
-        if (window.scrollY >= sectionTop &&
-            window.scrollY < sectionTop + sectionHeight) {
+}else{
 
-            current = section.getAttribute("id");
+topBtn.style.display="none";
 
-        }
-
-    });
-
-    navItems.forEach(link => {
-
-        link.classList.remove("active");
-
-        if (link.getAttribute("href") === "#" + current) {
-
-            link.classList.add("active");
-
-        }
-
-    });
+}
 
 });
 
-// ==========================
-// FADE ANIMATION
-// ==========================
+if(topBtn){
 
-const fadeElements = document.querySelectorAll(
-".feature-card,.route-card,.service-card,.fleet-card,.review-card,.contact-card,.why-card"
-);
+topBtn.onclick=()=>{
 
-const observer = new IntersectionObserver(entries => {
+window.scrollTo({
 
-    entries.forEach(entry => {
-
-        if (entry.isIntersecting) {
-
-            entry.target.classList.add("show");
-
-        }
-
-    });
-
-}, {
-
-    threshold: 0.15
+top:0,
+behavior:"smooth"
 
 });
 
-fadeElements.forEach(el => {
+};
 
-    el.classList.add("fade-up");
+}
 
-    observer.observe(el);
-
-});
-
-// ==========================
+// ===========================
 // AUTO YEAR
-// ==========================
+// ===========================
 
-const year = document.querySelector(".year");
+const year=document.querySelector(".year");
 
-if (year) {
+if(year){
 
-    year.textContent = new Date().getFullYear();
+year.textContent=new Date().getFullYear();
 
 }
 
-console.log("Hitansh Cab Service V8.0 - Part 1 Loaded");
+// ===========================
+// HERO BUTTON
+// ===========================
+
+const heroBookBtn=document.getElementById("heroBookBtn");
+
+if(heroBookBtn){
+
+heroBookBtn.addEventListener("click",()=>{
+
+document.getElementById("booking")
+.scrollIntoView({
+
+behavior:"smooth"
+
+});
+
+});
+
+}
+
+// ===========================
+// FADE-UP ANIMATION
+// ===========================
+
+const observer=new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("show");
+
+}
+
+});
+
+});
+
+document.querySelectorAll(
+".service-box,.fleet-card,.why-card,.review-card,.contact-card,.faq-item"
+).forEach(el=>{
+
+el.classList.add("fade-up");
+
+observer.observe(el);
+
+});
+
+console.log("Hitansh Cab Service V9.0 Ultra Loaded");
 /* ==========================================
-   SCRIPT.JS V8.0
+   SCRIPT.JS V9.0 ULTRA
    PART 2
-   GUJARAT ROUTES DATABASE
+   SMART SEARCH + ROUTES DATABASE
 ========================================== */
+
+// ===========================
+// ROUTES DATABASE
+// ===========================
 
 const routes = {
 
 "Vadodara - Ahmedabad": {
 Sedan:1700,
-SUV:2399
-},
-
-"Vadodara - Ahmedabad Airport": {
-Sedan:1900,
-SUV:2599
-},
-
-"Vadodara - Gandhinagar": {
-Sedan:1900,
-SUV:2699
-},
-
-"Vadodara - Anand": {
-Sedan:700,
-SUV:1000
-},
-
-"Vadodara - Nadiad": {
-Sedan:900,
-SUV:1200
-},
-
-"Vadodara - Bharuch": {
-Sedan:1200,
-SUV:1700
-},
-
-"Vadodara - Ankleshwar": {
-Sedan:1400,
-SUV:1900
+SUV:2399,
+"Tempo Traveller":4500
 },
 
 "Vadodara - Surat": {
 Sedan:2200,
-SUV:2699
+SUV:2699,
+"Tempo Traveller":5200
 },
 
-"Vadodara - Navsari": {
-Sedan:2900,
-SUV:3500
+"Vadodara - Bharuch": {
+Sedan:1200,
+SUV:1700,
+"Tempo Traveller":3200
 },
 
-"Vadodara - Valsad": {
-Sedan:3600,
-SUV:4300
+"Vadodara - Anand": {
+Sedan:900,
+SUV:1400,
+"Tempo Traveller":2600
 },
 
 "Vadodara - Rajkot": {
 Sedan:3700,
-SUV:4399
+SUV:4399,
+"Tempo Traveller":7200
 },
 
 "Vadodara - Jamnagar": {
 Sedan:6000,
-SUV:7000
+SUV:7000,
+"Tempo Traveller":11000
 },
 
 "Vadodara - Dwarka": {
 Sedan:7500,
-SUV:8000
+SUV:8000,
+"Tempo Traveller":12500
 },
 
 "Vadodara - Somnath": {
 Sedan:7500,
-SUV:8000
-},
-
-"Vadodara - Junagadh": {
-Sedan:6500,
-SUV:7600
+SUV:8000,
+"Tempo Traveller":12500
 },
 
 "Vadodara - Bhavnagar": {
-Sedan:3400,
-SUV:4200
+Sedan:4200,
+SUV:4800,
+"Tempo Traveller":7600
 },
 
-"Vadodara - Amreli": {
-Sedan:4500,
-SUV:5200
+"Vadodara - Gandhinagar": {
+Sedan:1900,
+SUV:2600,
+"Tempo Traveller":4500
 },
 
-"Vadodara - Morbi": {
-Sedan:4800,
-SUV:5600
-},
-
-"Vadodara - Porbandar": {
-Sedan:7000,
-SUV:7900
-},
-
-"Vadodara - Bhuj": {
-Sedan:9000,
-SUV:10200
-},
-
-"Vadodara - Statue of Unity": {
+"Vadodara - Kevadiya": {
 Sedan:1800,
-SUV:2400
+SUV:2400,
+"Tempo Traveller":4300
 },
 
-"Vadodara - Kevadia": {
-Sedan:1800,
-SUV:2400
+"Vadodara - Mount Abu": {
+Sedan:6500,
+SUV:7600,
+"Tempo Traveller":12000
 },
 
-"Vadodara - Dahod": {
-Sedan:2200,
-SUV:2800
-},
-
-"Vadodara - Godhra": {
-Sedan:1500,
-SUV:1900
+"Vadodara - Udaipur": {
+Sedan:6000,
+SUV:7200,
+"Tempo Traveller":11500
 },
 
 "Vadodara - Mumbai": {
 Sedan:6999,
-SUV:8999
-},
-
-"Vadodara - Pune": {
-Sedan:9200,
-SUV:10900
+SUV:8999,
+"Tempo Traveller":13500
 }
 
 };
 
-console.log("Routes Loaded :", Object.keys(routes).length);
-/* ==========================================
-   SCRIPT.JS V8.0
-   PART 3
-   SMART SEARCH V8
-========================================== */
+// ===========================
+// SMART SEARCH
+// ===========================
 
-const routeSearch = document.getElementById("routeSearch");
-const searchResults = document.getElementById("searchResults");
-const selectedRoute = document.getElementById("selectedRoute");
+const routeSearch =
+document.getElementById("routeSearch");
+
+const searchResults =
+document.getElementById("searchResults");
+
+const selectedRoute =
+document.getElementById("selectedRoute");
 
 let selectedRouteName = "";
 
-// ==========================
-// SMART SEARCH
-// ==========================
+if(routeSearch){
 
-if (routeSearch && searchResults) {
+routeSearch.addEventListener("input",function(){
 
-routeSearch.addEventListener("input", function () {
+const keyword =
+this.value.toLowerCase().trim();
 
-const keyword = this.value.trim().toLowerCase();
+searchResults.innerHTML="";
 
-searchResults.innerHTML = "";
+if(keyword===""){
 
-if (keyword.length === 0) {
-
-searchResults.style.display = "none";
-
+searchResults.style.display="none";
 return;
 
 }
 
-const matchedRoutes = Object.keys(routes).filter(route =>
+const matched =
+Object.keys(routes).filter(route=>
 
 route.toLowerCase().includes(keyword)
 
 );
 
-if (matchedRoutes.length === 0) {
+matched.forEach(route=>{
 
-searchResults.innerHTML = `
-<div class="search-item">
-No Route Found
-</div>
-`;
+const item=document.createElement("div");
 
-searchResults.style.display = "block";
+item.className="search-item";
 
-return;
+item.textContent=route;
 
-}
+item.onclick=()=>{
 
-matchedRoutes.forEach(route => {
+routeSearch.value=route;
 
-const item = document.createElement("div");
+selectedRouteName=route;
 
-item.className = "search-item";
+selectedRoute.innerHTML=
+"Route : "+route;
 
-item.innerHTML = `🚖 ${route}`;
-
-item.onclick = () => {
-
-routeSearch.value = route;
-
-selectedRouteName = route;
-
-selectedRoute.textContent = "Route : " + route;
-
-searchResults.style.display = "none";
+searchResults.style.display="none";
 
 };
 
@@ -359,62 +322,51 @@ searchResults.appendChild(item);
 
 });
 
-searchResults.style.display = "block";
+searchResults.style.display=
+matched.length?"block":"none";
 
 });
 
 }
 
-// ==========================
-// HIDE SEARCH WHEN CLICK OUTSIDE
-// ==========================
+// ===========================
+// CLICK OUTSIDE
+// ===========================
 
-document.addEventListener("click", function (e) {
+document.addEventListener("click",(e)=>{
 
-if (
-
+if(
 routeSearch &&
 searchResults &&
 !routeSearch.contains(e.target) &&
 !searchResults.contains(e.target)
+){
 
-) {
-
-searchResults.style.display = "none";
+searchResults.style.display="none";
 
 }
 
 });
 
-// ==========================
-// DEFAULT ROUTE
-// ==========================
-
-if (!selectedRouteName) {
-
-selectedRouteName = "";
-
-}
-
-console.log("Smart Search V8 Loaded");
+console.log("Smart Search Ready");
 /* ==========================================
-   SCRIPT.JS V8.0
-   PART 4
+   SCRIPT.JS V9.0 ULTRA
+   PART 3
    SMART FARE CALCULATOR
 ========================================== */
 
-const fareButton = document.getElementById("calculateFare");
-const fareResult = document.getElementById("fareResult");
-const carType = document.getElementById("fareCarType");
+const carType = document.getElementById("carType");
 const tripMode = document.getElementById("tripMode");
+const calculateFare = document.getElementById("calculateFare");
+const fareResult = document.getElementById("fareResult");
 
-// ==========================
+// ===========================
 // CALCULATE FARE
-// ==========================
+// ===========================
 
-if (fareButton) {
+if (calculateFare) {
 
-fareButton.addEventListener("click", function () {
+calculateFare.addEventListener("click", () => {
 
 if (selectedRouteName === "") {
 
@@ -425,47 +377,100 @@ return;
 }
 
 const vehicle = carType.value;
-const trip = tripMode.value;
 
-const routeData = routes[selectedRouteName];
+let fare = routes[selectedRouteName][vehicle];
 
-if (!routeData) {
+if (!fare) {
 
-fareResult.innerHTML = "Route Not Found";
+fareResult.innerHTML = "N/A";
+
 return;
 
 }
 
-let fare = routeData[vehicle];
+// Round Trip
 
-if (trip === "round") {
+if (tripMode.value === "round") {
 
 fare = fare * 2;
 
 }
 
-fareResult.innerHTML =
-"Estimated Fare : ₹" + fare.toLocaleString("en-IN");
+animateFare(fare);
 
 });
 
 }
 
-// ==========================
-// AUTO CALCULATE AFTER SEARCH
-// ==========================
+// ===========================
+// FARE ANIMATION
+// ===========================
 
-if (routeSearch) {
+function animateFare(targetFare){
 
-routeSearch.addEventListener("change", function () {
+let current = 0;
 
-const value = this.value.trim();
+const speed = Math.max(20, Math.floor(targetFare / 80));
 
-if (routes[value]) {
+const timer = setInterval(()=>{
 
-selectedRouteName = value;
+current += speed;
 
-selectedRoute.innerHTML = "Route : " + value;
+if(current >= targetFare){
+
+current = targetFare;
+
+clearInterval(timer);
+
+}
+
+fareResult.innerHTML = "₹" + current.toLocaleString("en-IN");
+
+},15);
+
+}
+
+// ===========================
+// AUTO UPDATE
+// ===========================
+
+carType.addEventListener("change",()=>{
+
+if(selectedRouteName!==""){
+
+calculateFare.click();
+
+}
+
+});
+
+tripMode.addEventListener("change",()=>{
+
+if(selectedRouteName!==""){
+
+calculateFare.click();
+
+}
+
+});
+
+// ===========================
+// HERO SEARCH AUTO FILL
+// ===========================
+
+const pickupSearch = document.getElementById("pickupSearch");
+const dropSearch = document.getElementById("dropSearch");
+
+if(heroBookBtn){
+
+heroBookBtn.addEventListener("click",()=>{
+
+if(dropSearch.value.trim()!==""){
+
+routeSearch.value =
+"Vadodara - " + dropSearch.value.trim();
+
+routeSearch.dispatchEvent(new Event("input"));
 
 }
 
@@ -473,97 +478,71 @@ selectedRoute.innerHTML = "Route : " + value;
 
 }
 
-// ==========================
-// CHANGE VEHICLE
-// ==========================
-
-if (carType) {
-
-carType.addEventListener("change", () => {
-
-if (selectedRouteName !== "") {
-
-fareButton.click();
-
-}
-
-});
-
-}
-
-// ==========================
-// CHANGE TRIP TYPE
-// ==========================
-
-if (tripMode) {
-
-tripMode.addEventListener("change", () => {
-
-if (selectedRouteName !== "") {
-
-fareButton.click();
-
-}
-
-});
-
-}
-
-console.log("Smart Fare Calculator V8 Loaded");
+console.log("Fare Calculator Ready");
 /* ==========================================
-   SCRIPT.JS V8.0
-   PART 5
-   WHATSAPP BOOKING
+   SCRIPT.JS V9.0 ULTRA
+   PART 4
+   WHATSAPP BOOKING SYSTEM
 ========================================== */
 
 const bookingForm = document.getElementById("bookingForm");
-const bookingTrip = document.getElementById("bookingTrip");
+const tripType = document.getElementById("tripType");
 const returnDateBox = document.getElementById("returnDateBox");
 const bookNowBtn = document.getElementById("bookNowBtn");
 
-// ==========================
+// ===========================
 // SHOW / HIDE RETURN DATE
-// ==========================
+// ===========================
 
-if (bookingTrip && returnDateBox) {
+if (tripType && returnDateBox) {
 
-bookingTrip.addEventListener("change", function () {
+tripType.addEventListener("change", () => {
 
-if (this.value === "Round Trip") {
-
-returnDateBox.style.display = "block";
-
-} else {
-
-returnDateBox.style.display = "none";
-
-}
+returnDateBox.style.display =
+tripType.value === "Round Trip"
+? "block"
+: "none";
 
 });
 
 }
 
-// ==========================
+// ===========================
 // WHATSAPP BOOKING
-// ==========================
+// ===========================
 
 if (bookNowBtn) {
 
-bookNowBtn.addEventListener("click", function () {
+bookNowBtn.addEventListener("click", () => {
 
-const name = document.getElementById("customerName").value.trim();
-const phone = document.getElementById("customerPhone").value.trim();
-const pickup = document.getElementById("pickupLocation").value.trim();
-const drop = document.getElementById("dropLocation").value.trim();
-const pickupDate = document.getElementById("pickupDate").value;
-const pickupTime = document.getElementById("pickupTime").value;
-const trip = bookingTrip.value;
-const vehicle = document.getElementById("bookingVehicle").value;
-const passengers = document.getElementById("passengers").value;
-const returnDate = document.getElementById("returnDate").value;
-const note = document.getElementById("specialNote").value.trim();
+const name =
+document.getElementById("customerName").value.trim();
 
-// Required Fields
+const phone =
+document.getElementById("customerPhone").value.trim();
+
+const pickup =
+document.getElementById("pickupLocation").value.trim();
+
+const drop =
+document.getElementById("dropLocation").value.trim();
+
+const pickupDate =
+document.getElementById("pickupDate").value;
+
+const pickupTime =
+document.getElementById("pickupTime").value;
+
+const vehicle =
+document.getElementById("vehicleType").value;
+
+const note =
+document.getElementById("note").value.trim();
+
+const returnDate =
+document.getElementById("returnDate").value;
+
+// Validation
 
 if (
 !name ||
@@ -580,10 +559,21 @@ return;
 
 }
 
-let message =
-`🚖 *Hitansh Cab Service*
+let fareText = fareResult.innerText;
 
-*New Booking Request*
+if (fareText === "₹0") {
+
+fareText = "Fare will be confirmed";
+
+}
+
+// WhatsApp Message
+
+let message =
+
+`🚖 HITANSH CAB SERVICE
+
+📝 New Booking Request
 
 👤 Name : ${name}
 
@@ -593,17 +583,15 @@ let message =
 
 📍 Drop : ${drop}
 
-📅 Date : ${pickupDate}
+📅 Pickup Date : ${pickupDate}
 
-🕒 Time : ${pickupTime}
+🕒 Pickup Time : ${pickupTime}
 
 🚘 Vehicle : ${vehicle}
 
-👥 Passengers : ${passengers}
+🔁 Trip : ${tripType.value}`;
 
-🔁 Trip : ${trip}`;
-
-if (trip === "Round Trip") {
+if (tripType.value === "Round Trip") {
 
 message += `
 
@@ -611,13 +599,9 @@ message += `
 
 }
 
-if (selectedRouteName !== "") {
-
 message += `
 
-💰 Estimated Fare : ₹${fareResult.innerText.replace("Estimated Fare : ₹","")}`;
-
-}
+💰 Estimated Fare : ${fareText}`;
 
 if (note !== "") {
 
@@ -629,7 +613,8 @@ message += `
 
 message += `
 
-Please confirm my booking. Thank you.`;
+Please confirm my booking.
+Thank you.`;
 
 window.open(
 
@@ -644,42 +629,122 @@ encodeURIComponent(message),
 
 }
 
-console.log("WhatsApp Booking V8 Loaded");
+console.log("WhatsApp Booking Ready");
 /* ==========================================
-   SCRIPT.JS V8.0
-   PART 6
-   FINAL FEATURES
+   SCRIPT.JS V9.0 ULTRA
+   PART 5
+   COUNTER + ANIMATION + GALLERY
 ========================================== */
 
-// ==========================
-// STICKY HEADER SHADOW
-// ==========================
+// ===========================
+// COUNTER ANIMATION
+// ===========================
 
-const header = document.querySelector(".header");
+const counters = document.querySelectorAll(".counter-box h2");
 
-window.addEventListener("scroll", () => {
+const counterObserver = new IntersectionObserver((entries) => {
 
-if (!header) return;
+entries.forEach(entry => {
 
-if (window.scrollY > 50) {
+if (!entry.isIntersecting) return;
 
-header.style.boxShadow = "0 10px 25px rgba(0,0,0,.15)";
+const counter = entry.target;
 
-} else {
+const target = parseInt(counter.innerText.replace(/\D/g, "")) || 0;
 
-header.style.boxShadow = "0 5px 15px rgba(0,0,0,.08)";
+const suffix = counter.innerText.replace(/[0-9]/g, "");
+
+let current = 0;
+
+const step = Math.max(1, Math.floor(target / 100));
+
+const timer = setInterval(() => {
+
+current += step;
+
+if (current >= target) {
+
+current = target;
+
+clearInterval(timer);
+
+}
+
+counter.innerHTML = current.toLocaleString("en-IN") + suffix;
+
+}, 20);
+
+counterObserver.unobserve(counter);
+
+});
+
+});
+
+counters.forEach(counter => {
+
+counterObserver.observe(counter);
+
+});
+
+// ===========================
+// SCROLL ANIMATION
+// ===========================
+
+const animationItems = document.querySelectorAll(
+
+".fleet-card,.service-box,.review-card,.why-card,.gallery-grid img,.contact-card,.faq-item"
+
+);
+
+const animationObserver = new IntersectionObserver((entries) => {
+
+entries.forEach(entry => {
+
+if (entry.isIntersecting) {
+
+entry.target.classList.add("show");
 
 }
 
 });
 
-// ==========================
+}, {
+
+threshold:0.15
+
+});
+
+animationItems.forEach(item => {
+
+animationObserver.observe(item);
+
+});
+
+// ===========================
+// GALLERY ZOOM EFFECT
+// ===========================
+
+document.querySelectorAll(".gallery-grid img").forEach(img => {
+
+img.addEventListener("click", () => {
+
+img.classList.toggle("zoom");
+
+});
+
+});
+
+// ===========================
 // BUTTON RIPPLE EFFECT
-// ==========================
+// ===========================
 
-document.querySelectorAll(".btn").forEach(btn => {
+document.querySelectorAll(
 
-btn.addEventListener("click", function (e) {
+".btn,.book-btn,.fare-btn,.fleet-btn"
+
+).forEach(button => {
+
+button.addEventListener("click", function(e){
 
 const ripple = document.createElement("span");
 
@@ -689,8 +754,12 @@ const size = Math.max(rect.width, rect.height);
 
 ripple.style.width = size + "px";
 ripple.style.height = size + "px";
-ripple.style.left = (e.clientX - rect.left - size / 2) + "px";
-ripple.style.top = (e.clientY - rect.top - size / 2) + "px";
+
+ripple.style.left =
+(e.clientX - rect.left - size / 2) + "px";
+
+ripple.style.top =
+(e.clientY - rect.top - size / 2) + "px";
 
 ripple.className = "ripple";
 
@@ -700,15 +769,15 @@ setTimeout(() => {
 
 ripple.remove();
 
-}, 600);
+},600);
 
 });
 
 });
 
-// ==========================
+// ===========================
 // IMAGE LAZY LOADING
-// ==========================
+// ===========================
 
 document.querySelectorAll("img").forEach(img => {
 
@@ -716,53 +785,144 @@ img.loading = "lazy";
 
 });
 
-// ==========================
-// PAGE LOADER
-// ==========================
+console.log("Animations Loaded Successfully");
+/* ==========================================
+   SCRIPT.JS V9.0 ULTRA
+   PART 6
+   FINAL OPTIMIZATION + BUG FIXES
+========================================== */
 
-window.addEventListener("load", () => {
+// ===========================
+// ACTIVE MENU ON SCROLL
+// ===========================
 
-document.body.classList.add("loaded");
+const sections = document.querySelectorAll("section[id]");
+const navLinks = document.querySelectorAll("#navMenu a");
+
+window.addEventListener("scroll", () => {
+
+let current = "";
+
+sections.forEach(section => {
+
+const sectionTop = section.offsetTop - 120;
+
+if (window.scrollY >= sectionTop) {
+
+current = section.getAttribute("id");
+
+}
 
 });
 
-// ==========================
-// SIMPLE FORM RESET
-// ==========================
+navLinks.forEach(link => {
 
-if (bookNowBtn && bookingForm) {
+link.classList.remove("active");
+
+if (link.getAttribute("href") === "#" + current) {
+
+link.classList.add("active");
+
+}
+
+});
+
+});
+
+// ===========================
+// BOOK VEHICLE BUTTON
+// ===========================
+
+document.querySelectorAll(".fleet-btn").forEach(btn => {
+
+btn.addEventListener("click", () => {
+
+document.getElementById("booking").scrollIntoView({
+
+behavior: "smooth"
+
+});
+
+});
+
+});
+
+// ===========================
+// PHONE NUMBER VALIDATION
+// ===========================
+
+const phoneInput = document.getElementById("customerPhone");
+
+if (phoneInput) {
+
+phoneInput.addEventListener("input", function () {
+
+this.value = this.value.replace(/[^0-9]/g, "");
+
+if (this.value.length > 10) {
+
+this.value = this.value.substring(0, 10);
+
+}
+
+});
+
+}
+
+// ===========================
+// PREVENT DOUBLE SUBMIT
+// ===========================
+
+let bookingSending = false;
+
+if (bookNowBtn) {
 
 bookNowBtn.addEventListener("click", () => {
 
+if (bookingSending) return;
+
+bookingSending = true;
+
 setTimeout(() => {
 
-bookingForm.reset();
+bookingSending = false;
 
-if (returnDateBox) {
-
-returnDateBox.style.display = "none";
-
-}
-
-}, 1000);
+}, 3000);
 
 });
 
 }
 
-// ==========================
+// ===========================
+// ONLINE / OFFLINE STATUS
+// ===========================
+
+window.addEventListener("offline", () => {
+
+alert("Internet connection lost.");
+
+});
+
+window.addEventListener("online", () => {
+
+console.log("Internet Connected");
+
+});
+
+// ===========================
 // CONSOLE MESSAGE
-// ==========================
+// ===========================
 
-console.log("%cHitansh Cab Service V8.0",
-"color:#ff9800;font-size:18px;font-weight:bold;");
+console.log(`
+==================================
+ HITANSH CAB SERVICE
+ Version : V9.0 Ultra
+ Developed for GitHub Pages
+==================================
+`);
 
-console.log("Website Developed Successfully.");
+// ===========================
+// END
+// ===========================
 
-console.log("Version : V8.0");
-
-console.log("Status : Ready for GitHub Pages");
-
-// ==========================
-// END OF FILE
-// ==========================
+console.log("V9.0 Ultra Loaded Successfully");
