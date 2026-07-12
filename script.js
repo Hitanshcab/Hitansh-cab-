@@ -1,557 +1,489 @@
 /* ==========================================
    HITANSH CAB SERVICE
-   SCRIPT.JS V7.0
+   SCRIPT.JS V8.0
    PART 1
 ========================================== */
 
-// ===========================
+// ==========================
 // MOBILE MENU
-// ===========================
+// ==========================
 
 const menuToggle = document.getElementById("menuToggle");
 const navLinks = document.getElementById("navLinks");
 
 if (menuToggle && navLinks) {
 
-menuToggle.addEventListener("click", () => {
+    menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+    });
 
-navLinks.classList.toggle("active");
-
-menuToggle.innerHTML = navLinks.classList.contains("active")
-
-? '<i class="fa-solid fa-xmark"></i>'
-
-: '<i class="fa-solid fa-bars"></i>';
-
-});
+    document.querySelectorAll(".nav-links a").forEach(link => {
+        link.addEventListener("click", () => {
+            navLinks.classList.remove("active");
+        });
+    });
 
 }
 
-// ===========================
-// CLOSE MENU AFTER CLICK
-// ===========================
+// ==========================
+// SCROLL TO TOP BUTTON
+// ==========================
 
-document.querySelectorAll(".nav-links a").forEach(link => {
+const topBtn = document.getElementById("topBtn");
 
-link.addEventListener("click", () => {
+window.addEventListener("scroll", () => {
 
-if(navLinks){
+    if (!topBtn) return;
 
-navLinks.classList.remove("active");
+    if (window.scrollY > 300) {
+        topBtn.style.display = "flex";
+    } else {
+        topBtn.style.display = "none";
+    }
+
+});
+
+if (topBtn) {
+
+    topBtn.addEventListener("click", () => {
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    });
 
 }
 
-if(menuToggle){
+// ==========================
+// ACTIVE NAVIGATION
+// ==========================
 
-menuToggle.innerHTML =
-'<i class="fa-solid fa-bars"></i>';
+const sections = document.querySelectorAll("section");
+const navItems = document.querySelectorAll(".nav-links a");
+
+window.addEventListener("scroll", () => {
+
+    let current = "";
+
+    sections.forEach(section => {
+
+        const sectionTop = section.offsetTop - 120;
+        const sectionHeight = section.offsetHeight;
+
+        if (window.scrollY >= sectionTop &&
+            window.scrollY < sectionTop + sectionHeight) {
+
+            current = section.getAttribute("id");
+
+        }
+
+    });
+
+    navItems.forEach(link => {
+
+        link.classList.remove("active");
+
+        if (link.getAttribute("href") === "#" + current) {
+
+            link.classList.add("active");
+
+        }
+
+    });
+
+});
+
+// ==========================
+// FADE ANIMATION
+// ==========================
+
+const fadeElements = document.querySelectorAll(
+".feature-card,.route-card,.service-card,.fleet-card,.review-card,.contact-card,.why-card"
+);
+
+const observer = new IntersectionObserver(entries => {
+
+    entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+
+            entry.target.classList.add("show");
+
+        }
+
+    });
+
+}, {
+
+    threshold: 0.15
+
+});
+
+fadeElements.forEach(el => {
+
+    el.classList.add("fade-up");
+
+    observer.observe(el);
+
+});
+
+// ==========================
+// AUTO YEAR
+// ==========================
+
+const year = document.querySelector(".year");
+
+if (year) {
+
+    year.textContent = new Date().getFullYear();
 
 }
 
-});
-
-});
-
-// ===========================
-// SMOOTH SCROLL
-// ===========================
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-
-anchor.addEventListener("click", function(e){
-
-const target=document.querySelector(this.getAttribute("href"));
-
-if(target){
-
-e.preventDefault();
-
-window.scrollTo({
-
-top:target.offsetTop-70,
-
-behavior:"smooth"
-
-});
-
-}
-
-});
-
-});
-
-// ===========================
-// SCROLL TO TOP
-// ===========================
-
-const topBtn=document.getElementById("topBtn");
-
-if(topBtn){
-
-window.addEventListener("scroll",()=>{
-
-if(window.scrollY>300){
-
-topBtn.style.display="block";
-
-}else{
-
-topBtn.style.display="none";
-
-}
-
-});
-
-topBtn.addEventListener("click",()=>{
-
-window.scrollTo({
-
-top:0,
-
-behavior:"smooth"
-
-});
-
-});
-
-}
-
-// ===========================
-// ACTIVE NAV LINK
-// ===========================
-
-const sections=document.querySelectorAll("section");
-
-const navItems=document.querySelectorAll(".nav-links a");
-
-window.addEventListener("scroll",()=>{
-
-let current="";
-
-sections.forEach(section=>{
-
-const sectionTop=section.offsetTop-120;
-
-if(window.scrollY>=sectionTop){
-
-current=section.getAttribute("id");
-
-}
-
-});
-
-navItems.forEach(link=>{
-
-link.classList.remove("active");
-
-if(link.getAttribute("href")==="#"+current){
-
-link.classList.add("active");
-
-}
-
-});
-
-});
-
-// ===========================
-// CURRENT YEAR
-// ===========================
-
-document.querySelectorAll(".year").forEach(el=>{
-
-el.textContent=new Date().getFullYear();
-
-});
-
-console.log("Hitansh Cab Service V7.0 Loaded");
+console.log("Hitansh Cab Service V8.0 - Part 1 Loaded");
 /* ==========================================
+   SCRIPT.JS V8.0
    PART 2
    GUJARAT ROUTES DATABASE
 ========================================== */
 
 const routes = {
 
-"Vadodara → Ahmedabad": { sedan:1700, suv:2399 },
+"Vadodara - Ahmedabad": {
+Sedan:1700,
+SUV:2399
+},
 
-"Vadodara → Ahmedabad Airport": { sedan:1900, suv:2600 },
+"Vadodara - Ahmedabad Airport": {
+Sedan:1900,
+SUV:2599
+},
 
-"Vadodara → Gandhinagar": { sedan:2000, suv:2700 },
+"Vadodara - Gandhinagar": {
+Sedan:1900,
+SUV:2699
+},
 
-"Vadodara → Anand": { sedan:1200, suv:1700 },
+"Vadodara - Anand": {
+Sedan:700,
+SUV:1000
+},
 
-"Vadodara → Nadiad": { sedan:1400, suv:1900 },
+"Vadodara - Nadiad": {
+Sedan:900,
+SUV:1200
+},
 
-"Vadodara → Bharuch": { sedan:1500, suv:2000 },
+"Vadodara - Bharuch": {
+Sedan:1200,
+SUV:1700
+},
 
-"Vadodara → Ankleshwar": { sedan:1700, suv:2200 },
+"Vadodara - Ankleshwar": {
+Sedan:1400,
+SUV:1900
+},
 
-"Vadodara → Surat": { sedan:2200, suv:2699 },
+"Vadodara - Surat": {
+Sedan:2200,
+SUV:2699
+},
 
-"Vadodara → Navsari": { sedan:3000, suv:3600 },
+"Vadodara - Navsari": {
+Sedan:2900,
+SUV:3500
+},
 
-"Vadodara → Valsad": { sedan:3600, suv:4300 },
+"Vadodara - Valsad": {
+Sedan:3600,
+SUV:4300
+},
 
-"Vadodara → Vapi": { sedan:4200, suv:4900 },
+"Vadodara - Rajkot": {
+Sedan:3700,
+SUV:4399
+},
 
-"Vadodara → Silvassa": { sedan:4500, suv:5200 },
+"Vadodara - Jamnagar": {
+Sedan:6000,
+SUV:7000
+},
 
-"Vadodara → Rajkot": { sedan:3700, suv:4399 },
+"Vadodara - Dwarka": {
+Sedan:7500,
+SUV:8000
+},
 
-"Vadodara → Jamnagar": { sedan:6000, suv:7000 },
+"Vadodara - Somnath": {
+Sedan:7500,
+SUV:8000
+},
 
-"Vadodara → Dwarka": { sedan:7500, suv:8000 },
+"Vadodara - Junagadh": {
+Sedan:6500,
+SUV:7600
+},
 
-"Vadodara → Somnath": { sedan:7500, suv:8000 },
+"Vadodara - Bhavnagar": {
+Sedan:3400,
+SUV:4200
+},
 
-"Vadodara → Junagadh": { sedan:6500, suv:7500 },
+"Vadodara - Amreli": {
+Sedan:4500,
+SUV:5200
+},
 
-"Vadodara → Porbandar": { sedan:7200, suv:8200 },
+"Vadodara - Morbi": {
+Sedan:4800,
+SUV:5600
+},
 
-"Vadodara → Bhavnagar": { sedan:4300, suv:5200 },
+"Vadodara - Porbandar": {
+Sedan:7000,
+SUV:7900
+},
 
-"Vadodara → Amreli": { sedan:5200, suv:6200 },
+"Vadodara - Bhuj": {
+Sedan:9000,
+SUV:10200
+},
 
-"Vadodara → Botad": { sedan:4300, suv:5100 },
+"Vadodara - Statue of Unity": {
+Sedan:1800,
+SUV:2400
+},
 
-"Vadodara → Surendranagar": { sedan:4200, suv:5000 },
+"Vadodara - Kevadia": {
+Sedan:1800,
+SUV:2400
+},
 
-"Vadodara → Morbi": { sedan:5000, suv:6000 },
+"Vadodara - Dahod": {
+Sedan:2200,
+SUV:2800
+},
 
-"Vadodara → Palanpur": { sedan:4700, suv:5600 },
+"Vadodara - Godhra": {
+Sedan:1500,
+SUV:1900
+},
 
-"Vadodara → Mehsana": { sedan:3000, suv:3700 },
+"Vadodara - Mumbai": {
+Sedan:6999,
+SUV:8999
+},
 
-"Vadodara → Patan": { sedan:3900, suv:4700 },
-
-"Vadodara → Modasa": { sedan:3200, suv:3900 },
-
-"Vadodara → Godhra": { sedan:1500, suv:2000 },
-
-"Vadodara → Dahod": { sedan:2500, suv:3200 },
-
-"Vadodara → Lunawada": { sedan:2300, suv:2900 },
-
-"Vadodara → Himmatnagar": { sedan:3500, suv:4300 },
-
-"Vadodara → Statue of Unity": { sedan:2200, suv:2800 },
-
-"Vadodara → Kevadia": { sedan:2200, suv:2800 },
-
-"Vadodara → Saputara": { sedan:5600, suv:6600 },
-
-"Vadodara → Mount Abu": { sedan:7800, suv:9000 },
-
-"Vadodara → Udaipur": { sedan:6500, suv:7600 },
-
-"Vadodara → Mumbai": { sedan:7000, suv:9000 },
-
-"Vadodara → Pune": { sedan:11000, suv:13000 }
+"Vadodara - Pune": {
+Sedan:9200,
+SUV:10900
+}
 
 };
 
+console.log("Routes Loaded :", Object.keys(routes).length);
 /* ==========================================
-   ADDITIONAL ROUTES
+   SCRIPT.JS V8.0
+   PART 3
+   SMART SEARCH V8
 ========================================== */
 
-[
-"Kalol",
-"Halol",
-"Karjan",
-"Dabhoi",
-"Padra",
-"Borsad",
-"Petlad",
-"Umreth",
-"Kheda",
-"Khambhat",
-"Mandvi",
-"Vyara",
-"Bardoli",
-"Songadh",
-"Chikhli",
-"Bilimora",
-"Gondal",
-"Jetpur",
-"Veraval",
-"Keshod",
-"Mahuva",
-"Dholka",
-"Sanand",
-"Viramgam",
-"Wankaner",
-"Tankara",
-"Deesa",
-"Ambaji",
-"Idar",
-"Visnagar",
-"Unjha",
-"Sidhpur",
-"Tharad",
-"Radhanpur",
-"Bhuj",
-"Gandhidham",
-"Anjar",
-"Mundra",
-"Mandvi Kutch",
-"Nakhatrana",
-"Lakh
- /* ==========================================
+const routeSearch = document.getElementById("routeSearch");
+const searchResults = document.getElementById("searchResults");
+const selectedRoute = document.getElementById("selectedRoute");
+
+let selectedRouteName = "";
+
+// ==========================
+// SMART SEARCH
+// ==========================
+
+if (routeSearch && searchResults) {
+
+routeSearch.addEventListener("input", function () {
+
+const keyword = this.value.trim().toLowerCase();
+
+searchResults.innerHTML = "";
+
+if (keyword.length === 0) {
+
+searchResults.style.display = "none";
+
+return;
+
+}
+
+const matchedRoutes = Object.keys(routes).filter(route =>
+
+route.toLowerCase().includes(keyword)
+
+);
+
+if (matchedRoutes.length === 0) {
+
+searchResults.innerHTML = `
+<div class="search-item">
+No Route Found
+</div>
+`;
+
+searchResults.style.display = "block";
+
+return;
+
+}
+
+matchedRoutes.forEach(route => {
+
+const item = document.createElement("div");
+
+item.className = "search-item";
+
+item.innerHTML = `🚖 ${route}`;
+
+item.onclick = () => {
+
+routeSearch.value = route;
+
+selectedRouteName = route;
+
+selectedRoute.textContent = "Route : " + route;
+
+searchResults.style.display = "none";
+
+};
+
+searchResults.appendChild(item);
+
+});
+
+searchResults.style.display = "block";
+
+});
+
+}
+
+// ==========================
+// HIDE SEARCH WHEN CLICK OUTSIDE
+// ==========================
+
+document.addEventListener("click", function (e) {
+
+if (
+
+routeSearch &&
+searchResults &&
+!routeSearch.contains(e.target) &&
+!searchResults.contains(e.target)
+
+) {
+
+searchResults.style.display = "none";
+
+}
+
+});
+
+// ==========================
+// DEFAULT ROUTE
+// ==========================
+
+if (!selectedRouteName) {
+
+selectedRouteName = "";
+
+}
+
+console.log("Smart Search V8 Loaded");
 /* ==========================================
-   V7.1 SMART SEARCH UPGRADE
-========================================== */
-
-const searchBox = document.getElementById("routeSearch");
-const resultBox = document.getElementById("searchResults");
-
-function normalizeText(text) {
-    return text
-        .toLowerCase()
-        .replace(/→/g, " ")
-        .replace(/to/g, " ")
-        .replace(/-/g, " ")
-        .replace(/\s+/g, " ")
-        .replace("ahemdabad", "ahmedabad")
-        .trim();
-}
-
-if (searchBox && resultBox) {
-
-    searchBox.addEventListener("input", function () {
-
-        const keyword = normalizeText(this.value);
-
-        resultBox.innerHTML = "";
-
-        if (keyword.length < 2) {
-            resultBox.style.display = "none";
-            return;
-        }
-
-        const matches = Object.keys(routes).filter(route =>
-            normalizeText(route).includes(keyword)
-        );
-
-        if (matches.length === 0) {
-            resultBox.innerHTML =
-                '<div class="no-result">No Route Found</div>';
-            resultBox.style.display = "block";
-            return;
-        }
-
-        matches.forEach(route => {
-
-            const div = document.createElement("div");
-
-            div.className = "search-item";
-
-            div.textContent = route;
-
-            div.onclick = function () {
-
-                searchBox.value = route;
-
-                resultBox.style.display = "none";
-
-            };
-
-            resultBox.appendChild(div);
-
-        });
-
-        resultBox.style.display = "block";
-
-    });
-
-    document.addEventListener("click", function(e){
-
-        if(
-            !searchBox.contains(e.target) &&
-            !resultBox.contains(e.target)
-        ){
-            resultBox.style.display="none";
-        }
-
-    });
-
-}
-
-/* ===========================
-   CLOSE SEARCH RESULT
-=========================== */
-
-document.addEventListener("click", function(e){
-
-    if(
-        searchBox &&
-        resultBox &&
-        !searchBox.contains(e.target) &&
-        !resultBox.contains(e.target)
-    ){
-
-        resultBox.style.display = "none";
-
-    }
-
-});
-
-/* ===========================
-   POPULAR ROUTE CLICK
-=========================== */
-
-document.querySelectorAll(".route-card").forEach(card=>{
-
-    card.addEventListener("click",()=>{
-
-        if(searchBox){
-
-            searchBox.value =
-            card.innerText.trim();
-
-            window.location.hash = "#fare";
-
-        }
-
-    });
-
-});
-
-/* ===========================
-   SEARCH WITH ENTER KEY
-=========================== */
-
-if(searchBox){
-
-searchBox.addEventListener("keydown",function(e){
-
-if(e.key==="Enter"){
-
-e.preventDefault();
-
-const btn=document.getElementById("calculateFare");
-
-if(btn){
-
-btn.click();
-
-}
-
-}
-
-});
-
-}
-
-/* ===========================
-   SEARCH CLEAR
-=========================== */
-
-function clearSearch(){
-
-if(searchBox){
-
-searchBox.value="";
-
-}
-
-if(resultBox){
-
-resultBox.innerHTML="";
-
-resultBox.style.display="none";
-
-}
-
-}
-
-console.log("Smart Search Ready");
-/* ==========================================
+   SCRIPT.JS V8.0
    PART 4
    SMART FARE CALCULATOR
 ========================================== */
 
-const calculateFareBtn = document.getElementById("calculateFare");
+const fareButton = document.getElementById("calculateFare");
+const fareResult = document.getElementById("fareResult");
 const carType = document.getElementById("fareCarType");
 const tripMode = document.getElementById("tripMode");
-const selectedRoute = document.getElementById("selectedRoute");
-const fareResult = document.getElementById("fareResult");
 
-if (calculateFareBtn) {
+// ==========================
+// CALCULATE FARE
+// ==========================
 
-calculateFareBtn.addEventListener("click", function () {
+if (fareButton) {
 
-const route = searchBox.value.trim();
+fareButton.addEventListener("click", function () {
 
-if (route === "") {
+if (selectedRouteName === "") {
 
-alert("Please search and select your destination.");
-
-searchBox.focus();
+alert("Please select a route first.");
 
 return;
 
 }
 
-if (!routes[route]) {
+const vehicle = carType.value;
+const trip = tripMode.value;
 
-selectedRoute.innerHTML = "Route : Not Available";
+const routeData = routes[selectedRouteName];
 
-fareResult.innerHTML = "Estimated Fare : ₹0";
+if (!routeData) {
 
-alert("Sorry! This route is not available.");
-
+fareResult.innerHTML = "Route Not Found";
 return;
 
 }
 
-const vehicle = carType.value.toLowerCase();
+let fare = routeData[vehicle];
 
-let fare = routes[route][vehicle];
-
-if (tripMode.value === "round") {
+if (trip === "round") {
 
 fare = fare * 2;
 
 }
 
-selectedRoute.innerHTML =
-"Route : " + route;
-
 fareResult.innerHTML =
-"Estimated Fare : ₹" +
-fare.toLocaleString("en-IN");
+"Estimated Fare : ₹" + fare.toLocaleString("en-IN");
 
 });
 
 }
 
-/* ===========================
-   RESET RESULT WHEN ROUTE CHANGES
-=========================== */
+// ==========================
+// AUTO CALCULATE AFTER SEARCH
+// ==========================
 
-if (searchBox) {
+if (routeSearch) {
 
-searchBox.addEventListener("input", () => {
+routeSearch.addEventListener("change", function () {
 
-selectedRoute.innerHTML = "Route : -";
+const value = this.value.trim();
 
-fareResult.innerHTML = "Estimated Fare : ₹0";
+if (routes[value]) {
+
+selectedRouteName = value;
+
+selectedRoute.innerHTML = "Route : " + value;
+
+}
 
 });
 
 }
 
-/* ===========================
-   CHANGE VEHICLE
-=========================== */
+// ==========================
+// CHANGE VEHICLE
+// ==========================
 
 if (carType) {
 
 carType.addEventListener("change", () => {
 
-if (searchBox.value !== "") {
+if (selectedRouteName !== "") {
 
-calculateFareBtn.click();
+fareButton.click();
 
 }
 
@@ -559,17 +491,17 @@ calculateFareBtn.click();
 
 }
 
-/* ===========================
-   CHANGE TRIP TYPE
-=========================== */
+// ==========================
+// CHANGE TRIP TYPE
+// ==========================
 
 if (tripMode) {
 
 tripMode.addEventListener("change", () => {
 
-if (searchBox.value !== "") {
+if (selectedRouteName !== "") {
 
-calculateFareBtn.click();
+fareButton.click();
 
 }
 
@@ -577,239 +509,260 @@ calculateFareBtn.click();
 
 }
 
-/* ===========================
-   FORMAT PRICE
-=========================== */
+console.log("Smart Fare Calculator V8 Loaded");
+/* ==========================================
+   SCRIPT.JS V8.0
+   PART 5
+   WHATSAPP BOOKING
+========================================== */
 
-function formatPrice(price){
+const bookingForm = document.getElementById("bookingForm");
+const bookingTrip = document.getElementById("bookingTrip");
+const returnDateBox = document.getElementById("returnDateBox");
+const bookNowBtn = document.getElementById("bookNowBtn");
 
-return "₹" + Number(price).toLocaleString("en-IN");
+// ==========================
+// SHOW / HIDE RETURN DATE
+// ==========================
+
+if (bookingTrip && returnDateBox) {
+
+bookingTrip.addEventListener("change", function () {
+
+if (this.value === "Round Trip") {
+
+returnDateBox.style.display = "block";
+
+} else {
+
+returnDateBox.style.display = "none";
 
 }
 
-console.log("Smart Fare Calculator Ready");
-/* ==========================================
-   PART 5
-   WHATSAPP BOOKING + COPY FARE
-========================================== */
+});
 
-const whatsappNumber = "916353886346";
+}
 
-/* ===========================
-   WHATSAPP BOOKING
-=========================== */
+// ==========================
+// WHATSAPP BOOKING
+// ==========================
 
-function sendWhatsAppBooking() {
+if (bookNowBtn) {
 
-    const route = searchBox.value.trim();
+bookNowBtn.addEventListener("click", function () {
 
-    if (!route || !routes[route]) {
+const name = document.getElementById("customerName").value.trim();
+const phone = document.getElementById("customerPhone").value.trim();
+const pickup = document.getElementById("pickupLocation").value.trim();
+const drop = document.getElementById("dropLocation").value.trim();
+const pickupDate = document.getElementById("pickupDate").value;
+const pickupTime = document.getElementById("pickupTime").value;
+const trip = bookingTrip.value;
+const vehicle = document.getElementById("bookingVehicle").value;
+const passengers = document.getElementById("passengers").value;
+const returnDate = document.getElementById("returnDate").value;
+const note = document.getElementById("specialNote").value.trim();
 
-        alert("Please select a valid route.");
-        return;
+// Required Fields
 
-    }
+if (
+!name ||
+!phone ||
+!pickup ||
+!drop ||
+!pickupDate ||
+!pickupTime
+) {
 
-    const vehicle = carType.value;
+alert("Please fill all required fields.");
 
-    let fare = routes[route][vehicle.toLowerCase()];
+return;
 
-    let trip = "One Way";
+}
 
-    if (tripMode.value === "round") {
+let message =
+`🚖 *Hitansh Cab Service*
 
-        fare = fare * 2;
-        trip = "Round Trip";
+*New Booking Request*
 
-    }
+👤 Name : ${name}
 
-    const message =
-`🚖 *Hitansh Cab Service Booking*
+📱 Mobile : ${phone}
 
-📍 Route : ${route}
+📍 Pickup : ${pickup}
+
+📍 Drop : ${drop}
+
+📅 Date : ${pickupDate}
+
+🕒 Time : ${pickupTime}
 
 🚘 Vehicle : ${vehicle}
 
-🔁 Trip : ${trip}
+👥 Passengers : ${passengers}
 
-💰 Estimated Fare : ₹${fare.toLocaleString("en-IN")}
+🔁 Trip : ${trip}`;
 
-📞 Contact : 63538 86346
+if (trip === "Round Trip") {
 
-Please confirm my booking.`;
+message += `
 
-    window.open(
-        "https://wa.me/" +
-        whatsappNumber +
-        "?text=" +
-        encodeURIComponent(message),
-        "_blank"
-    );
+📅 Return Date : ${returnDate}`;
 
 }
 
-/* ===========================
-   WHATSAPP BUTTON
-=========================== */
+if (selectedRouteName !== "") {
 
-const whatsappBtn = document.createElement("button");
+message += `
 
-whatsappBtn.className = "btn whatsapp-btn";
-
-whatsappBtn.id = "whatsappBooking";
-
-whatsappBtn.innerHTML =
-'<i class="fab fa-whatsapp"></i> Book on WhatsApp';
-
-if (calculateFareBtn) {
-
-    calculateFareBtn.insertAdjacentElement(
-        "afterend",
-        whatsappBtn
-    );
+💰 Estimated Fare : ₹${fareResult.innerText.replace("Estimated Fare : ₹","")}`;
 
 }
 
-whatsappBtn.addEventListener(
-    "click",
-    sendWhatsAppBooking
-);
+if (note !== "") {
 
-/* ===========================
-   COPY FARE
-=========================== */
+message += `
 
-function copyFare() {
-
-    const text =
-selectedRoute.innerText +
-"\n" +
-fareResult.innerText;
-
-    navigator.clipboard.writeText(text);
-
-    alert("Fare copied successfully.");
+📝 Note : ${note}`;
 
 }
 
-const copyBtn = document.createElement("button");
+message += `
 
-copyBtn.className = "btn secondary-btn";
+Please confirm my booking. Thank you.`;
 
-copyBtn.innerHTML =
-'<i class="fa-solid fa-copy"></i> Copy Fare';
+window.open(
 
-whatsappBtn.insertAdjacentElement(
-    "afterend",
-    copyBtn
+"https://wa.me/916353886346?text=" +
+encodeURIComponent(message),
+
+"_blank"
+
 );
-
-copyBtn.addEventListener(
-    "click",
-    copyFare
-);
-
-/* ===========================
-   QUICK BOOK FROM POPULAR ROUTE
-=========================== */
-
-document.querySelectorAll(".route-card").forEach(card=>{
-
-card.addEventListener("dblclick",()=>{
-
-searchBox.value=card.innerText.trim();
-
-calculateFareBtn.click();
 
 });
 
-});
+}
 
-console.log("WhatsApp Booking Ready");
+console.log("WhatsApp Booking V8 Loaded");
 /* ==========================================
+   SCRIPT.JS V8.0
    PART 6
-   FINAL ANIMATION & OPTIMIZATION
+   FINAL FEATURES
 ========================================== */
 
-// ===========================
-// SCROLL ANIMATION
-// ===========================
+// ==========================
+// STICKY HEADER SHADOW
+// ==========================
 
-const observer = new IntersectionObserver((entries)=>{
+const header = document.querySelector(".header");
 
-entries.forEach(entry=>{
+window.addEventListener("scroll", () => {
 
-if(entry.isIntersecting){
+if (!header) return;
 
-entry.target.classList.add("show");
+if (window.scrollY > 50) {
+
+header.style.boxShadow = "0 10px 25px rgba(0,0,0,.15)";
+
+} else {
+
+header.style.boxShadow = "0 5px 15px rgba(0,0,0,.08)";
 
 }
 
 });
 
-},{
-threshold:0.2
+// ==========================
+// BUTTON RIPPLE EFFECT
+// ==========================
+
+document.querySelectorAll(".btn").forEach(btn => {
+
+btn.addEventListener("click", function (e) {
+
+const ripple = document.createElement("span");
+
+const rect = this.getBoundingClientRect();
+
+const size = Math.max(rect.width, rect.height);
+
+ripple.style.width = size + "px";
+ripple.style.height = size + "px";
+ripple.style.left = (e.clientX - rect.left - size / 2) + "px";
+ripple.style.top = (e.clientY - rect.top - size / 2) + "px";
+
+ripple.className = "ripple";
+
+this.appendChild(ripple);
+
+setTimeout(() => {
+
+ripple.remove();
+
+}, 600);
+
 });
 
-document.querySelectorAll(
-".service-card,.fleet-card,.why-card,.review-card,.route-card,.feature-card,.faq-item"
-).forEach(item=>{
+});
 
-observer.observe(item);
+// ==========================
+// IMAGE LAZY LOADING
+// ==========================
+
+document.querySelectorAll("img").forEach(img => {
+
+img.loading = "lazy";
 
 });
 
-// ===========================
-// LAZY LOAD IMAGES
-// ===========================
-
-document.querySelectorAll("img").forEach(img=>{
-
-img.loading="lazy";
-
-});
-
-// ===========================
+// ==========================
 // PAGE LOADER
-// ===========================
+// ==========================
 
-window.addEventListener("load",()=>{
+window.addEventListener("load", () => {
 
 document.body.classList.add("loaded");
 
 });
 
-// ===========================
-// ERROR HANDLER
-// ===========================
+// ==========================
+// SIMPLE FORM RESET
+// ==========================
 
-window.onerror=function(message,file,line){
+if (bookNowBtn && bookingForm) {
 
-console.error(
-"JavaScript Error:",
-message,
-"Line:",
-line
-);
+bookNowBtn.addEventListener("click", () => {
 
-};
+setTimeout(() => {
 
-// ===========================
-// TOTAL ROUTES
-// ===========================
+bookingForm.reset();
 
-console.log(
-"Total Routes :",
-Object.keys(routes).length
-);
+if (returnDateBox) {
 
-// ===========================
-// VERSION INFO
-// ===========================
+returnDateBox.style.display = "none";
 
-console.log("================================");
-console.log("Hitansh Cab Service");
-console.log("Website Version : 7.0");
-console.log("Developer : ChatGPT");
-console.log("Status : Ready");
-console.log("================================");
+}
+
+}, 1000);
+
+});
+
+}
+
+// ==========================
+// CONSOLE MESSAGE
+// ==========================
+
+console.log("%cHitansh Cab Service V8.0",
+"color:#ff9800;font-size:18px;font-weight:bold;");
+
+console.log("Website Developed Successfully.");
+
+console.log("Version : V8.0");
+
+console.log("Status : Ready for GitHub Pages");
+
+// ==========================
+// END OF FILE
+// ==========================
