@@ -59,7 +59,48 @@ const pickup=document.getElementById("pickup").value.trim();
 
 const drop=document.getElementById("drop").value.trim();
 
-const key=pickup+"-"+drop;
+ const key =
+pickup.trim().toLowerCase() + "-" +
+drop.trim().toLowerCase();
+
+const fareData = {
+"vadodara-ahmedabad":{
+sedan:1700,
+suv:2399,
+distance:"110 KM",
+time:"2 Hours"
+},
+"vadodara-surat":{
+sedan:2200,
+suv:2699,
+distance:"155 KM",
+time:"3 Hours"
+},
+"vadodara-rajkot":{
+sedan:3700,
+suv:4399,
+distance:"300 KM",
+time:"5 Hours"
+},
+"vadodara-jamnagar":{
+sedan:6000,
+suv:7000,
+distance:"450 KM",
+time:"8 Hours"
+},
+"vadodara-dwarka":{
+sedan:7500,
+suv:8000,
+distance:"520 KM",
+time:"9 Hours"
+},
+"vadodara-somnath":{
+sedan:7500,
+suv:8000,
+distance:"510 KM",
+time:"9 Hours"
+}
+};
 
 const fare=fareData[key];
 
