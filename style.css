@@ -1,64 +1,41 @@
-/*==================================================
-  HITANSH CAB SERVICE V15 ULTIMATE
-  STYLE.CSS FINAL - PART 1
-==================================================*/
+/*=========================================
+  HITANSH CAB SERVICE V8
+  STYLE.CSS - PART 1
+=========================================*/
 
 /* Google Font */
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
-/* Reset */
+/* RESET */
 
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-}
-
-html{
 scroll-behavior:smooth;
 }
-
-body{
-
-font-family:'Poppins',sans-serif;
-background:#f8f9fb;
-color:#222;
-overflow-x:hidden;
-line-height:1.6;
-
-}
-
-/* Variables */
 
 :root{
 
 --primary:#ff7a00;
 --secondary:#111111;
 --white:#ffffff;
---light:#f5f5f5;
---gray:#666666;
---border:#e8e8e8;
-
---radius:18px;
-
---shadow:
-0 10px 30px rgba(0,0,0,.10);
-
---transition:.35s ease;
+--light:#f8f9fa;
+--text:#555555;
+--shadow:0 10px 25px rgba(0,0,0,.08);
 
 }
 
-/* Container */
+body{
 
-.container{
-
-width:92%;
-max-width:1280px;
-margin:auto;
+font-family:'Poppins',sans-serif;
+background:var(--white);
+color:var(--secondary);
+line-height:1.7;
+overflow-x:hidden;
 
 }
-
-/* Images */
 
 img{
 
@@ -67,16 +44,11 @@ display:block;
 
 }
 
-/* Links */
-
 a{
 
 text-decoration:none;
-color:inherit;
 
 }
-
-/* List */
 
 ul{
 
@@ -84,166 +56,46 @@ list-style:none;
 
 }
 
-/* Buttons */
+.container{
 
-.btn,
-.book-btn,
-.offer-btn,
-.booking-btn,
-.fleet-btn,
-.fare-btn{
-
-display:inline-flex;
-
-align-items:center;
-
-justify-content:center;
-
-gap:10px;
-
-padding:15px 34px;
-
-background:var(--primary);
-
-color:#fff;
-
-border:none;
-
-border-radius:50px;
-
-font-weight:600;
-
-cursor:pointer;
-
-transition:var(--transition);
-
-box-shadow:var(--shadow);
+width:90%;
+max-width:1200px;
+margin:auto;
 
 }
-
-.btn:hover,
-.book-btn:hover,
-.offer-btn:hover,
-.booking-btn:hover,
-.fleet-btn:hover,
-.fare-btn:hover{
-
-background:#e96c00;
-
-transform:translateY(-4px);
-
-}
-
-/* Sections */
 
 section{
 
-padding:90px 0;
+padding:80px 0;
 
 }
 
-.section-title{
-
-text-align:center;
-
-margin-bottom:55px;
-
-}
-
-.section-title h2{
-
-font-size:42px;
-
-font-weight:700;
-
-color:#111;
-
-margin-bottom:15px;
-
-}
-
-.section-title p{
-
-font-size:18px;
-
-color:#666;
-
-}
-
-/* Cards */
-
-.booking-card,
-.route-card,
-.service-box,
-.fleet-card,
-.review-card,
-.contact-card,
-.why-card,
-.driver-card,
-.faq-box{
-
-background:#fff;
-
-border-radius:20px;
-
-padding:28px;
-
-box-shadow:var(--shadow);
-
-transition:.35s;
-
-}
-
-.booking-card:hover,
-.route-card:hover,
-.service-box:hover,
-.fleet-card:hover,
-.review-card:hover,
-.contact-card:hover,
-.why-card:hover{
-
-transform:translateY(-8px);
-
-}
-
-/* Loader */
+/*==========================
+LOADER
+==========================*/
 
 .loader{
 
 position:fixed;
-
 top:0;
-
 left:0;
-
 width:100%;
-
 height:100%;
-
 background:#fff;
-
 display:flex;
-
 justify-content:center;
-
 align-items:center;
-
-z-index:99999;
+z-index:9999;
 
 }
 
 .spinner{
 
-width:70px;
-
-height:70px;
-
-border-radius:50%;
-
+width:60px;
+height:60px;
 border:6px solid #eee;
-
 border-top:6px solid var(--primary);
-
+border-radius:50%;
 animation:spin 1s linear infinite;
 
 }
@@ -257,147 +109,170 @@ transform:rotate(360deg);
 }
 
 }
-/*==================================================
-  HEADER
-==================================================*/
+
+/*==========================
+HEADER
+==========================*/
 
 .header{
+
 position:fixed;
 top:0;
 left:0;
 width:100%;
 background:#fff;
-z-index:9999;
-box-shadow:0 5px 20px rgba(0,0,0,.08);
-transition:.35s;
+z-index:999;
+transition:.3s;
+box-shadow:0 2px 15px rgba(0,0,0,.05);
+
 }
 
 .header.sticky{
-padding:0;
-box-shadow:0 8px 25px rgba(0,0,0,.12);
+
+box-shadow:0 8px 20px rgba(0,0,0,.12);
+
 }
 
-/* Top Bar */
-
 .topbar{
-background:#111;
+
+background:var(--secondary);
+padding:8px 0;
 color:#fff;
-padding:10px 0;
 font-size:14px;
+
 }
 
 .topbar .container{
+
 display:flex;
 justify-content:space-between;
 align-items:center;
 flex-wrap:wrap;
-gap:15px;
+
 }
 
-.top-left,
-.top-right{
-display:flex;
-align-items:center;
-gap:20px;
-}
+.topbar a{
 
-.top-left a{
 color:#fff;
-transition:.3s;
-font-weight:500;
-}
 
-.top-left a:hover{
-color:var(--primary);
 }
-
-/*==================================================
-  NAVBAR
-==================================================*/
 
 .navbar{
-background:#fff;
-padding:18px 0;
+
+padding:15px 0;
+
 }
 
 .navbar .container{
+
 display:flex;
-justify-content:space-between;
 align-items:center;
+justify-content:space-between;
+
 }
 
 .logo{
+
 display:flex;
 align-items:center;
-gap:12px;
+gap:10px;
 font-size:24px;
 font-weight:700;
-color:#111;
+color:var(--secondary);
+
 }
 
 .logo img{
-width:60px;
-height:60px;
+
+width:55px;
+height:55px;
 object-fit:contain;
+
 }
 
 .nav-links{
-display:flex;
-align-items:center;
-gap:28px;
-}
 
-.nav-links li{
-list-style:none;
+display:flex;
+gap:25px;
+
 }
 
 .nav-links a{
-font-weight:600;
-color:#222;
-position:relative;
+
+font-weight:500;
+color:var(--secondary);
 transition:.3s;
+
 }
 
 .nav-links a:hover,
 .nav-links a.active{
+
 color:var(--primary);
+
 }
 
-.nav-links a::after{
-content:"";
-position:absolute;
-left:0;
-bottom:-8px;
-width:0;
-height:3px;
+.book-btn{
+
 background:var(--primary);
-border-radius:20px;
+color:#fff;
+padding:12px 22px;
+border-radius:50px;
+font-weight:600;
 transition:.3s;
+
 }
 
-.nav-links a:hover::after,
-.nav-links a.active::after{
-width:100%;
-}
+.book-btn:hover{
 
-/*==================================================
-  MOBILE MENU
-==================================================*/
+background:#e56b00;
+
+}
 
 .menu-toggle{
+
 display:none;
-font-size:30px;
+font-size:28px;
+cursor:pointer;
 background:none;
 border:none;
-cursor:pointer;
-color:#111;
 }
 
-/*==================================================
-  HERO SECTION
-==================================================*/
+/*==========================
+SECTION TITLE
+==========================*/
+
+.section-title{
+
+text-align:center;
+margin-bottom:50px;
+
+}
+
+.section-title h2{
+
+font-size:38px;
+margin-bottom:10px;
+color:var(--secondary);
+
+}
+
+.section-title p{
+
+color:var(--text);
+
+  }
+/*=========================================
+  HITANSH CAB SERVICE V8
+  STYLE.CSS - PART 2
+=========================================*/
+
+/*==========================
+ HERO SECTION
+==========================*/
 
 .hero{
+
 position:relative;
 min-height:100vh;
 display:flex;
@@ -405,65 +280,231 @@ align-items:center;
 justify-content:center;
 background:url("images/hero.jpg") center center/cover no-repeat;
 padding-top:120px;
+
 }
 
 .hero-overlay{
+
 position:absolute;
 top:0;
 left:0;
 width:100%;
 height:100%;
 background:rgba(0,0,0,.60);
+
 }
 
 .hero-content{
+
 position:relative;
 z-index:2;
 text-align:center;
 color:#fff;
-max-width:850px;
+
 }
 
-.hero-content h1{
-font-size:62px;
-font-weight:800;
+.hero-tag{
+
+display:inline-block;
+background:rgba(255,122,0,.20);
+border:1px solid rgba(255,255,255,.2);
+padding:10px 20px;
+border-radius:50px;
+font-size:15px;
+margin-bottom:20px;
+
+}
+
+.hero h1{
+
+font-size:55px;
+font-weight:700;
 line-height:1.2;
 margin-bottom:20px;
+
 }
 
-.hero-content p{
-font-size:22px;
+.hero p{
+
+max-width:750px;
+margin:auto;
+font-size:18px;
+line-height:1.8;
 margin-bottom:35px;
-color:#f5f5f5;
+color:#eee;
+
 }
+
+/*==========================
+ HERO BUTTONS
+==========================*/
 
 .hero-buttons{
+
 display:flex;
 justify-content:center;
 gap:20px;
 flex-wrap:wrap;
+
+}
+
+.btn{
+
+display:inline-flex;
+align-items:center;
+gap:10px;
+padding:15px 30px;
+background:var(--primary);
+color:#fff;
+border-radius:50px;
+font-weight:600;
+transition:.3s;
+
+}
+
+.btn:hover{
+
+background:#e56b00;
+transform:translateY(-3px);
+
 }
 
 .btn-secondary{
-background:#fff;
-color:#111;
+
+background:#25D366;
+
 }
 
 .btn-secondary:hover{
-background:#ececec;
+
+background:#1ebe5d;
+
 }
 
-/*==================================================
-  RESPONSIVE
-==================================================*/
+/*==========================
+ HERO FEATURES
+==========================*/
 
-@media(max-width:991px){
+.hero-features{
+
+margin-top:50px;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+
+}
+
+.feature{
+
+background:rgba(255,255,255,.10);
+backdrop-filter:blur(10px);
+padding:20px;
+border-radius:15px;
+color:#fff;
+
+}
+
+.feature i{
+
+font-size:28px;
+color:#ffb300;
+margin-bottom:12px;
+
+}
+
+.feature span{
+
+display:block;
+font-weight:600;
+
+}
+
+/*==========================
+ SERVICES
+==========================*/
+
+.services{
+
+background:#f8f9fa;
+
+}
+
+.services-grid{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+
+}
+
+.service-box{
+
+background:#fff;
+padding:35px 25px;
+text-align:center;
+border-radius:20px;
+box-shadow:var(--shadow);
+transition:.3s;
+
+}
+
+.service-box:hover{
+
+transform:translateY(-8px);
+
+}
+
+.service-box i{
+
+font-size:48px;
+color:var(--primary);
+margin-bottom:20px;
+
+}
+
+.service-box h3{
+
+font-size:24px;
+margin-bottom:10px;
+
+}
+
+.service-box p{
+
+color:var(--text);
+
+}
+
+/*==========================
+ MOBILE
+==========================*/
+
+@media(max-width:992px){
+
+.hero h1{
+
+font-size:42px;
+
+}
+
+.hero-features{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:768px){
 
 .menu-toggle{
+
 display:block;
+
 }
 
 .nav-links{
+
 position:absolute;
 top:100%;
 left:0;
@@ -471,75 +512,82 @@ width:100%;
 background:#fff;
 display:none;
 flex-direction:column;
-padding:25px;
-box-shadow:0 10px 30px rgba(0,0,0,.10);
+padding:20px;
+box-shadow:0 10px 20px rgba(0,0,0,.1);
+
 }
 
 .nav-links.active{
+
 display:flex;
+
 }
 
 .book-btn{
+
 display:none;
-}
-
-.hero-content h1{
-font-size:42px;
-}
-
-.hero-content p{
-font-size:18px;
-}
-
-.topbar{
-display:none;
-}
 
 }
-
-@media(max-width:576px){
 
 .hero{
-padding-top:90px;
+
+padding-top:150px;
+
 }
 
-.hero-content h1{
-font-size:32px;
+.hero h1{
+
+font-size:34px;
+
 }
 
-.hero-content p{
+.hero p{
+
 font-size:16px;
+
+}
+
+.hero-features{
+
+grid-template-columns:1fr;
+
 }
 
 .hero-buttons{
+
 flex-direction:column;
+align-items:center;
+
 }
 
-.btn,
-.btn-secondary{
-width:100%;
+.btn{
+
+width:260px;
+justify-content:center;
+
 }
 
-.logo span{
-font-size:18px;
 }
+/*=========================================
+  HITANSH CAB SERVICE V8
+  STYLE.CSS - PART 3
+=========================================*/
 
- }
-/*==================================================
-  BOOKING SECTION
-==================================================*/
+/*==========================
+ BOOKING SECTION
+==========================*/
 
 .booking-section{
-background:#f8f9fb;
+background:#ffffff;
 }
 
 .booking-card{
-max-width:1100px;
+max-width:900px;
 margin:auto;
-padding:40px;
 background:#fff;
+padding:35px;
 border-radius:20px;
-box-shadow:0 12px 35px rgba(0,0,0,.08);
+box-shadow:var(--shadow);
 }
 
 .form-row{
@@ -555,79 +603,87 @@ flex-direction:column;
 }
 
 .form-group label{
-font-size:15px;
 font-weight:600;
 margin-bottom:8px;
-color:#333;
+color:var(--secondary);
 }
 
 .form-group input,
-.form-group select,
-.form-group textarea{
+.form-group select{
 width:100%;
 padding:14px 16px;
-font-size:16px;
 border:1px solid #ddd;
-border-radius:12px;
+border-radius:10px;
+font-size:16px;
 outline:none;
-background:#fff;
 transition:.3s;
+background:#fff;
 }
 
 .form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus{
+.form-group select:focus{
 border-color:var(--primary);
-box-shadow:0 0 0 4px rgba(255,122,0,.15);
-}
-
-.form-group textarea{
-min-height:120px;
-resize:vertical;
+box-shadow:0 0 0 3px rgba(255,122,0,.15);
 }
 
 .fare-btn{
 width:100%;
-margin-top:15px;
-font-size:17px;
+padding:16px;
+background:var(--primary);
+color:#fff;
+border:none;
+border-radius:12px;
+font-size:18px;
+font-weight:600;
+cursor:pointer;
+transition:.3s;
 }
 
-/*==================================================
-  FARE RESULT
-==================================================*/
+.fare-btn:hover{
+background:#e56b00;
+}
 
 .fare-result{
 margin-top:30px;
 padding:25px;
+background:#f8f9fa;
+border-radius:15px;
 text-align:center;
-background:#fff7ef;
-border:2px dashed var(--primary);
-border-radius:18px;
+border-left:5px solid var(--primary);
+}
+
+.fare-result h1{
+font-size:42px;
+color:var(--primary);
+margin:10px 0;
 }
 
 .fare-result h2{
-font-size:42px;
-color:var(--primary);
-margin-bottom:10px;
-}
-
-.fare-result h3{
 font-size:24px;
 margin-bottom:10px;
 }
 
-.fare-result p{
-color:#555;
-font-size:16px;
-line-height:1.7;
+.booking-btn{
+display:inline-block;
+margin-top:20px;
+padding:14px 28px;
+background:#25D366;
+color:#fff;
+border-radius:50px;
+font-weight:600;
+transition:.3s;
 }
 
-/*==================================================
-  POPULAR ROUTES
-==================================================*/
+.booking-btn:hover{
+background:#1ebe5d;
+}
+
+/*==========================
+ POPULAR ROUTES
+==========================*/
 
 .popular-routes{
-background:#fff;
+background:#f8f9fa;
 }
 
 .route-grid{
@@ -637,14 +693,22 @@ gap:25px;
 }
 
 .route-card{
+background:#fff;
+padding:25px;
+border-radius:18px;
+box-shadow:var(--shadow);
 text-align:center;
-border-top:5px solid var(--primary);
+transition:.3s;
+}
+
+.route-card:hover{
+transform:translateY(-8px);
 }
 
 .route-card h3{
 font-size:22px;
-margin-bottom:12px;
-color:#111;
+margin-bottom:10px;
+color:var(--secondary);
 }
 
 .route-card p{
@@ -653,21 +717,22 @@ font-weight:700;
 color:var(--primary);
 }
 
-/*==================================================
-  RESPONSIVE
-==================================================*/
+/*==========================
+ MOBILE
+==========================*/
 
 @media(max-width:768px){
 
 .booking-card{
-padding:25px;
+padding:20px;
 }
 
 .form-row{
 grid-template-columns:1fr;
+gap:15px;
 }
 
-.fare-result h2{
+.fare-result h1{
 font-size:34px;
 }
 
@@ -676,9 +741,14 @@ grid-template-columns:1fr;
 }
 
 }
-/*==================================================
+/*=========================================
+  HITANSH CAB SERVICE V8
+  STYLE.CSS - PART 4
+=========================================*/
+
+/*==========================
   FLEET SECTION
-==================================================*/
+==========================*/
 
 .fleet{
 background:#ffffff;
@@ -686,17 +756,16 @@ background:#ffffff;
 
 .fleet-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
 gap:30px;
 }
 
 .fleet-card{
-overflow:hidden;
-padding:0;
-border-radius:20px;
 background:#fff;
-box-shadow:0 12px 30px rgba(0,0,0,.08);
-transition:.35s;
+border-radius:20px;
+overflow:hidden;
+box-shadow:var(--shadow);
+transition:.3s;
 }
 
 .fleet-card:hover{
@@ -716,41 +785,45 @@ padding:25px;
 .fleet-content h3{
 font-size:28px;
 margin-bottom:10px;
-color:#111;
 }
 
 .fleet-content p{
-color:#666;
+color:var(--text);
 margin-bottom:20px;
 }
 
-.fleet-content ul{
-margin-bottom:25px;
-}
-
 .fleet-content ul li{
+margin-bottom:12px;
 display:flex;
 align-items:center;
 gap:10px;
-margin-bottom:12px;
-font-size:16px;
 }
 
 .fleet-content ul li i{
 color:var(--primary);
-width:22px;
 }
 
 .fleet-btn{
-width:100%;
+display:inline-block;
+margin-top:20px;
+padding:14px 30px;
+background:var(--primary);
+color:#fff;
+border-radius:50px;
+font-weight:600;
+transition:.3s;
 }
 
-/*==================================================
-  WHY CHOOSE US
-==================================================*/
+.fleet-btn:hover{
+background:#e56b00;
+}
+
+/*==========================
+ WHY CHOOSE US
+==========================*/
 
 .why-us{
-background:#f8f9fb;
+background:#f8f9fa;
 }
 
 .why-grid{
@@ -760,129 +833,154 @@ gap:25px;
 }
 
 .why-card{
+background:#fff;
+padding:30px;
+border-radius:18px;
 text-align:center;
-padding:35px 25px;
+box-shadow:var(--shadow);
+transition:.3s;
+}
+
+.why-card:hover{
+transform:translateY(-8px);
 }
 
 .why-card i{
 font-size:48px;
 color:var(--primary);
-margin-bottom:18px;
+margin-bottom:20px;
 }
 
 .why-card h3{
-font-size:22px;
 margin-bottom:10px;
 }
 
-.why-card p{
-color:#666;
-}
-
-/*==================================================
-  GALLERY
-==================================================*/
+/*==========================
+ GALLERY
+==========================*/
 
 .gallery{
-background:#fff;
+background:#ffffff;
 }
 
 .gallery-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 gap:20px;
 }
 
 .gallery-grid img{
 width:100%;
-height:240px;
+height:220px;
 object-fit:cover;
-border-radius:18px;
+border-radius:15px;
 cursor:pointer;
-transition:.35s;
-box-shadow:0 8px 20px rgba(0,0,0,.08);
+transition:.3s;
 }
 
 .gallery-grid img:hover{
 transform:scale(1.05);
-box-shadow:0 15px 30px rgba(0,0,0,.18);
 }
 
-/*==================================================
-  DRIVER SECTION
-==================================================*/
+.lightbox{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.85);
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:9999;
+}
+
+.lightbox-content img{
+max-width:90%;
+max-height:90vh;
+border-radius:12px;
+}
+
+.close-lightbox{
+position:absolute;
+top:20px;
+right:30px;
+font-size:40px;
+color:#fff;
+cursor:pointer;
+}
+
+/*==========================
+ DRIVER SECTION
+==========================*/
 
 .driver-section{
-background:#f8f9fb;
+background:#f8f9fa;
 }
 
 .driver-card{
-display:flex;
-align-items:center;
+display:grid;
+grid-template-columns:300px 1fr;
 gap:35px;
+align-items:center;
+background:#fff;
+padding:30px;
+border-radius:20px;
+box-shadow:var(--shadow);
 }
 
 .driver-card img{
-width:260px;
-height:260px;
+width:100%;
 border-radius:20px;
-object-fit:cover;
 }
 
 .driver-info h2{
-font-size:32px;
 margin-bottom:15px;
 }
 
 .driver-info p{
-color:#666;
+color:var(--text);
 margin-bottom:20px;
 }
 
 .driver-info ul li{
 margin-bottom:12px;
-font-size:16px;
 font-weight:500;
 }
 
-/*==================================================
-  RESPONSIVE
-==================================================*/
-
-@media(max-width:992px){
-
-.driver-card{
-flex-direction:column;
-text-align:center;
-}
-
-.driver-card img{
-width:220px;
-height:220px;
-}
-
-}
+/*==========================
+ MOBILE
+==========================*/
 
 @media(max-width:768px){
 
-.fleet-grid,
-.why-grid,
+.driver-card{
+grid-template-columns:1fr;
+text-align:center;
+}
+
+.driver-info ul{
+text-align:left;
+}
+
 .gallery-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+.fleet-grid,
+.why-grid{
 grid-template-columns:1fr;
 }
 
-.fleet-content h3{
-font-size:24px;
 }
+/*=========================================
+  HITANSH CAB SERVICE V8
+  STYLE.CSS - PART 5 (FINAL)
+=========================================*/
 
-.driver-info h2{
-font-size:28px;
-}
-
-}
-/*==================================================
-  REVIEWS SECTION
-==================================================*/
+/*==========================
+ REVIEWS
+==========================*/
 
 .reviews{
 background:#ffffff;
@@ -890,96 +988,65 @@ background:#ffffff;
 
 .review-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
 gap:25px;
 }
 
 .review-card{
+background:#fff;
+padding:30px;
 text-align:center;
-border-top:5px solid var(--primary);
+border-radius:20px;
+box-shadow:var(--shadow);
+transition:.3s;
+}
+
+.review-card:hover{
+transform:translateY(-8px);
 }
 
 .review-card .stars{
-font-size:24px;
+font-size:22px;
 color:#FFC107;
 margin-bottom:15px;
-letter-spacing:2px;
 }
 
 .review-card h3{
-font-size:22px;
 margin-bottom:10px;
 }
 
 .review-card p{
-color:#666;
-line-height:1.8;
+color:var(--text);
 }
 
-/*==================================================
-  FAQ
-==================================================*/
+/*==========================
+ FAQ
+==========================*/
 
 .faq{
-background:#f8f9fb;
+background:#f8f9fa;
 }
 
 .faq-box{
+background:#fff;
+padding:25px;
 margin-bottom:20px;
 border-left:5px solid var(--primary);
+border-radius:12px;
+box-shadow:var(--shadow);
 }
 
 .faq-box h3{
-font-size:22px;
-margin-bottom:12px;
+margin-bottom:10px;
 }
 
 .faq-box p{
-color:#666;
-line-height:1.8;
+color:var(--text);
 }
 
-/*==================================================
-  SPECIAL OFFER
-==================================================*/
-
-.offer{
-padding:70px 0;
-background:linear-gradient(135deg,#ff7a00,#ff9800);
-}
-
-.offer-box{
-text-align:center;
-color:#fff;
-}
-
-.offer-box h2{
-font-size:42px;
-margin-bottom:15px;
-}
-
-.offer-box p{
-font-size:22px;
-margin-bottom:25px;
-}
-
-.offer-box strong{
-font-size:32px;
-display:block;
-margin-top:10px;
-}
-
-.offer-btn{
-background:#111;
-}
-
-.offer-btn:hover{
-background:#222;
-}
-
-/*==================================================
-  CONTACT
-==================================================*/
+/*==========================
+ CONTACT
+==========================*/
 
 .contact{
 background:#ffffff;
@@ -987,29 +1054,33 @@ background:#ffffff;
 
 .contact-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:25px;
 margin-bottom:40px;
 }
 
 .contact-card{
+background:#fff;
+padding:30px;
 text-align:center;
+border-radius:20px;
+box-shadow:var(--shadow);
+transition:.3s;
+}
+
+.contact-card:hover{
+transform:translateY(-8px);
 }
 
 .contact-card i{
-font-size:42px;
+font-size:40px;
 color:var(--primary);
 margin-bottom:15px;
 }
 
-.contact-card h3{
-margin-bottom:10px;
-}
-
-.contact-card p,
 .contact-card a{
-color:#555;
-font-weight:500;
+color:var(--secondary);
+font-weight:600;
 }
 
 .contact-card a:hover{
@@ -1017,35 +1088,35 @@ color:var(--primary);
 }
 
 .map-box{
-overflow:hidden;
 border-radius:20px;
-box-shadow:0 12px 30px rgba(0,0,0,.08);
+overflow:hidden;
+box-shadow:var(--shadow);
 }
 
 .map-box iframe{
 width:100%;
-height:420px;
+height:400px;
 border:none;
 }
 
-/*==================================================
-  FLOATING BUTTONS
-==================================================*/
+/*==========================
+ FLOATING BUTTONS
+==========================*/
 
 .floating-whatsapp,
 .floating-call{
 position:fixed;
 right:20px;
-width:60px;
-height:60px;
+width:58px;
+height:58px;
 border-radius:50%;
 display:flex;
-justify-content:center;
 align-items:center;
-font-size:28px;
+justify-content:center;
 color:#fff;
-box-shadow:0 12px 25px rgba(0,0,0,.20);
+font-size:24px;
 z-index:999;
+box-shadow:0 10px 20px rgba(0,0,0,.25);
 transition:.3s;
 }
 
@@ -1055,54 +1126,48 @@ background:#25D366;
 }
 
 .floating-call{
-bottom:20px;
+bottom:25px;
 background:var(--primary);
 }
 
 .floating-whatsapp:hover,
 .floating-call:hover{
-transform:scale(1.12);
+transform:scale(1.1);
 }
 
-/*==================================================
-  FOOTER
-==================================================*/
+/*==========================
+ FOOTER
+==========================*/
 
 .footer{
 background:#111;
 color:#fff;
-padding:70px 0 30px;
+padding:70px 0 25px;
 }
 
 .footer-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 gap:35px;
-margin-bottom:40px;
 }
 
 .footer h3,
 .footer h4{
 margin-bottom:18px;
-color:#fff;
 }
 
-.footer p{
-color:#ccc;
-line-height:1.8;
+.footer p,
+.footer li,
+.footer a{
+color:#cccccc;
+}
+
+.footer a:hover{
+color:var(--primary);
 }
 
 .footer ul li{
 margin-bottom:10px;
-}
-
-.footer ul li a{
-color:#ccc;
-transition:.3s;
-}
-
-.footer ul li a:hover{
-color:var(--primary);
 }
 
 .social-icons{
@@ -1114,23 +1179,24 @@ margin-top:15px;
 .social-icons a{
 width:42px;
 height:42px;
+background:#222;
 border-radius:50%;
 display:flex;
 align-items:center;
 justify-content:center;
-background:#222;
 transition:.3s;
 }
 
 .social-icons a:hover{
 background:var(--primary);
+color:#fff;
 }
 
 .footer hr{
 border:none;
 height:1px;
 background:#333;
-margin:25px 0;
+margin:35px 0 20px;
 }
 
 .footer-bottom{
@@ -1139,26 +1205,58 @@ font-size:15px;
 color:#aaa;
 }
 
-/*==================================================
-  MOBILE RESPONSIVE
-==================================================*/
+/*==========================
+ ANIMATION
+==========================*/
+
+.show{
+opacity:1 !important;
+transform:translateY(0) !important;
+}
+
+.service-box,
+.route-card,
+.fleet-card,
+.review-card,
+.why-card,
+.contact-card{
+opacity:0;
+transform:translateY(40px);
+transition:.6s ease;
+}
+
+/*==========================
+ TOAST
+==========================*/
+
+.toast{
+position:fixed;
+left:50%;
+bottom:30px;
+transform:translateX(-50%);
+background:#111;
+color:#fff;
+padding:14px 22px;
+border-radius:8px;
+opacity:0;
+visibility:hidden;
+transition:.3s;
+z-index:9999;
+}
+
+.toast.show{
+opacity:1;
+visibility:visible;
+}
+
+/*==========================
+ RESPONSIVE
+==========================*/
 
 @media(max-width:768px){
 
-.offer-box h2{
-font-size:32px;
-}
-
-.offer-box p{
-font-size:18px;
-}
-
-.offer-box strong{
-font-size:26px;
-}
-
-.contact-grid,
 .review-grid,
+.contact-grid,
 .footer-grid{
 grid-template-columns:1fr;
 }
@@ -1167,15 +1265,11 @@ grid-template-columns:1fr;
 height:300px;
 }
 
-}
-
-@media(max-width:480px){
-
 .floating-whatsapp,
 .floating-call{
-width:55px;
-height:55px;
-font-size:24px;
+width:52px;
+height:52px;
+font-size:22px;
 right:15px;
 }
 
@@ -1187,4 +1281,4 @@ text-align:center;
 justify-content:center;
 }
 
- }
+}
