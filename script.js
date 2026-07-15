@@ -1,714 +1,488 @@
-/* ==========================================
-   HITANSH CAB SERVICE V11.1
-   SMART BOOKING ENGINE
-========================================== */
+/* ==========================
+   HITANSH CAB V13 PRO PLUS
+========================== */
 
-// ================= SETTINGS =================
+document.addEventListener("DOMContentLoaded", () => {
 
-const WHATSAPP_NUMBER = "916353886346";
+const fareBtn = document.getElementById("searchFareBtn");
+const topBtn = document.getElementById("topBtn");
 
-const BASE_FARE = {
-    Sedan: 1700,
-    SUV: 2399
-};
+const fares = {
 
-// ================= POPULAR ROUTES =================
+"Vadodara-Ahmedabad": { Sedan:1700, SUV:2399 },
 
-const ROUTES = {
+"Vadodara-Surat": { Sedan:2200, SUV:2699 },
 
-"Vadodara-Ahmedabad": {
-distance:111,
-sedan:1700,
-suv:2399,
-time:"2 Hr"
-},
+"Vadodara-Rajkot": { Sedan:3700, SUV:4399 },
 
-"Ahmedabad-Vadodara": {
-distance:111,
-sedan:1700,
-suv:2399,
-time:"2 Hr"
-},
+"Vadodara-Jamnagar": { Sedan:6000, SUV:7000 },
 
-"Vadodara-Surat": {
-distance:150,
-sedan:2200,
-suv:2699,
-time:"3 Hr"
-},
+"Vadodara-Dwarka": { Sedan:7500, SUV:8000 },
 
-"Surat-Vadodara": {
-distance:150,
-sedan:2200,
-suv:2699,
-time:"3 Hr"
-},
-
-"Vadodara-Rajkot": {
-distance:300,
-sedan:3700,
-suv:4399,
-time:"6 Hr"
-},
-
-"Rajkot-Vadodara": {
-distance:300,
-sedan:3700,
-suv:4399,
-time:"6 Hr"
-},
-
-"Vadodara-Dwarka": {
-distance:470,
-sedan:7500,
-suv:8000,
-time:"9 Hr"
-},
-
-"Dwarka-Vadodara": {
-distance:470,
-sedan:7500,
-suv:8000,
-time:"9 Hr"
-},
-
-"Vadodara-Somnath": {
-distance:460,
-sedan:7500,
-suv:8000,
-time:"9 Hr"
-},
-
-"Somnath-Vadodara": {
-distance:460,
-sedan:7500,
-suv:8000,
-time:"9 Hr"
-}
+"Vadodara-Somnath": { Sedan:7500, SUV:8000 }
 
 };
 
-// ================= DOM =================
+if(fareBtn){
 
-const pickupInput =
-document.getElementById("pickup");
+fareBtn.addEventListener("click",()=>{
 
-const dropInput =
-document.getElementById("drop");
+const pickup=document.getElementById("pickup").value.trim();
 
-const fareButton =
-document.getElementById("checkFare");
+const drop=document.getElementById("drop").value.trim();
 
-const sedanFare =
-document.getElementById("sedanFare");
+const vehicle=document.getElementById("vehicle").value;
 
-const suvFare =
-document.getElementById("suvFare");
+const key=`${pickup}-${drop}`;
 
-const distanceBox =
-document.getElementById("distance");
+if(fares[key]){
 
-const travelTime =
-document.getElementById("travelTime");
+alert(`Estimated Fare (${vehicle}) : ₹${fares[key][vehicle]}`);
 
-// ================= FORMAT =================
+}else{
 
-function money(price){
-
-return "₹" + Number(price).toLocaleString("en-IN");
+alert("Please contact us for custom fare.\nWhatsApp : 6353886346");
 
 }
-/* ==========================================
-   SMART FARE CALCULATOR
-========================================== */
-
-fareButton.addEventListener("click", calculateFare);
-
-function calculateFare() {
-
-const pickup = pickupInput.value.trim();
-
-const drop = dropInput.value.trim();
-
-if (pickup === "" || drop === "") {
-
-alert("Please select Pickup and Drop City.");
-
-return;
-
-}
-
-if (pickup === drop) {
-
-alert("Pickup and Drop City cannot be same.");
-
-return;
-
-}
-
-const routeKey = pickup + "-" + drop;
-
-if (ROUTES[routeKey]) {
-
-const route = ROUTES[routeKey];
-
-sedanFare.innerHTML = money(route.sedan);
-
-suvFare.innerHTML = money(route.suv);
-
-distanceBox.innerHTML = route.distance + " KM";
-
-travelTime.innerHTML = route.time;
-
-document.getElementById("fromCity").innerHTML = pickup;
-
-document.getElementById("toCity").innerHTML = drop;
-
-return;
-
-}
-
-// ================= ESTIMATED FARE =================
-
-const estimatedDistance = 100;
-
-const sedan = Math.round(estimatedDistance * 15);
-
-const suv = Math.round(estimatedDistance * 21);
-
-sedanFare.innerHTML = money(sedan);
-
-suvFare.innerHTML = money(suv);
-
-distanceBox.innerHTML =
-estimatedDistance + " KM (Estimated)";
-
-travelTime.innerHTML =
-Math.round(estimatedDistance / 50) + " Hr";
-
-document.getElementById("fromCity").innerHTML = pickup;
-
-document.getElementById("toCity").innerHTML = drop;
-
-}
-
-/* ==========================================
-   POPULAR ROUTE AUTO FILL
-========================================== */
-
-function selectRoute(from, to) {
-
-pickupInput.value = from;
-
-dropInput.value = to;
-
-calculateFare();
-
-window.scrollTo({
-
-top: document.getElementById("booking").offsetTop - 80,
-
-behavior: "smooth"
 
 });
 
-   }
-/* ==========================================
-   WHATSAPP BOOKING ENGINE
-========================================== */
+}
 
-function bookCab(carType) {
+window.addEventListener("scroll",()=>{
 
-const pickup = pickupInput.value.trim();
-const drop = dropInput.value.trim();
+if(!topBtn) return;
 
-if (pickup === "" || drop === "") {
+if(window.scrollY>300){
 
-alert("Please select Pickup and Drop City first.");
+topBtn.style.display="flex";
 
-return;
+}else{
+
+topBtn.style.display="none";
 
 }
 
-const pickupDate =
-document.getElementById("pickupDate").value;
+});
 
-const pickupTime =
-document.getElementById("pickupTime").value;
+if(topBtn){
 
-const passengers =
-document.getElementById("passenger").value;
+topBtn.addEventListener("click",()=>{
 
-const tripTypeButton =
-document.querySelector(".trip-type button.active");
+window.scrollTo({
 
-const tripType =
-tripTypeButton ? tripTypeButton.innerText : "One Way";
+top:0,
 
-const fare =
-(carType === "SUV")
-? suvFare.innerText
-: sedanFare.innerText;
+behavior:"smooth"
+
+});
+
+});
+
+}
+
+});
+/* ==========================
+   WHATSAPP BOOKING
+========================== */
+
+function sendBooking() {
+
+const name = document.getElementById("name")?.value || "";
+const mobile = document.getElementById("mobile")?.value || "";
+const pickup = document.getElementById("pickup")?.value || "";
+const drop = document.getElementById("drop")?.value || "";
+const date = document.getElementById("pickupDate")?.value || "";
+const time = document.getElementById("pickupTime")?.value || "";
+const vehicle = document.getElementById("vehicle")?.value || "Sedan";
+const trip = document.getElementById("tripType")?.value || "One Way";
 
 const message =
-`🚖 *Hitansh Cab Service Booking*
+`🚖 *New Cab Booking*
 
-🛣 Trip : ${tripType}
+👤 Name : ${name}
+
+📱 Mobile : ${mobile}
 
 📍 Pickup : ${pickup}
 
-📍 Drop : ${drop}
+🏁 Drop : ${drop}
 
-📅 Date : ${pickupDate}
+📅 Date : ${date}
 
-🕒 Time : ${pickupTime}
+🕒 Time : ${time}
 
-🚗 Vehicle : ${carType}
+🚗 Vehicle : ${vehicle}
 
-👥 Passengers : ${passengers}
+🔁 Trip : ${trip}
 
-💰 Fare : ${fare}
-
-Please confirm my booking.`;
+Booking from HitanshCab.in`;
 
 window.open(
-
-"https://wa.me/" +
-WHATSAPP_NUMBER +
-"?text=" +
+"https://wa.me/916353886346?text=" +
 encodeURIComponent(message),
-
 "_blank"
-
 );
 
 }
 
-/* ==========================================
-   TRIP TYPE BUTTONS
-========================================== */
+/* ==========================
+   BOOK CAB BUTTON
+========================== */
 
-const tripButtons =
-document.querySelectorAll(".trip-type button");
+function selectCab(vehicle){
 
-tripButtons.forEach(button=>{
+const vehicleBox = document.getElementById("vehicle");
 
-button.addEventListener("click",()=>{
+if(vehicleBox){
 
-tripButtons.forEach(btn=>{
+vehicleBox.value = vehicle;
 
-btn.classList.remove("active");
+}
 
-});
+document.getElementById("booking")
+.scrollIntoView({
 
-button.classList.add("active");
-
-});
-
-});
-
-/* ==========================================
-   AUTO SELECT DEFAULT
-========================================== */
-
-if(tripButtons.length){
-
-tripButtons[0].classList.add("active");
-
-   }
-/* ==========================================
-   CITY SEARCH & FORM UTILITIES
-========================================== */
-
-// Main Gujarat Cities
-const CITY_DATABASE = [
-
-"Ahmedabad",
-"Vadodara",
-"Surat",
-"Rajkot",
-"Jamnagar",
-"Dwarka",
-"Somnath",
-"Junagadh",
-"Bhavnagar",
-"Amreli",
-"Porbandar",
-"Morbi",
-"Bhuj",
-"Gandhidham",
-"Anjar",
-"Mandvi",
-"Anand",
-"Nadiad",
-"Bharuch",
-"Ankleshwar",
-"Rajpipla",
-"Kevadiya",
-"Godhra",
-"Dahod",
-"Palanpur",
-"Mehsana",
-"Patan",
-"Himmatnagar",
-"Modasa",
-"Navsari",
-"Valsad",
-"Vapi",
-"Saputara",
-"Gandhinagar",
-"Mumbai",
-"Udaipur"
-
-];
-
-// Remove Duplicate Cities
-const cities = [...new Set(CITY_DATABASE)].sort();
-
-/* ==========================================
-   CREATE DATALIST
-========================================== */
-
-const cityList = document.getElementById("cityList");
-
-if(cityList){
-
-cityList.innerHTML = "";
-
-cities.forEach(city=>{
-
-const option = document.createElement("option");
-
-option.value = city;
-
-cityList.appendChild(option);
+behavior:"smooth"
 
 });
 
 }
 
-/* ==========================================
-   INPUT VALIDATION
-========================================== */
+/* ==========================
+   POPULAR ROUTE
+========================== */
 
-[pickupInput, dropInput].forEach(input=>{
+function setRoute(from,to){
 
-input.addEventListener("change",()=>{
+const pickup=document.getElementById("pickup");
 
-input.value = input.value.trim();
+const drop=document.getElementById("drop");
 
-});
+if(pickup) pickup.value=from;
 
-});
+if(drop) drop.value=to;
 
-/* ==========================================
-   SWAP PICKUP & DROP
-========================================== */
+document.getElementById("fare")
+.scrollIntoView({
 
-function swapCities(){
-
-const temp = pickupInput.value;
-
-pickupInput.value = dropInput.value;
-
-dropInput.value = temp;
-
-calculateFare();
-
-}
-
-/* ==========================================
-   RESET FORM
-========================================== */
-
-function resetBookingForm(){
-
-pickupInput.value = "";
-
-dropInput.value = "";
-
-document.getElementById("pickupDate").value = "";
-
-document.getElementById("pickupTime").value = "";
-
-document.getElementById("carType").selectedIndex = 0;
-
-document.getElementById("passenger").selectedIndex = 0;
-
-sedanFare.innerHTML = "₹1700";
-
-suvFare.innerHTML = "₹2399";
-
-distanceBox.innerHTML = "--";
-
-travelTime.innerHTML = "--";
-
-document.getElementById("fromCity").innerHTML = "Pickup City";
-
-document.getElementById("toCity").innerHTML = "Drop City";
-
-}
-
-/* ==========================================
-   ENTER KEY SUPPORT
-========================================== */
-
-[pickupInput, dropInput].forEach(input=>{
-
-input.addEventListener("keypress",function(e){
-
-if(e.key==="Enter"){
-
-e.preventDefault();
-
-calculateFare();
-
-}
-
-});
-
-});
-/* ==========================================
-   SMART FARE ENGINE V11.1
-========================================== */
-
-// Per KM Rates
-const RATE = {
-    Sedan: 15,
-    SUV: 21
-};
-
-// Round Trip Multiplier
-const ROUND_TRIP = 2;
-
-// Calculate Estimated Fare
-function calculateEstimatedFare(distance, car, tripType) {
-
-    let fare = distance * RATE[car];
-
-    // Minimum Fare
-    if (fare < BASE_FARE[car]) {
-        fare = BASE_FARE[car];
-    }
-
-    // Round Trip
-    if (tripType === "Round Trip") {
-        fare = fare * ROUND_TRIP;
-    }
-
-    return Math.round(fare);
-}
-
-/* ==========================================
-   LIVE CAR TYPE CHANGE
-========================================== */
-
-const carTypeSelect =
-document.getElementById("carType");
-
-if (carTypeSelect) {
-
-carTypeSelect.addEventListener("change", () => {
-
-calculateFare();
+behavior:"smooth"
 
 });
 
 }
+/* ==========================
+   MOBILE MENU
+========================== */
 
-/* ==========================================
-   LIVE TRIP TYPE CHANGE
-========================================== */
+const menuBtn = document.querySelector(".menu-toggle");
+const navMenu = document.querySelector(".navbar");
 
-tripButtons.forEach(btn => {
+if (menuBtn && navMenu) {
 
-btn.addEventListener("click", () => {
+  menuBtn.addEventListener("click", () => {
 
-setTimeout(() => {
+    navMenu.classList.toggle("active");
+    menuBtn.classList.toggle("active");
 
-if (
-pickupInput.value !== "" &&
-dropInput.value !== ""
-) {
-
-calculateFare();
+  });
 
 }
 
-},100);
-
-});
-
-});
-
-/* ==========================================
-   SHOW LOADING
-========================================== */
-
-function showLoading(){
-
-fareButton.disabled = true;
-
-fareButton.innerHTML =
-'<i class="fa-solid fa-spinner fa-spin"></i> Calculating...';
-
-}
-
-function hideLoading(){
-
-fareButton.disabled = false;
-
-fareButton.innerHTML =
-'<i class="fa-solid fa-magnifying-glass"></i> CHECK INSTANT FARE';
-
-}
-
-/* ==========================================
-   UPDATE RESULT
-========================================== */
-
-function updateFareResult(route){
-
-showLoading();
-
-setTimeout(()=>{
-
-sedanFare.innerHTML = money(route.sedan);
-
-suvFare.innerHTML = money(route.suv);
-
-distanceBox.innerHTML =
-route.distance + " KM";
-
-travelTime.innerHTML =
-route.time;
-
-hideLoading();
-
-},500);
-
-   }
-/* ==========================================
-   HITANSH CAB SERVICE V11.1 FINAL
-========================================== */
-
-/* ========== PAGE LOADED ========== */
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    console.log("Hitansh Cab Service V11.1 Loaded");
-
-    // Default Pickup Date = Today
-    const pickupDate = document.getElementById("pickupDate");
-
-    if (pickupDate) {
-        const today = new Date().toISOString().split("T")[0];
-        pickupDate.min = today;
-        pickupDate.value = today;
-    }
-
-});
-
-/* ========== SCROLL TO TOP ========== */
-
-const scrollBtn = document.getElementById("scrollTop");
-
-window.addEventListener("scroll", () => {
-
-    if (!scrollBtn) return;
-
-    if (window.scrollY > 400) {
-        scrollBtn.style.display = "flex";
-    } else {
-        scrollBtn.style.display = "none";
-    }
-
-});
-
-if (scrollBtn) {
-
-    scrollBtn.addEventListener("click", () => {
-
-        window.scrollTo({
-
-            top: 0,
-
-            behavior: "smooth"
-
-        });
-
-    });
-
-}
-
-/* ========== FADE ANIMATION ========== */
-
-const observer = new IntersectionObserver((entries) => {
-
-    entries.forEach(entry => {
-
-        if (entry.isIntersecting) {
-
-            entry.target.classList.add("show");
-
-        }
-
-    });
-
-}, {
-
-    threshold: 0.15
-
-});
-
-document.querySelectorAll(".fade-up").forEach(item => {
-
-    observer.observe(item);
-
-});
-
-/* ========== AUTO HIGHLIGHT MENU ========== */
-
-const sections = document.querySelectorAll("section");
-
-const navLinks = document.querySelectorAll(".nav-links a");
-
-window.addEventListener("scroll", () => {
-
-    let current = "";
-
-    sections.forEach(section => {
-
-        const top = section.offsetTop - 120;
-
-        const height = section.clientHeight;
-
-        if (pageYOffset >= top) {
-
-            current = section.getAttribute("id");
-
-        }
-
-    });
-
-    navLinks.forEach(link => {
-
-        link.classList.remove("active");
-
-        if (link.getAttribute("href") === "#" + current) {
-
-            link.classList.add("active");
-
-        }
-
-    });
-
-});
-
-/* ========== PERFORMANCE ========== */
+/* ==========================
+   LOADER
+========================== */
 
 window.addEventListener("load", () => {
 
-    console.log("Website Ready");
+  const loader = document.getElementById("loader");
+
+  if (loader) {
+
+    loader.style.opacity = "0";
+
+    setTimeout(() => {
+
+      loader.style.display = "none";
+
+    }, 500);
+
+  }
 
 });
+
+/* ==========================
+   SMOOTH SCROLL
+========================== */
+
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+
+  link.addEventListener("click", function(e) {
+
+    e.preventDefault();
+
+    const target = document.querySelector(this.getAttribute("href"));
+
+    if (target) {
+
+      target.scrollIntoView({
+
+        behavior: "smooth"
+
+      });
+
+    }
+
+  });
+
+});
+
+/* ==========================
+   SCROLL ANIMATION
+========================== */
+
+const animatedItems = document.querySelectorAll(
+  ".about-card,.cab-card,.fleet-card,.review-card,.why-card"
+);
+
+const observer = new IntersectionObserver((entries) => {
+
+  entries.forEach(entry => {
+
+    if (entry.isIntersecting) {
+
+      entry.target.classList.add("show");
+
+    }
+
+  });
+
+}, {
+
+  threshold: 0.2
+
+});
+
+animatedItems.forEach(item => {
+
+  observer.observe(item);
+
+});
+/* ==========================
+   ANIMATED COUNTERS
+========================== */
+
+const counters = document.querySelectorAll(".counter-box h2");
+
+const counterObserver = new IntersectionObserver((entries) => {
+
+  entries.forEach(entry => {
+
+    if (!entry.isIntersecting) return;
+
+    const counter = entry.target;
+    const target = parseInt(counter.innerText.replace(/\D/g, "")) || 0;
+
+    let count = 0;
+    const step = Math.max(1, Math.ceil(target / 100));
+
+    const timer = setInterval(() => {
+
+      count += step;
+
+      if (count >= target) {
+
+        counter.innerText = counter.innerText.includes("+")
+          ? target + "+"
+          : target;
+
+        clearInterval(timer);
+
+      } else {
+
+        counter.innerText = counter.innerText.includes("+")
+          ? count + "+"
+          : count;
+
+      }
+
+    }, 20);
+
+    counterObserver.unobserve(counter);
+
+  });
+
+});
+
+counters.forEach(counter => {
+
+  counterObserver.observe(counter);
+
+});
+
+/* ==========================
+   REVIEW AUTO SLIDER
+========================== */
+
+const reviewCards = document.querySelectorAll(".review-card");
+
+let reviewIndex = 0;
+
+function rotateReviews() {
+
+  if (reviewCards.length === 0) return;
+
+  reviewCards.forEach(card => {
+
+    card.style.display = "none";
+
+  });
+
+  reviewCards[reviewIndex].style.display = "block";
+
+  reviewIndex++;
+
+  if (reviewIndex >= reviewCards.length) {
+
+    reviewIndex = 0;
+
+  }
+
+}
+
+if (reviewCards.length > 0) {
+
+  rotateReviews();
+
+  setInterval(rotateReviews, 4000);
+
+}
+
+/* ==========================
+   FLOATING BUTTON EFFECT
+========================== */
+
+const floatingButtons = document.querySelectorAll(
+  ".floating-whatsapp,.floating-call"
+);
+
+floatingButtons.forEach(btn => {
+
+  btn.addEventListener("mouseenter", () => {
+
+    btn.style.transform = "scale(1.1)";
+
+  });
+
+  btn.addEventListener("mouseleave", () => {
+
+    btn.style.transform = "scale(1)";
+
+  });
+
+});
+
+/* ==========================
+   CURRENT YEAR
+========================== */
+
+const year = document.getElementById("currentYear");
+
+if (year) {
+
+  year.textContent = new Date().getFullYear();
+
+}
+/* ==========================
+   DYNAMIC FARE CALCULATOR
+========================== */
+
+const fareData = {
+  "Vadodara-Ahmedabad": { distance:110, time:"2 Hr", sedan:1700, suv:2399 },
+  "Vadodara-Surat": { distance:155, time:"3 Hr", sedan:2200, suv:2699 },
+  "Vadodara-Rajkot": { distance:295, time:"5 Hr", sedan:3700, suv:4399 },
+  "Vadodara-Jamnagar": { distance:455, time:"8 Hr", sedan:6000, suv:7000 },
+  "Vadodara-Dwarka": { distance:470, time:"9 Hr", sedan:7500, suv:8000 },
+  "Vadodara-Somnath": { distance:465, time:"9 Hr", sedan:7500, suv:8000 }
+};
+
+function calculateFare() {
+
+  const pickup = document.getElementById("pickup")?.value.trim();
+  const drop = document.getElementById("drop")?.value.trim();
+  const vehicle = document.getElementById("vehicle")?.value || "Sedan";
+
+  if (!pickup || !drop) {
+    alert("Please select Pickup and Drop city.");
+    return;
+  }
+
+  const route = `${pickup}-${drop}`;
+  const data = fareData[route];
+
+  if (!data) {
+    alert("Fare not available for this route. Please contact us on WhatsApp.");
+    return;
+  }
+
+  const fare = vehicle === "SUV" ? data.suv : data.sedan;
+
+  const fareEl = document.getElementById("summaryFare");
+  const distEl = document.getElementById("summaryDistance");
+  const timeEl = document.getElementById("summaryTime");
+  const routeEl = document.getElementById("summaryRoute");
+
+  if (fareEl) fareEl.textContent = `₹${fare}`;
+  if (distEl) distEl.textContent = `${data.distance} KM`;
+  if (timeEl) timeEl.textContent = data.time;
+  if (routeEl) routeEl.textContent = `${pickup} → ${drop}`;
+}
+
+const searchBtn = document.getElementById("searchFareBtn");
+if (searchBtn) {
+  searchBtn.addEventListener("click", calculateFare);
+}
+
+/* ==========================
+   SWAP PICKUP & DROP
+========================== */
+
+function swapRoute() {
+
+  const pickup = document.getElementById("pickup");
+  const drop = document.getElementById("drop");
+
+  if (pickup && drop) {
+    const temp = pickup.value;
+    pickup.value = drop.value;
+    drop.value = temp;
+  }
+
+}
+
+/* ==========================
+   BASIC FORM VALIDATION
+========================== */
+
+const bookingForm = document.getElementById("cabBookingForm");
+
+if (bookingForm) {
+
+  bookingForm.addEventListener("submit", function(e) {
+
+    const name = document.getElementById("name")?.value.trim();
+    const mobile = document.getElementById("mobile")?.value.trim();
+
+    if (!name || mobile.length < 10) {
+
+      e.preventDefault();
+
+      alert("Please enter a valid Name and Mobile Number.");
+
+    }
+
+  });
+
+}
+
+console.log("✅ Hitansh Cab V13 Pro Plus Loaded Successfully");
