@@ -1,718 +1,689 @@
-/*==========================================
- HITANSH CAB SERVICE V14
- PART 1
-==========================================*/
-
-// Route Fare Data
-
-const fareData = {
-
-"vadodara-ahmedabad": {
-sedan:1700,
-suv:2399,
-distance:"110 KM",
-time:"2 Hours"
-},
-
-"vadodara-surat": {
-sedan:2200,
-suv:2699,
-distance:"155 KM",
-time:"3 Hours"
-},
-
-"vadodara-rajkot": {
-sedan:3700,
-suv:4399,
-distance:"300 KM",
-time:"5 Hours"
-},
-
-"vadodara-jamnagar": {
-sedan:6000,
-suv:7000,
-distance:"450 KM",
-time:"8 Hours"
-},
-
-"vadodara-dwarka": {
-sedan:7500,
-suv:8000,
-distance:"520 KM",
-time:"9 Hours"
-},
-
-"vadodara-somnath": {
-sedan:7500,
-suv:8000,
-distance:"510 KM",
-time:"9 Hours"
-}
-
-};
+/*==================================================
+  HITANSH CAB SERVICE V15 ULTIMATE
+  SCRIPT.JS FINAL - PART 1
+==================================================*/
 
-// Search Fare
+document.addEventListener("DOMContentLoaded", () => {
 
-document.getElementById("searchFareBtn").addEventListener("click",function(){
+    /*==============================
+      LOADER
+    ==============================*/
 
-const pickup=document.getElementById("pickup").value.trim();
+    const loader = document.querySelector(".loader");
 
-const drop=document.getElementById("drop").value.trim();
+    window.addEventListener("load", () => {
 
- const key =
-pickup.trim().toLowerCase() + "-" +
-drop.trim().toLowerCase();
+        if (loader) {
 
-const fareData = {
-"vadodara-ahmedabad":{
-sedan:1700,
-suv:2399,
-distance:"110 KM",
-time:"2 Hours"
-},
-"vadodara-surat":{
-sedan:2200,
-suv:2699,
-distance:"155 KM",
-time:"3 Hours"
-},
-"vadodara-rajkot":{
-sedan:3700,
-suv:4399,
-distance:"300 KM",
-time:"5 Hours"
-},
-"vadodara-jamnagar":{
-sedan:6000,
-suv:7000,
-distance:"450 KM",
-time:"8 Hours"
-},
-"vadodara-dwarka":{
-sedan:7500,
-suv:8000,
-distance:"520 KM",
-time:"9 Hours"
-},
-"vadodara-somnath":{
-sedan:7500,
-suv:8000,
-distance:"510 KM",
-time:"9 Hours"
-}
-};
+            setTimeout(() => {
 
-const fare=fareData[key];
+                loader.style.opacity = "0";
+                loader.style.visibility = "hidden";
 
-if(!fare){
+                setTimeout(() => {
 
-alert("Sorry! Fare not available.");
+                    loader.remove();
 
-return;
+                }, 500);
 
-}
+            }, 400);
 
-document.getElementById("fareResult").style.display="grid";
+        }
 
-document.getElementById("sedanFare").innerText=fare.sedan;
+    });
 
-document.getElementById("suvFare").innerText=fare.suv;
+    /*==============================
+      MOBILE MENU
+    ==============================*/
 
-document.getElementById("routeDistance").innerText=fare.distance;
+    const menuBtn = document.querySelector(".menu-toggle");
+    const navMenu = document.querySelector(".nav-links");
 
-document.getElementById("routeTime").innerText=fare.time;
+    if (menuBtn && navMenu) {
 
-document.getElementById("routeName").innerText=pickup+" → "+drop;
+        menuBtn.addEventListener("click", () => {
 
-});
+            navMenu.classList.toggle("active");
 
-// Popular Route Auto Fill
+        });
 
-function fillRoute(pickup,drop){
+        document.querySelectorAll(".nav-links a").forEach(link => {
 
-document.getElementById("pickup").value=pickup;
+            link.addEventListener("click", () => {
 
-document.getElementById("drop").value=drop;
+                navMenu.classList.remove("active");
 
-document.getElementById("fare").scrollIntoView({
+            });
 
-behavior:"smooth"
-
-});
-
-}
-/*==========================================
- HITANSH CAB SERVICE V14
- PART 2
-==========================================*/
-
-// Selected Fare
-
-let selectedFare = 0;
-
-// WhatsApp Booking
-
-function bookCab(vehicle){
-
-const pickup=document.getElementById("pickup").value.trim();
-
-const drop=document.getElementById("drop").value.trim();
-
-const trip=document.getElementById("tripType").value;
-
-const date=document.getElementById("journeyDate").value;
-
-const time=document.getElementById("journeyTime").value;
-
-if(pickup==="" || drop===""){
-
-alert("Please enter Pickup and Drop location.");
-
-return;
-
-}
-
-if(vehicle==="Sedan"){
-
-selectedFare=document.getElementById("sedanFare").innerText;
-
-}else{
-
-selectedFare=document.getElementById("suvFare").innerText;
-
-}
-
-const message=
-
-`🚖 *Hitansh Cab Service*
-
-📍 Pickup : ${pickup}
-
-📍 Drop : ${drop}
-
-🚕 Trip : ${trip}
-
-📅 Date : ${date}
-
-⏰ Time : ${time}
-
-🚗 Vehicle : ${vehicle}
-
-💰 Fare : ₹${selectedFare}
-
-Please confirm my booking.`;
-
-window.open(
-
-"https://wa.me/916353886346?text="+
-
-encodeURIComponent(message),
-
-"_blank"
-
-);
-
-}
-
-// Quick Call
-
-function callNow(){
-
-window.location.href="tel:+916353886346";
-
-}
-
-// WhatsApp Button
-
-function openWhatsApp(){
-
-window.open(
-
-"https://wa.me/916353886346",
-
-"_blank"
-
-);
-
-}
-/*==========================================
- HITANSH CAB SERVICE V14
- PART 3
-==========================================*/
-
-/*============================
- BACK TO TOP BUTTON
-============================*/
-
-const topBtn = document.getElementById("topBtn");
-
-window.addEventListener("scroll", () => {
-
-    if (!topBtn) return;
-
-    if (window.scrollY > 300) {
-
-        topBtn.style.display = "flex";
-
-    } else {
-
-        topBtn.style.display = "none";
+        });
 
     }
 
-});
+    /*==============================
+      STICKY HEADER
+    ==============================*/
 
-topBtn?.addEventListener("click", () => {
+    const header = document.querySelector(".header");
 
-    window.scrollTo({
+    window.addEventListener("scroll", () => {
 
-        top: 0,
+        if (!header) return;
 
-        behavior: "smooth"
+        if (window.scrollY > 60) {
+
+            header.classList.add("sticky");
+
+        } else {
+
+            header.classList.remove("sticky");
+
+        }
+
+    });
+
+    /*==============================
+      SMOOTH SCROLL
+    ==============================*/
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+
+        anchor.addEventListener("click", function(e){
+
+            const target = document.querySelector(this.getAttribute("href"));
+
+            if(target){
+
+                e.preventDefault();
+
+                target.scrollIntoView({
+
+                    behavior:"smooth",
+                    block:"start"
+
+                });
+
+            }
+
+        });
+
+    });
+
+    /*==============================
+      ACTIVE NAVIGATION
+    ==============================*/
+
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll(".nav-links a");
+
+    window.addEventListener("scroll", () => {
+
+        let current = "";
+
+        sections.forEach(section => {
+
+            const top = section.offsetTop - 140;
+
+            if (window.scrollY >= top) {
+
+                current = section.getAttribute("id");
+
+            }
+
+        });
+
+        navLinks.forEach(link => {
+
+            link.classList.remove("active");
+
+            if (link.getAttribute("href") === "#" + current) {
+
+                link.classList.add("active");
+
+            }
+
+        });
 
     });
 
 });
+/*==================================================
+  FARE CALCULATOR + WHATSAPP BOOKING
+==================================================*/
 
-/*============================
- COUNTER ANIMATION
-============================*/
-
-const counters = document.querySelectorAll(".counter");
-
-const runCounter = (counter) => {
-
-    const target = Number(counter.dataset.target);
-
-    let value = 0;
-
-    const speed = Math.max(10, Math.floor(target / 100));
-
-    const timer = setInterval(() => {
-
-        value += speed;
-
-        if (value >= target) {
-
-            value = target;
-
-            clearInterval(timer);
-
-        }
-
-        counter.textContent = value;
-
-    }, 20);
-
+const fareData = {
+  Ahmedabad: { sedan: 1700, suv: 2399 },
+  Surat: { sedan: 2200, suv: 2699 },
+  Rajkot: { sedan: 3700, suv: 4399 },
+  Jamnagar: { sedan: 6000, suv: 7000 },
+  Dwarka: { sedan: 7500, suv: 8000 },
+  Somnath: { sedan: 7500, suv: 8000 }
 };
 
-const counterObserver = new IntersectionObserver((entries) => {
+const fareBtn = document.getElementById("fareBtn");
 
-    entries.forEach(entry => {
+if (fareBtn) {
 
-        if (entry.isIntersecting) {
-
-            runCounter(entry.target);
-
-            counterObserver.unobserve(entry.target);
-
-        }
-
-    });
-
-});
-
-counters.forEach(counter => {
-
-    counterObserver.observe(counter);
-
-});
-
-/*============================
- FADE-UP ANIMATION
-============================*/
-
-const fadeItems = document.querySelectorAll(
-
-".car-card,.review-card,.service-card,.why-card,.contact-card"
-
-);
-
-const fadeObserver = new IntersectionObserver((entries) => {
-
-    entries.forEach(entry => {
-
-        if (entry.isIntersecting) {
-
-            entry.target.classList.add("fade-up");
-
-            fadeObserver.unobserve(entry.target);
-
-        }
-
-    });
-
-}, {
-
-    threshold: 0.15
-
-});
-
-fadeItems.forEach(item => {
-
-    fadeObserver.observe(item);
-
-});
-
-/*============================
- PAGE LOADED
-============================*/
-
-window.addEventListener("load", () => {
-
-    document.body.classList.add("loaded");
-
-    console.log("Hitansh Cab Service V14 Loaded Successfully");
-
-});
-/*==========================================
- HITANSH CAB SERVICE V14
- PART 4
-==========================================*/
-
-/*============================
- DARK MODE
-============================*/
-
-const darkBtn = document.getElementById("darkModeBtn");
-
-if (darkBtn) {
-
-    darkBtn.addEventListener("click", () => {
-
-        document.body.classList.toggle("dark-mode");
-
-        const mode = document.body.classList.contains("dark-mode")
-            ? "dark"
-            : "light";
-
-        localStorage.setItem("theme", mode);
-
-    });
+    fareBtn.addEventListener("click", calculateFare);
 
 }
 
-window.addEventListener("load", () => {
+function calculateFare() {
 
-    if (localStorage.getItem("theme") === "dark") {
+    const pickup =
+    document.getElementById("pickup").value;
 
-        document.body.classList.add("dark-mode");
+    const drop =
+    document.getElementById("drop").value;
 
-    }
+    const vehicle =
+    document.getElementById("vehicle").value;
 
-});
+    const tripType =
+    document.getElementById("tripType").value;
 
-/*============================
- REVIEW AUTO SLIDER
-============================*/
+    const name =
+    document.getElementById("customerName").value.trim();
 
-const reviews = document.querySelectorAll(".review-card");
+    const phone =
+    document.getElementById("customerPhone").value.trim();
 
-let reviewIndex = 0;
+    const pickupDate =
+    document.getElementById("pickupDate").value;
 
-if (reviews.length > 0) {
+    const pickupTime =
+    document.getElementById("pickupTime").value;
 
-    reviews.forEach((card, index) => {
+    const result =
+    document.getElementById("fareResult");
 
-        if (index !== 0) {
+    if (!pickup || !drop) {
 
-            card.style.display = "none";
-
-        }
-
-    });
-
-    setInterval(() => {
-
-        reviews[reviewIndex].style.display = "none";
-
-        reviewIndex++;
-
-        if (reviewIndex >= reviews.length) {
-
-            reviewIndex = 0;
-
-        }
-
-        reviews[reviewIndex].style.display = "block";
-
-    }, 5000);
-
-}
-
-/*============================
- CURRENT LOCATION
-============================*/
-
-function getCurrentLocation() {
-
-    if (!navigator.geolocation) {
-
-        alert("Geolocation is not supported.");
+        result.innerHTML =
+        "<p>Please select Pickup and Drop.</p>";
 
         return;
 
     }
 
-    navigator.geolocation.getCurrentPosition(
+    if (pickup === drop) {
 
-        function(position){
+        result.innerHTML =
+        "<p>Pickup and Drop cannot be the same.</p>";
 
-            alert(
+        return;
 
-                "Location Found\n\nLatitude : " +
+    }
 
-                position.coords.latitude +
+    if (!fareData[drop]) {
 
-                "\nLongitude : " +
+        result.innerHTML =
+        "<p>Fare not available.</p>";
 
-                position.coords.longitude
+        return;
 
-            );
+    }
 
-        },
+    let fare = fareData[drop][vehicle];
 
-        function(){
+    if (tripType === "Round Trip") {
 
-            alert("Unable to fetch your location.");
+        fare = fare * 2;
+
+    }
+
+    const message =
+`🚖 HITANSH CAB SERVICE
+
+Name: ${name}
+
+Mobile: ${phone}
+
+Trip: ${tripType}
+
+Pickup: ${pickup}
+
+Drop: ${drop}
+
+Vehicle: ${vehicle.toUpperCase()}
+
+Pickup Date: ${pickupDate}
+
+Pickup Time: ${pickupTime}
+
+Estimated Fare: ₹${fare}
+
+Please confirm my booking.`;
+
+    result.innerHTML = `
+
+<h2>₹ ${fare}</h2>
+
+<p>${tripType}</p>
+
+<p>${pickup} ➜ ${drop}</p>
+
+<a
+class="booking-btn"
+target="_blank"
+href="https://wa.me/916353886346?text=${encodeURIComponent(message)}">
+
+Book on WhatsApp
+
+</a>
+
+`;
+
+}
+/*==================================================
+  HITANSH CAB SERVICE V15 ULTIMATE
+  SCRIPT.JS FINAL - PART 3
+==================================================*/
+
+/*==============================
+  GALLERY LIGHTBOX
+==============================*/
+
+const galleryImages = document.querySelectorAll(".gallery-grid img");
+
+galleryImages.forEach((image) => {
+
+    image.addEventListener("click", () => {
+
+        const overlay = document.createElement("div");
+        overlay.className = "lightbox";
+
+        overlay.innerHTML = `
+            <div class="lightbox-content">
+                <span class="lightbox-close">&times;</span>
+                <img src="${image.src}" alt="">
+            </div>
+        `;
+
+        document.body.appendChild(overlay);
+
+        overlay.addEventListener("click", function(e){
+
+            if(
+                e.target.classList.contains("lightbox") ||
+                e.target.classList.contains("lightbox-close")
+            ){
+                overlay.remove();
+            }
+
+        });
+
+    });
+
+});
+
+/*==============================
+  SCROLL REVEAL
+==============================*/
+
+const revealItems = document.querySelectorAll(
+
+".fleet-card,.route-card,.review-card,.contact-card,.why-card,.gallery-grid img,.faq-box"
+
+);
+
+function revealElements(){
+
+    const trigger = window.innerHeight - 100;
+
+    revealItems.forEach(item=>{
+
+        const top = item.getBoundingClientRect().top;
+
+        if(top < trigger){
+
+            item.classList.add("show");
 
         }
 
-    );
+    });
 
 }
 
-/*============================
- AUTO SAVE FORM
-============================*/
+window.addEventListener("scroll", revealElements);
 
-const bookingFields = [
+revealElements();
 
-"name",
+/*==============================
+  COUNTER
+==============================*/
 
-"mobile",
+const counters = document.querySelectorAll(".counter");
 
-"pickup",
+counters.forEach(counter=>{
 
-"drop",
+    const target = Number(counter.dataset.target);
 
-"journeyDate",
+    let count = 0;
 
-"journeyTime"
+    const speed = target/100;
 
-];
+    function update(){
 
-bookingFields.forEach(id => {
+        count += speed;
 
-    const field = document.getElementById(id);
+        if(count < target){
 
-    if (!field) return;
+            counter.innerText = Math.floor(count);
 
-    field.addEventListener("input", () => {
+            requestAnimationFrame(update);
 
-        localStorage.setItem(id, field.value);
+        }else{
+
+            counter.innerText = target;
+
+        }
+
+    }
+
+    update();
+
+});
+
+/*==============================
+  BACK TO TOP
+==============================*/
+
+const topButton = document.createElement("button");
+
+topButton.className = "backToTop";
+
+topButton.innerHTML = "↑";
+
+document.body.appendChild(topButton);
+
+window.addEventListener("scroll",()=>{
+
+    if(window.scrollY>400){
+
+        topButton.classList.add("show");
+
+    }else{
+
+        topButton.classList.remove("show");
+
+    }
+
+});
+
+topButton.addEventListener("click",()=>{
+
+    window.scrollTo({
+
+        top:0,
+
+        behavior:"smooth"
 
     });
 
 });
 
-window.addEventListener("load", () => {
+/*==============================
+  AUTO YEAR
+==============================*/
 
-    bookingFields.forEach(id => {
+const year = document.getElementById("year");
 
-        const field = document.getElementById(id);
+if(year){
 
-        if (!field) return;
+    year.textContent = new Date().getFullYear();
 
-        const value = localStorage.getItem(id);
+}
 
-        if (value) {
+/*==============================
+  PAGE READY
+==============================*/
 
-            field.value = value;
+console.log("✅ Hitansh Cab Service V15 Loaded Successfully");
+/*==================================================
+  HITANSH CAB SERVICE V15 ULTIMATE
+  SCRIPT.JS FINAL - PART 4
+==================================================*/
+
+/*==============================
+  IMAGE LAZY LOADING
+==============================*/
+
+document.querySelectorAll("img").forEach((img) => {
+    img.setAttribute("loading", "lazy");
+});
+
+/*==============================
+  BUTTON CLICK EFFECT
+==============================*/
+
+document.querySelectorAll(
+".btn,.booking-btn,.fleet-btn,.fare-btn,.offer-btn"
+).forEach((button) => {
+
+    button.addEventListener("click", () => {
+
+        button.classList.add("clicked");
+
+        setTimeout(() => {
+
+            button.classList.remove("clicked");
+
+        }, 250);
+
+    });
+
+});
+
+/*==============================
+  PHONE NUMBER VALIDATION
+==============================*/
+
+const phoneInput = document.getElementById("customerPhone");
+
+if (phoneInput) {
+
+    phoneInput.addEventListener("input", function () {
+
+        this.value = this.value.replace(/[^0-9]/g, "");
+
+        if (this.value.length > 10) {
+
+            this.value = this.value.slice(0, 10);
 
         }
 
     });
 
+}
+
+/*==============================
+  DISABLE MULTIPLE CLICKS
+==============================*/
+
+const bookingButtons = document.querySelectorAll(".booking-btn");
+
+bookingButtons.forEach(btn => {
+
+    btn.addEventListener("click", () => {
+
+        btn.style.pointerEvents = "none";
+
+        btn.innerHTML = "Opening WhatsApp...";
+
+        setTimeout(() => {
+
+            btn.style.pointerEvents = "auto";
+
+            btn.innerHTML = "Book on WhatsApp";
+
+        }, 3000);
+
+    });
+
 });
 
-/*============================
- MOBILE MENU
-============================*/
+/*==============================
+  PREVENT EMPTY LINKS
+==============================*/
 
-const menuBtn = document.getElementById("menuBtn");
+document.querySelectorAll("a[href='#']").forEach(link => {
 
-const nav = document.querySelector("nav");
+    link.addEventListener("click", function(e){
 
-if (menuBtn && nav) {
+        e.preventDefault();
 
-    menuBtn.addEventListener("click", () => {
+    });
 
-        nav.classList.toggle("active");
+});
+
+/*==============================
+  SIMPLE ERROR HANDLER
+==============================*/
+
+window.addEventListener("error", function(e){
+
+    console.error("JavaScript Error:", e.message);
+
+});
+
+/*==============================
+  PERFORMANCE
+==============================*/
+
+window.addEventListener("pageshow", () => {
+
+    console.log("Hitansh Cab Service Ready");
+
+});
+
+/*==============================
+  END OF PART 4
+==============================*/
+/*==================================================
+  HITANSH CAB SERVICE V15 ULTIMATE
+  SCRIPT.JS FINAL - PART 5
+==================================================*/
+
+/*==============================
+  BOOKING FORM VALIDATION
+==============================*/
+
+const bookingForm = document.getElementById("bookingForm");
+
+if (bookingForm) {
+
+    bookingForm.addEventListener("submit", function (e) {
+
+        e.preventDefault();
+
+        calculateFare();
 
     });
 
 }
 
-/*============================
- BOOKING SUCCESS
-============================*/
+/*==============================
+  SUCCESS MESSAGE
+==============================*/
 
-function bookingSuccess() {
+function showSuccess(message) {
 
-    alert(
+    const toast = document.createElement("div");
 
-"✅ Thank you!\n\nYour booking request has been sent successfully.\n\nOur team will contact you shortly."
+    toast.className = "success-toast";
 
-    );
+    toast.innerHTML = `
+        <i class="fa-solid fa-circle-check"></i>
+        <span>${message}</span>
+    `;
 
-}
-/*==========================================
- HITANSH CAB SERVICE V14
- PART 5 (FINAL)
-==========================================*/
+    document.body.appendChild(toast);
 
-/*============================
- DRIVER STATUS
-============================*/
+    setTimeout(() => {
 
-const driverMessages = [
-"🚖 Driver Available (15 Minutes)",
-"🚖 Driver Available (20 Minutes)",
-"🚖 Driver Available (30 Minutes)",
-"🚖 Cab Ready for Pickup",
-"🚖 Fast Pickup Available"
-];
+        toast.classList.add("show");
 
-function updateDriverStatus(){
+    }, 100);
 
-const box=document.getElementById("driverStatus");
+    setTimeout(() => {
 
-if(!box) return;
+        toast.classList.remove("show");
 
-const random=
-driverMessages[Math.floor(Math.random()*driverMessages.length)];
+        setTimeout(() => {
 
-box.innerHTML=random;
+            toast.remove();
+
+        }, 300);
+
+    }, 3000);
 
 }
 
-setInterval(updateDriverStatus,7000);
+/*==============================
+  COPY PHONE NUMBER
+==============================*/
 
-/*============================
- COUPON CODE
-============================*/
+document.querySelectorAll(".copy-number").forEach(btn => {
 
-function applyCoupon(){
+    btn.addEventListener("click", () => {
 
-const code=document.getElementById("couponCode");
+        navigator.clipboard.writeText("6353886346");
 
-if(!code) return;
+        showSuccess("Phone Number Copied");
 
-const coupon=code.value.trim().toUpperCase();
-
-if(coupon==="HIT10"){
-
-alert("🎉 Coupon Applied\n10% Discount");
-
-}
-
-else if(coupon==="FIRST100"){
-
-alert("🎉 ₹100 Discount Applied");
-
-}
-
-else{
-
-alert("❌ Invalid Coupon");
-
-}
-
-}
-
-/*============================
- LIVE CLOCK
-============================*/
-
-function updateClock(){
-
-const clock=document.getElementById("liveClock");
-
-if(!clock) return;
-
-const now=new Date();
-
-clock.innerHTML=now.toLocaleTimeString("en-IN");
-
-}
-
-setInterval(updateClock,1000);
-
-/*============================
- BOOKING POPUP
-============================*/
-
-function showOffer(){
-
-const popup=document.getElementById("offerPopup");
-
-if(!popup) return;
-
-popup.style.display="block";
-
-}
-
-function closeOffer(){
-
-const popup=document.getElementById("offerPopup");
-
-if(!popup) return;
-
-popup.style.display="none";
-
-}
-
-setTimeout(showOffer,5000);
-
-/*============================
- LOADING
-============================*/
-
-window.addEventListener("load",()=>{
-
-const loader=document.getElementById("loader");
-
-if(loader){
-
-loader.style.display="none";
-
-}
+    });
 
 });
 
-/*============================
- FINAL INIT
-============================*/
+/*==============================
+  CALL BUTTON
+==============================*/
 
-document.addEventListener("DOMContentLoaded",()=>{
+document.querySelectorAll(".call-now").forEach(btn => {
 
-console.log("================================");
+    btn.addEventListener("click", () => {
 
-console.log(" HITANSH CAB SERVICE V14 ");
+        window.location.href = "tel:+916353886346";
 
-console.log(" Website Ready");
-
-console.log("================================");
+    });
 
 });
+
+/*==============================
+  WHATSAPP BUTTON
+==============================*/
+
+document.querySelectorAll(".whatsapp-now").forEach(btn => {
+
+    btn.addEventListener("click", () => {
+
+        window.open(
+            "https://wa.me/916353886346",
+            "_blank"
+        );
+
+    });
+
+});
+
+/*==============================
+  CURRENT DATE
+==============================*/
+
+const pickupDate = document.getElementById("pickupDate");
+
+if (pickupDate) {
+
+    const today = new Date();
+
+    pickupDate.min = today.toISOString().split("T")[0];
+
+}
+
+/*==============================
+  PAGE FINISHED
+==============================*/
+
+console.log("🚖 Hitansh Cab Service V15 Ultimate Loaded Successfully");
+
+showSuccess("Welcome to Hitansh Cab Service");
