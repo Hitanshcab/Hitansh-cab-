@@ -1582,3 +1582,196 @@ img{
 max-width:100%;
 
 }
+/* ==========================================
+   HITANSH CAB SERVICE
+   V13 ULTIMATE - PART 6
+========================================== */
+
+/* ===== Scroll Progress ===== */
+
+#progressBar{
+
+position:fixed;
+top:0;
+left:0;
+width:0%;
+height:5px;
+background:linear-gradient(90deg,#ff6b00,#ff9800);
+z-index:99999;
+transition:.3s;
+
+}
+
+/* ===== Coupon Box ===== */
+
+.coupon-box{
+
+display:flex;
+gap:12px;
+margin-top:20px;
+margin-bottom:20px;
+flex-wrap:wrap;
+
+}
+
+.coupon-box input{
+
+flex:1;
+padding:14px;
+border:2px solid #ff6b00;
+border-radius:10px;
+font-size:16px;
+outline:none;
+
+}
+
+.coupon-box button{
+
+padding:14px 24px;
+border:none;
+background:#ff6b00;
+color:#fff;
+border-radius:10px;
+cursor:pointer;
+font-weight:700;
+transition:.3s;
+
+}
+
+.coupon-box button:hover{
+
+background:#e65c00;
+
+}
+
+/* ===== Driver Status ===== */
+
+#driverStatus{
+
+margin-top:20px;
+padding:16px;
+background:#e8fff0;
+border-left:5px solid #28a745;
+border-radius:10px;
+font-weight:700;
+color:#1b5e20;
+
+}
+
+/* ===== Offer Popup ===== */
+
+#offerPopup{
+
+position:fixed;
+bottom:25px;
+left:25px;
+background:#fff;
+padding:20px;
+width:300px;
+border-radius:16px;
+box-shadow:0 10px 25px rgba(0,0,0,.25);
+z-index:9999;
+animation:popupSlide .5s ease;
+
+}
+
+#offerPopup h3{
+
+color:#ff6b00;
+margin-bottom:10px;
+
+}
+
+#offerPopup button{
+
+margin-top:15px;
+padding:10px 20px;
+border:none;
+background:#ff6b00;
+color:#fff;
+border-radius:8px;
+cursor:pointer;
+
+}
+
+@keyframes popupSlide{
+
+from{
+
+opacity:0;
+transform:translateY(50px);
+
+}
+
+to{
+
+opacity:1;
+transform:translateY(0);
+
+}
+
+}
+
+/* ===== Dark Mode ===== */
+
+.dark-mode{
+
+background:#111;
+color:#eee;
+
+}
+
+.dark-mode header,
+.dark-mode footer,
+.dark-mode .hero-form,
+.dark-mode .booking-form,
+.dark-mode .fleet-card,
+.dark-mode .review-card,
+.dark-mode .contact-card{
+
+background:#1f1f1f;
+color:#fff;
+
+}
+
+.dark-mode input,
+.dark-mode select,
+.dark-mode textarea{
+
+background:#2c2c2c;
+color:#fff;
+border:1px solid #444;
+
+}
+
+/* ===== Counter ===== */
+
+.counter{
+
+font-size:42px;
+font-weight:800;
+color:#ff6b00;
+text-align:center;
+margin-bottom:8px;
+
+}
+
+/* ===== Google Map Button ===== */
+
+.map-btn{
+
+display:inline-block;
+padding:14px 24px;
+background:#0d6efd;
+color:#fff;
+border-radius:10px;
+text-decoration:none;
+font-weight:600;
+transition:.3s;
+
+}
+
+.map-btn:hover{
+
+background:#0b
+   
