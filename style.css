@@ -1,31 +1,23 @@
-/* ==========================================
-   HITANSH CAB SERVICE
-   V13 PRO PLUS
-========================================== */
+/*==========================================
+ HITANSH CAB SERVICE V14
+ PART 1
+==========================================*/
 
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
+scroll-behavior:smooth;
 }
 
 :root{
 
 --primary:#ff6b00;
---secondary:#111111;
---white:#ffffff;
---light:#f7f7f7;
---text:#444444;
---border:#e5e5e5;
+--secondary:#222;
+--white:#fff;
+--light:#f8f8f8;
+--text:#444;
 --shadow:0 10px 30px rgba(0,0,0,.12);
---radius:14px;
---transition:.35s ease;
-
-}
-
-html{
-
-scroll-behavior:smooth;
 
 }
 
@@ -35,7 +27,6 @@ font-family:'Poppins',sans-serif;
 background:#fff;
 color:var(--text);
 line-height:1.6;
-overflow-x:hidden;
 
 }
 
@@ -49,33 +40,27 @@ display:block;
 a{
 
 text-decoration:none;
-color:inherit;
-
-}
-
-ul{
-
-list-style:none;
 
 }
 
 .container{
 
-width:min(1200px,92%);
+width:90%;
+max-width:1200px;
 margin:auto;
 
 }
 
-/* ==========================================
+/*============================
 TOP BAR
-========================================== */
+============================*/
 
 .top-bar{
 
-background:var(--secondary);
+background:#111;
 color:#fff;
 padding:10px 0;
-font-size:14px;
+font-size:15px;
 
 }
 
@@ -84,44 +69,28 @@ font-size:14px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-gap:20px;
 flex-wrap:wrap;
 
 }
 
-.top-left,
-.top-right{
-
-display:flex;
-align-items:center;
-gap:10px;
-
-}
-
-.top-left a{
+.top-bar a{
 
 color:#fff;
+font-weight:600;
 
 }
 
-.top-left i{
-
-color:var(--primary);
-
-}
-
-/* ==========================================
+/*============================
 HEADER
-========================================== */
+============================*/
 
 .header{
 
 position:sticky;
 top:0;
-left:0;
-z-index:999;
 background:#fff;
-box-shadow:0 2px 12px rgba(0,0,0,.08);
+box-shadow:var(--shadow);
+z-index:999;
 
 }
 
@@ -144,16 +113,16 @@ gap:12px;
 
 .logo img{
 
-width:60px;
-height:60px;
-border-radius:50%;
+width:70px;
+height:70px;
+object-fit:contain;
 
 }
 
 .logo h2{
 
-font-size:24px;
 color:var(--primary);
+font-size:28px;
 
 }
 
@@ -164,166 +133,181 @@ color:#777;
 
 }
 
-.navbar{
+/*============================
+MENU
+============================*/
+
+nav ul{
 
 display:flex;
-gap:28px;
+gap:30px;
+list-style:none;
 
 }
 
-.navbar a{
+nav a{
 
+color:#222;
 font-weight:600;
 transition:.3s;
 
 }
 
-.navbar a:hover{
+nav a:hover{
 
 color:var(--primary);
 
 }
 
-.menu-toggle{
-
-display:none;
-background:none;
-border:none;
-font-size:28px;
-cursor:pointer;
-
-}
-
-/* ==========================================
+/*============================
 HERO
-========================================== */
+============================*/
 
 .hero{
 
-background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
-url("images/hero.jpg") center/cover no-repeat;
+position:relative;
+height:90vh;
 
-padding:90px 0;
+background:url("images/hero.jpg")
+center center/cover no-repeat;
+
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
 
 }
 
-.hero-grid{
+.hero-overlay{
 
-display:grid;
-grid-template-columns:1.1fr .9fr;
-gap:50px;
-align-items:center;
+position:absolute;
+inset:0;
+background:rgba(0,0,0,.55);
 
 }
 
 .hero-content{
 
+position:relative;
+z-index:2;
 color:#fff;
 
 }
 
-.hero-content h1{
+.hero h1{
 
 font-size:52px;
-line-height:1.2;
+font-weight:800;
 margin-bottom:20px;
 
 }
 
-.hero-content p{
+.hero p{
 
-font-size:19px;
-margin-bottom:25px;
-
-}
-
-.hero-points{
-
-display:grid;
-gap:12px;
-margin-bottom:30px;
+font-size:22px;
+margin-bottom:35px;
 
 }
 
-.hero-points li{
-
-font-size:18px;
-
-}
-
-.primary-btn{
+.check-fare-btn{
 
 display:inline-block;
-padding:14px 32px;
 background:var(--primary);
 color:#fff;
+padding:18px 45px;
 border-radius:50px;
+font-size:20px;
 font-weight:700;
 transition:.3s;
 
 }
 
-.primary-btn:hover{
+.check-fare-btn:hover{
 
-transform:translateY(-3px);
-
-}
-
-/* ==========================================
-SEARCH CARD
-========================================== */
-
-.hero-form{
-
-background:#fff;
-padding:30px;
-border-radius:18px;
-box-shadow:var(--shadow);
+background:#e55f00;
+transform:translateY(-4px);
 
 }
 
-.hero-form h3{
+/*============================
+SECTION TITLE
+============================*/
+
+.section-title{
 
 text-align:center;
-margin-bottom:20px;
-color:var(--secondary);
+margin-bottom:45px;
 
 }
 
-.hero-form form{
+.section-title h2{
 
+font-size:40px;
+color:#222;
+margin-bottom:10px;
+
+}
+
+.section-title p{
+
+color:#666;
+
+}
+/*==========================================
+ HITANSH CAB SERVICE V14
+ PART 2
+==========================================*/
+
+/*============================
+FARE SECTION
+============================*/
+
+.fare-section{
+padding:80px 0;
+background:#f8f8f8;
+}
+
+#fareForm{
+background:#fff;
+padding:30px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.form-grid{
 display:grid;
-gap:15px;
-
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
 }
 
-.hero-form input,
-.hero-form select{
+.form-grid input,
+.form-grid select{
 
 width:100%;
-padding:14px;
-border:1px solid var(--border);
-border-radius:10px;
-font-size:15px;
+padding:15px;
+border:2px solid #e5e5e5;
+border-radius:12px;
+font-size:16px;
 outline:none;
+transition:.3s;
 
 }
 
-.hero-form input:focus,
-.hero-form select:focus{
+.form-grid input:focus,
+.form-grid select:focus{
 
-border-color:var(--primary);
+border-color:#ff6b00;
 
 }
 
 #searchFareBtn{
 
-padding:15px;
-background:var(--primary);
+background:#ff6b00;
 color:#fff;
 border:none;
-border-radius:10px;
-font-size:17px;
+padding:16px;
+border-radius:12px;
+font-size:18px;
 font-weight:700;
 cursor:pointer;
 transition:.3s;
@@ -333,230 +317,147 @@ transition:.3s;
 #searchFareBtn:hover{
 
 background:#e55f00;
-
-}
-/* ==========================================
-FARE RESULT SECTION
-========================================== */
-
-.fare-result{
-
-padding:80px 0;
-background:#f8f9fb;
+transform:translateY(-3px);
 
 }
 
-.section-title{
+/*============================
+FARE RESULT
+============================*/
 
-text-align:center;
-margin-bottom:50px;
+#fareResult{
 
-}
-
-.section-title span{
-
-color:var(--primary);
-font-weight:700;
-letter-spacing:1px;
-
-}
-
-.section-title h2{
-
-font-size:38px;
-margin:10px 0;
-color:var(--secondary);
-
-}
-
-.section-title p{
-
-color:#777;
-font-size:17px;
-
-}
-
-.result-card{
-
-background:#fff;
-padding:35px;
-border-radius:18px;
-box-shadow:var(--shadow);
-
-}
-
-.route-header{
-
-text-align:center;
-margin-bottom:30px;
-
-}
-
-.route-header h3{
-
-font-size:28px;
-color:var(--secondary);
-
-}
-
-.route-header i{
-
-color:var(--primary);
-margin:0 10px;
-
-}
-
-.route-info{
-
+margin-top:40px;
 display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:20px;
-margin-bottom:35px;
-
-}
-
-.info-box{
-
-background:#fafafa;
-padding:25px;
-text-align:center;
-border-radius:14px;
-border:1px solid var(--border);
-
-}
-
-.info-box i{
-
-font-size:28px;
-color:var(--primary);
-margin-bottom:10px;
-
-}
-
-.info-box h4{
-
-margin-bottom:8px;
-
-}
-
-/* ==========================================
-CAB CARDS
-========================================== */
-
-.cab-grid{
-
-display:grid;
-grid-template-columns:repeat(2,1fr);
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
 gap:30px;
 
 }
 
-.cab-card{
+/*============================
+CAR CARD
+============================*/
+
+.car-card{
 
 background:#fff;
+padding:25px;
 border-radius:18px;
-overflow:hidden;
-box-shadow:var(--shadow);
+box-shadow:0 8px 25px rgba(0,0,0,.08);
 transition:.3s;
+text-align:center;
 
 }
 
-.cab-card:hover{
+.car-card:hover{
 
 transform:translateY(-8px);
 
 }
 
-.cab-card img{
+.car-card img{
 
-height:220px;
-width:100%;
-object-fit:cover;
-
-}
-
-.cab-card h3{
-
-padding:20px 20px 10px;
-font-size:26px;
+width:220px;
+margin:auto;
+margin-bottom:20px;
 
 }
 
-.cab-card ul{
+.car-card h3{
 
-padding:0 20px;
+font-size:28px;
+color:#222;
 
 }
 
-.cab-card li{
+.car-card ul{
+
+list-style:none;
+margin:20px 0;
+
+}
+
+.car-card li{
 
 padding:8px 0;
-border-bottom:1px solid #eee;
+color:#555;
 
 }
 
-.cab-card h2{
+.fare-price{
 
-padding:20px;
-color:var(--primary);
-font-size:34px;
+font-size:36px;
+font-weight:800;
+color:#ff6b00;
+margin:20px 0;
 
 }
+
+/*============================
+BOOK BUTTON
+============================*/
 
 .book-btn{
 
-display:block;
-margin:20px;
-padding:14px;
-text-align:center;
-background:var(--primary);
+width:100%;
+padding:16px;
+border:none;
+background:#28a745;
 color:#fff;
-border-radius:12px;
+font-size:18px;
 font-weight:700;
+border-radius:12px;
+cursor:pointer;
 transition:.3s;
 
 }
 
 .book-btn:hover{
 
-background:#e45f00;
+background:#218838;
 
 }
 
-/* ==========================================
-SERVICE FEATURES
-========================================== */
+/*============================
+ROUTE DETAILS
+============================*/
 
-.service-features{
+.route-details{
 
 display:grid;
-grid-template-columns:repeat(4,1fr);
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 gap:20px;
 margin-top:40px;
 
 }
 
-.feature-item{
+.detail-box{
 
 background:#fff;
-padding:20px;
+padding:25px;
+border-radius:15px;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
 text-align:center;
-border-radius:14px;
-box-shadow:0 4px 12px rgba(0,0,0,.08);
 
 }
 
-.feature-item i{
+.detail-box i{
 
-font-size:24px;
-color:var(--primary);
-margin-bottom:10px;
+font-size:35px;
+color:#ff6b00;
+margin-bottom:12px;
 
 }
 
-/* ==========================================
+.detail-box h4{
+
+margin-bottom:8px;
+
+}
+
+/*============================
 POPULAR ROUTES
-========================================== */
+============================*/
 
 .popular-routes{
 
@@ -568,670 +469,451 @@ padding:80px 0;
 
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
+gap:18px;
 
 }
 
 .route-grid button{
 
 padding:16px;
-border:none;
-border-radius:12px;
 background:#fff;
-box-shadow:var(--shadow);
+border:2px solid #ff6b00;
+border-radius:12px;
 cursor:pointer;
-font-weight:600;
+font-weight:700;
 transition:.3s;
 
 }
 
 .route-grid button:hover{
 
-background:var(--primary);
+background:#ff6b00;
 color:#fff;
 
 }
+/*==========================================
+ HITANSH CAB SERVICE V14
+ PART 3
+==========================================*/
 
-/* ==========================================
+/*============================
 ABOUT SECTION
-========================================== */
+============================*/
 
 .about-section{
-
-padding:80px 0;
+padding:90px 0;
 background:#fff;
-
 }
 
 .about-grid{
-
 display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:25px;
-
+grid-template-columns:1fr 1fr;
+gap:50px;
+align-items:center;
 }
 
-.about-card{
+.about-image img{
+width:100%;
+border-radius:20px;
+box-shadow:0 12px 30px rgba(0,0,0,.15);
+}
 
-padding:30px;
-background:#fafafa;
-border-radius:16px;
-text-align:center;
+.about-content h3{
+font-size:34px;
+color:#222;
+margin-bottom:20px;
+}
+
+.about-content p{
+font-size:17px;
+line-height:1.8;
+color:#555;
+margin-bottom:25px;
+}
+
+.about-features{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+margin-bottom:30px;
+}
+
+.feature{
+display:flex;
+align-items:center;
+gap:10px;
+font-weight:600;
+}
+
+.feature i{
+color:#ff6b00;
+font-size:22px;
+}
+
+/*============================
+PRIMARY BUTTON
+============================*/
+
+.primary-btn{
+display:inline-block;
+padding:15px 35px;
+background:#ff6b00;
+color:#fff;
+border-radius:50px;
+font-weight:700;
 transition:.3s;
-
 }
 
-.about-card:hover{
-
-transform:translateY(-8px);
-box-shadow:var(--shadow);
-
+.primary-btn:hover{
+background:#e55f00;
+transform:translateY(-3px);
 }
 
-.about-card i{
-
-font-size:40px;
-color:var(--primary);
-margin-bottom:18px;
-
-}
-
-.about-card h3{
-
-margin-bottom:12px;
-color:var(--secondary);
-
-}
-
-/* ==========================================
+/*============================
 WHY CHOOSE US
-========================================== */
+============================*/
 
 .why-us{
-
-padding:80px 0;
-background:#f8f9fb;
-
+padding:90px 0;
+background:#f8f8f8;
 }
 
 .why-grid{
-
 display:grid;
-grid-template-columns:repeat(3,1fr);
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:25px;
-
 }
 
 .why-card{
-
 background:#fff;
 padding:30px;
+border-radius:18px;
 text-align:center;
-border-radius:16px;
-box-shadow:0 5px 15px rgba(0,0,0,.08);
+box-shadow:0 10px 25px rgba(0,0,0,.08);
 transition:.3s;
-
 }
 
 .why-card:hover{
-
 transform:translateY(-8px);
-
 }
 
 .why-card i{
-
-font-size:38px;
-color:var(--primary);
-margin-bottom:15px;
-
+font-size:42px;
+color:#ff6b00;
+margin-bottom:18px;
 }
-/* ==========================================
-BOOKING SECTION
-========================================== */
 
-.booking-section{
+.why-card h3{
+margin-bottom:12px;
+color:#222;
+}
 
+.why-card p{
+color:#666;
+}
+
+/*============================
+COUNTER SECTION
+============================*/
+
+.counter-section{
 padding:80px 0;
-background:#ffffff;
-
+background:#ff6b00;
 }
 
-.booking-container{
-
+.counter-grid{
 display:grid;
-grid-template-columns:2fr 1fr;
-gap:35px;
-
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+text-align:center;
 }
 
-.booking-form{
+.counter-box{
+color:#fff;
+}
 
+.counter-box h2{
+font-size:48px;
+font-weight:800;
+margin-bottom:10px;
+}
+
+.counter-box p{
+font-size:18px;
+}
+
+/*============================
+SERVICES
+============================*/
+
+.services{
+padding:90px 0;
+background:#fff;
+}
+
+.service-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+}
+
+.service-card{
 background:#fff;
 padding:35px;
 border-radius:18px;
-box-shadow:var(--shadow);
-
-}
-
-.booking-form form{
-
-display:grid;
-gap:18px;
-
-}
-
-.form-row{
-
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:18px;
-
-}
-
-.form-group{
-
-display:flex;
-flex-direction:column;
-
-}
-
-.form-group label{
-
-font-weight:600;
-margin-bottom:8px;
-color:var(--secondary);
-
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea{
-
-width:100%;
-padding:14px;
-border:1px solid var(--border);
-border-radius:10px;
-font-size:15px;
-font-family:'Poppins',sans-serif;
-outline:none;
+text-align:center;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
 transition:.3s;
-
 }
 
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus{
-
-border-color:var(--primary);
-box-shadow:0 0 0 3px rgba(255,107,0,.15);
-
-}
-
-.form-group textarea{
-
-resize:vertical;
-min-height:120px;
-
-}
-
-.confirm-booking-btn{
-
-padding:16px;
-background:var(--primary);
+.service-card:hover{
+background:#ff6b00;
 color:#fff;
-border:none;
-border-radius:12px;
-font-size:17px;
-font-weight:700;
-cursor:pointer;
+transform:translateY(-8px);
+}
+
+.service-card i{
+font-size:45px;
+color:#ff6b00;
+margin-bottom:18px;
 transition:.3s;
-
 }
 
-.confirm-booking-btn:hover{
-
-background:#e45f00;
-transform:translateY(-2px);
-
+.service-card:hover i{
+color:#fff;
 }
 
-/* ==========================================
-BOOKING SUMMARY
-========================================== */
-
-.booking-summary{
-
-background:#fff;
-padding:30px;
-border-radius:18px;
-box-shadow:var(--shadow);
-position:sticky;
-top:100px;
-height:fit-content;
-
+.service-card h3{
+font-size:22px;
 }
+/*==========================================
+ HITANSH CAB SERVICE V14
+ PART 4
+==========================================*/
 
-.booking-summary h3{
-
-margin-bottom:20px;
-color:var(--secondary);
-
-}
-
-.summary-item{
-
-display:flex;
-justify-content:space-between;
-padding:14px 0;
-border-bottom:1px solid #eee;
-
-}
-
-.summary-item strong{
-
-color:var(--primary);
-
-}
-
-.support-box,
-.guarantee-box{
-
-margin-top:25px;
-padding:18px;
-background:#fafafa;
-border-radius:12px;
-
-}
-
-.support-box h4,
-.guarantee-box h4{
-
-margin-bottom:12px;
-
-}
-
-.guarantee-box ul{
-
-padding-left:18px;
-
-}
-
-.guarantee-box li{
-
-margin-bottom:8px;
-list-style:disc;
-
-}
-
-/* ==========================================
+/*============================
 CUSTOMER REVIEWS
-========================================== */
+============================*/
 
-.review-section{
-
-padding:80px 0;
-background:#f8f9fb;
-
+.reviews-section{
+padding:90px 0;
+background:#f8f8f8;
 }
 
-.review-grid{
-
+.reviews-grid{
 display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:25px;
-
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:30px;
 }
 
 .review-card{
-
 background:#fff;
 padding:30px;
-border-radius:16px;
-box-shadow:var(--shadow);
+border-radius:18px;
+text-align:center;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
 transition:.3s;
-
 }
 
 .review-card:hover{
-
 transform:translateY(-8px);
-
 }
 
-.review-card strong{
-
-display:block;
-margin-top:18px;
-color:var(--primary);
-
-}
-
-/* ==========================================
-FLEET
-========================================== */
-
-.fleet-section{
-
-padding:80px 0;
-background:#fff;
-
-}
-
-.fleet-grid{
-
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:30px;
-
-}
-
-.fleet-card{
-
-background:#fff;
-border-radius:18px;
-overflow:hidden;
-box-shadow:var(--shadow);
-transition:.3s;
-text-align:center;
-
-}
-
-.fleet-card:hover{
-
-transform:translateY(-8px);
-
-}
-
-.fleet-card img{
-
-width:100%;
-height:240px;
+.review-card img{
+width:90px;
+height:90px;
+border-radius:50%;
+margin:0 auto 15px;
 object-fit:cover;
-
+border:4px solid #ff6b00;
 }
 
-.fleet-card h3{
-
-margin:20px 0 10px;
-color:var(--secondary);
-
+.review-card h3{
+margin-bottom:10px;
+color:#222;
 }
 
-.fleet-card p{
+.stars{
+font-size:22px;
+margin-bottom:15px;
+color:#FFD700;
+}
 
-margin-bottom:8px;
+.review-card p{
 color:#666;
-
+line-height:1.7;
 }
 
-.fleet-card .btn{
+/*============================
+GALLERY
+============================*/
 
-display:inline-block;
-margin:20px;
-padding:14px 30px;
-background:var(--primary);
-color:#fff;
-border-radius:10px;
-font-weight:700;
+.gallery-section{
+padding:90px 0;
+background:#fff;
+}
+
+.gallery-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.gallery-grid img{
+width:100%;
+height:230px;
+object-fit:cover;
+border-radius:18px;
+box-shadow:0 8px 20px rgba(0,0,0,.10);
 transition:.3s;
-
+cursor:pointer;
 }
 
-.fleet-card .btn:hover{
-
-background:#e45f00;
-
+.gallery-grid img:hover{
+transform:scale(1.05);
 }
-/* ==========================================
-   CONTACT SECTION
-========================================== */
+
+/*============================
+CONTACT
+============================*/
 
 .contact-section{
-
-padding:80px 0;
-background:#f8f9fb;
-
+padding:90px 0;
+background:#f8f8f8;
 }
 
 .contact-grid{
-
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:35px;
-
 }
 
 .contact-card{
-
 background:#fff;
 padding:35px;
 border-radius:18px;
-box-shadow:var(--shadow);
-
+box-shadow:0 10px 25px rgba(0,0,0,.08);
 }
 
 .contact-card h3{
-
 margin-bottom:20px;
-color:var(--secondary);
-
+color:#ff6b00;
+font-size:28px;
 }
 
-.contact-item{
-
-display:flex;
-align-items:center;
-gap:15px;
-margin-bottom:20px;
-
-}
-
-.contact-item i{
-
-width:50px;
-height:50px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-background:var(--primary);
-color:#fff;
-font-size:20px;
-
-}
-
-.contact-item h4{
-
-margin-bottom:4px;
-
-}
-
-.contact-item a{
-
-color:var(--text);
-
-}
-
-/* ==========================================
-GOOGLE MAP
-========================================== */
-
-.map-section{
-
-padding:0 0 80px;
-
-}
-
-.map-section iframe{
-
-width:100%;
-height:420px;
-border:none;
-border-radius:18px;
-box-shadow:var(--shadow);
-
-}
-
-/* ==========================================
-FAQ
-========================================== */
-
-.faq-section{
-
-padding:80px 0;
-background:#fff;
-
-}
-
-.faq-section details{
-
-background:#f8f9fb;
-padding:18px 20px;
+.contact-card p{
 margin-bottom:15px;
-border-radius:12px;
-cursor:pointer;
-box-shadow:0 4px 12px rgba(0,0,0,.05);
-
-}
-
-.faq-section summary{
-
 font-size:17px;
-font-weight:600;
-color:var(--secondary);
-
+color:#555;
+line-height:1.7;
 }
 
-.faq-section p{
-
-margin-top:12px;
-line-height:1.8;
-
+.contact-card iframe{
+border-radius:15px;
 }
 
-/* ==========================================
+/*============================
 FOOTER
-========================================== */
+============================*/
 
 .footer{
-
 background:#111;
 color:#fff;
-padding:70px 0 25px;
-
+padding:60px 0 25px;
 }
 
 .footer-grid{
-
 display:grid;
-grid-template-columns:repeat(4,1fr);
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:30px;
-margin-bottom:35px;
-
+margin-bottom:30px;
 }
 
 .footer h3{
-
 margin-bottom:18px;
-color:var(--primary);
-
+color:#ff6b00;
 }
 
 .footer ul{
-
-padding:0;
-
+list-style:none;
 }
 
 .footer li{
-
-margin-bottom:10px;
-
+margin-bottom:12px;
 }
 
 .footer a{
-
 color:#ddd;
 transition:.3s;
-
 }
 
 .footer a:hover{
-
-color:var(--primary);
-
+color:#ff6b00;
 }
 
 .footer hr{
-
 border:none;
 border-top:1px solid rgba(255,255,255,.15);
 margin:25px 0;
-
 }
 
-.copyright{
-
+.footer p{
 text-align:center;
-font-size:15px;
-color:#bbb;
-
 }
 
-/* ==========================================
+/*============================
 SOCIAL ICONS
-========================================== */
+============================*/
 
-.social-links{
-
+.social-icons{
 display:flex;
 gap:15px;
 margin-top:20px;
-
 }
 
-.social-links a{
-
+.social-icons a{
 width:45px;
 height:45px;
-border-radius:50%;
 display:flex;
 align-items:center;
 justify-content:center;
-background:#222;
+background:#ff6b00;
 color:#fff;
+border-radius:50%;
 font-size:20px;
 transition:.3s;
-
 }
 
-.social-links a:hover{
-
-background:var(--primary);
-transform:translateY(-4px);
-
+.social-icons a:hover{
+transform:translateY(-5px);
+background:#fff;
+color:#ff6b00;
 }
+/*==========================================
+ HITANSH CAB SERVICE V14
+ PART 5 (FINAL)
+==========================================*/
 
-/* ==========================================
+/*============================
 FLOATING BUTTONS
-========================================== */
+============================*/
 
 .floating-whatsapp,
 .floating-call{
 
 position:fixed;
 right:20px;
-width:58px;
-height:58px;
+width:60px;
+height:60px;
 border-radius:50%;
 display:flex;
 align-items:center;
 justify-content:center;
+font-size:28px;
 color:#fff;
-font-size:24px;
-z-index:9999;
-box-shadow:var(--shadow);
+text-decoration:none;
+box-shadow:0 8px 20px rgba(0,0,0,.25);
+z-index:999;
 transition:.3s;
 
 }
@@ -1245,7 +927,7 @@ background:#25D366;
 
 .floating-call{
 
-bottom:90px;
+bottom:95px;
 background:#ff6b00;
 
 }
@@ -1253,13 +935,13 @@ background:#ff6b00;
 .floating-whatsapp:hover,
 .floating-call:hover{
 
-transform:scale(1.12);
+transform:scale(1.1);
 
 }
 
-/* ==========================================
-TOP BUTTON
-========================================== */
+/*============================
+BACK TO TOP
+============================*/
 
 #topBtn{
 
@@ -1270,256 +952,24 @@ width:55px;
 height:55px;
 border:none;
 border-radius:50%;
-background:var(--primary);
+background:#ff6b00;
 color:#fff;
 font-size:22px;
 cursor:pointer;
 display:none;
-box-shadow:var(--shadow);
-transition:.3s;
+z-index:999;
 
 }
 
 #topBtn:hover{
 
-transform:translateY(-5px);
-
-   }
-/* ==========================================
-   RESPONSIVE DESIGN
-========================================== */
-
-@media (max-width:1200px){
-
-.hero-grid,
-.booking-container,
-.contact-grid{
-
-grid-template-columns:1fr;
+background:#e55f00;
 
 }
 
-.hero-content{
-
-text-align:center;
-
-}
-
-.hero-points{
-
-justify-content:center;
-
-}
-
-}
-
-@media (max-width:992px){
-
-.navbar{
-
-position:fixed;
-top:80px;
-left:-100%;
-width:100%;
-background:#fff;
-flex-direction:column;
-padding:25px;
-box-shadow:0 10px 20px rgba(0,0,0,.1);
-transition:.4s;
-
-}
-
-.navbar.active{
-
-left:0;
-
-}
-
-.menu-toggle{
-
-display:block;
-
-}
-
-.route-info,
-.service-features,
-.about-grid,
-.review-grid,
-.why-grid,
-.footer-grid{
-
-grid-template-columns:repeat(2,1fr);
-
-}
-
-.cab-grid,
-.fleet-grid{
-
-grid-template-columns:1fr;
-
-}
-
-}
-
-@media (max-width:768px){
-
-.hero{
-
-padding:60px 0;
-
-}
-
-.hero-content h1{
-
-font-size:34px;
-
-}
-
-.hero-content p{
-
-font-size:16px;
-
-}
-
-.route-info,
-.service-features,
-.about-grid,
-.review-grid,
-.why-grid,
-.footer-grid,
-.form-row{
-
-grid-template-columns:1fr;
-
-}
-
-.section-title h2{
-
-font-size:30px;
-
-}
-
-.logo h2{
-
-font-size:20px;
-
-}
-
-.logo img{
-
-width:50px;
-height:50px;
-
-}
-
-.booking-summary{
-
-position:static;
-
-}
-
-}
-
-@media (max-width:480px){
-
-.container{
-
-width:94%;
-
-}
-
-.primary-btn,
-.book-btn,
-.confirm-booking-btn,
-#searchFareBtn{
-
-width:100%;
-
-}
-
-.hero-form,
-.booking-form,
-.contact-card{
-
-padding:20px;
-
-}
-
-.hero-content h1{
-
-font-size:28px;
-
-}
-
-.top-left,
-.top-right{
-
-font-size:12px;
-
-}
-
-.floating-whatsapp,
-.floating-call{
-
-width:50px;
-height:50px;
-font-size:20px;
-
-}
-
-}
-
-/* ==========================================
-   ANIMATIONS
-========================================== */
-
-.fade-up{
-
-opacity:0;
-transform:translateY(30px);
-transition:all .6s ease;
-
-}
-
-.fade-up.show{
-
-opacity:1;
-transform:translateY(0);
-
-}
-
-@keyframes float{
-
-0%{
-
-transform:translateY(0);
-
-}
-
-50%{
-
-transform:translateY(-8px);
-
-}
-
-100%{
-
-transform:translateY(0);
-
-}
-
-}
-
-.hero img,
-.fleet-card img{
-
-animation:float 4s ease-in-out infinite;
-
-}
-
-/* ==========================================
-   CUSTOM SCROLLBAR
-========================================== */
+/*============================
+SCROLLBAR
+============================*/
 
 ::-webkit-scrollbar{
 
@@ -1535,175 +985,64 @@ background:#f1f1f1;
 
 ::-webkit-scrollbar-thumb{
 
-background:var(--primary);
+background:#ff6b00;
 border-radius:20px;
 
 }
 
-::-webkit-scrollbar-thumb:hover{
+/*============================
+DARK MODE
+============================*/
 
-background:#e55a00;
+.dark-mode{
+
+background:#121212;
+color:#f5f5f5;
 
 }
 
-/* ==========================================
-   SELECTION
-========================================== */
+.dark-mode .header,
+.dark-mode .car-card,
+.dark-mode .contact-card,
+.dark-mode .review-card,
+.dark-mode .service-card,
+.dark-mode .why-card{
 
-::selection{
-
-background:var(--primary);
+background:#1f1f1f;
 color:#fff;
 
 }
 
-/* ==========================================
-   FINAL OPTIMIZATION
-========================================== */
+.dark-mode input,
+.dark-mode textarea,
+.dark-mode select{
 
-html{
-
-scroll-padding-top:90px;
-
-}
-
-button,
-input,
-select,
-textarea{
-
-font-family:'Poppins',sans-serif;
-
-}
-
-iframe,
-img{
-
-max-width:100%;
-
-}
-/* ==========================================
-   HITANSH CAB SERVICE
-   V13 ULTIMATE - PART 6
-========================================== */
-
-/* ===== Scroll Progress ===== */
-
-#progressBar{
-
-position:fixed;
-top:0;
-left:0;
-width:0%;
-height:5px;
-background:linear-gradient(90deg,#ff6b00,#ff9800);
-z-index:99999;
-transition:.3s;
-
-}
-
-/* ===== Coupon Box ===== */
-
-.coupon-box{
-
-display:flex;
-gap:12px;
-margin-top:20px;
-margin-bottom:20px;
-flex-wrap:wrap;
-
-}
-
-.coupon-box input{
-
-flex:1;
-padding:14px;
-border:2px solid #ff6b00;
-border-radius:10px;
-font-size:16px;
-outline:none;
-
-}
-
-.coupon-box button{
-
-padding:14px 24px;
-border:none;
-background:#ff6b00;
+background:#2b2b2b;
 color:#fff;
-border-radius:10px;
-cursor:pointer;
-font-weight:700;
-transition:.3s;
+border:1px solid #555;
 
 }
 
-.coupon-box button:hover{
+/*============================
+ANIMATIONS
+============================*/
 
-background:#e65c00;
+.fade-up{
 
-}
-
-/* ===== Driver Status ===== */
-
-#driverStatus{
-
-margin-top:20px;
-padding:16px;
-background:#e8fff0;
-border-left:5px solid #28a745;
-border-radius:10px;
-font-weight:700;
-color:#1b5e20;
+animation:fadeUp .8s ease;
 
 }
 
-/* ===== Offer Popup ===== */
+@keyframes fadeUp{
 
-#offerPopup{
-
-position:fixed;
-bottom:25px;
-left:25px;
-background:#fff;
-padding:20px;
-width:300px;
-border-radius:16px;
-box-shadow:0 10px 25px rgba(0,0,0,.25);
-z-index:9999;
-animation:popupSlide .5s ease;
-
-}
-
-#offerPopup h3{
-
-color:#ff6b00;
-margin-bottom:10px;
-
-}
-
-#offerPopup button{
-
-margin-top:15px;
-padding:10px 20px;
-border:none;
-background:#ff6b00;
-color:#fff;
-border-radius:8px;
-cursor:pointer;
-
-}
-
-@keyframes popupSlide{
-
-from{
+0%{
 
 opacity:0;
-transform:translateY(50px);
+transform:translateY(40px);
 
 }
 
-to{
+100%{
 
 opacity:1;
 transform:translateY(0);
@@ -1712,66 +1051,156 @@ transform:translateY(0);
 
 }
 
-/* ===== Dark Mode ===== */
+.zoom-in{
 
-.dark-mode{
-
-background:#111;
-color:#eee;
+animation:zoomIn .6s ease;
 
 }
 
-.dark-mode header,
-.dark-mode footer,
-.dark-mode .hero-form,
-.dark-mode .booking-form,
-.dark-mode .fleet-card,
-.dark-mode .review-card,
-.dark-mode .contact-card{
+@keyframes zoomIn{
 
-background:#1f1f1f;
-color:#fff;
+0%{
+
+transform:scale(.8);
+opacity:0;
 
 }
 
-.dark-mode input,
-.dark-mode select,
-.dark-mode textarea{
+100%{
 
-background:#2c2c2c;
-color:#fff;
-border:1px solid #444;
+transform:scale(1);
+opacity:1;
 
 }
 
-/* ===== Counter ===== */
+}
 
-.counter{
+/*============================
+RESPONSIVE
+============================*/
 
-font-size:42px;
-font-weight:800;
-color:#ff6b00;
-text-align:center;
-margin-bottom:8px;
+@media(max-width:992px){
+
+.about-grid,
+.contact-grid{
+
+grid-template-columns:1fr;
 
 }
 
-/* ===== Google Map Button ===== */
+.hero h1{
 
-.map-btn{
-
-display:inline-block;
-padding:14px 24px;
-background:#0d6efd;
-color:#fff;
-border-radius:10px;
-text-decoration:none;
-font-weight:600;
-transition:.3s;
+font-size:40px;
 
 }
 
-.map-btn:hover{
+}
 
-background:#0b
-   
+@media(max-width:768px){
+
+.header .container{
+
+flex-direction:column;
+gap:15px;
+
+}
+
+nav ul{
+
+flex-direction:column;
+align-items:center;
+gap:15px;
+
+}
+
+.hero{
+
+height:auto;
+padding:90px 20px;
+
+}
+
+.hero h1{
+
+font-size:32px;
+
+}
+
+.hero p{
+
+font-size:18px;
+
+}
+
+.form-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.route-details,
+.counter-grid,
+.service-grid,
+.why-grid,
+.reviews-grid,
+.gallery-grid,
+.footer-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.logo img{
+
+width:55px;
+height:55px;
+
+}
+
+.logo h2{
+
+font-size:22px;
+
+}
+
+.section-title h2{
+
+font-size:30px;
+
+}
+
+}
+
+@media(max-width:480px){
+
+.check-fare-btn,
+.primary-btn,
+.book-btn,
+#searchFareBtn{
+
+width:100%;
+
+}
+
+.hero h1{
+
+font-size:28px;
+
+}
+
+.hero p{
+
+font-size:16px;
+
+}
+
+.floating-whatsapp,
+.floating-call{
+
+width:55px;
+height:55px;
+font-size:24px;
+
+}
+
+}
