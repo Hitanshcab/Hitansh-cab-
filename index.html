@@ -1,51 +1,815 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<title>Hitansh Cab Service | Vadodara Taxi | One Way Cab | Airport Taxi | Outstation Cab</title>
 
-<title>
-Hitansh Cab Service | One Way Taxi | Airport Taxi | Vadodara
-</title>
+<meta name="description" content="Book affordable One Way Cab, Airport Taxi, Round Trip and Outstation Taxi from Vadodara with Hitansh Cab Service.">
 
-<meta name="description"
-content="Book One Way Taxi, Airport Taxi and Outstation Cab in Gujarat with Hitansh Cab Service.">
+<meta name="keywords" content="Vadodara Taxi, One Way Cab, Airport Taxi, Ahmedabad Taxi, Surat Taxi, Hitansh Cab Service">
 
-<meta name="keywords"
-content="Vadodara Taxi, One Way Cab, Airport Taxi, Hitansh Cab">
+<meta name="author" content="Hitansh Cab Service">
 
-<meta name="theme-color"
-content="#ff6b00">
+<meta name="robots" content="index,follow">
 
-<link rel="icon"
-href="images/favicon.png">
+<meta name="theme-color" content="#ff7a00">
 
-<link rel="stylesheet"
-href="style.css">
+<link rel="icon" href="images/favicon.png">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
-rel="stylesheet">
+<link rel="manifest" href="manifest.json">
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-<!-- TOP BAR -->
+<!-- Loader -->
 
-<div class="top-bar">
+<div class="loader">
+<div class="spinner"></div>
+</div>
+
+<!-- Header -->
+
+<header class="header">
+
+<div class="topbar">
 
 <div class="container">
 
-<div>
+<div class="top-left">
 
-<i class="fas fa-phone"></i>
+<a href="tel:+916353886346">
+
+<i class="fa-solid fa-phone"></i>
+
++91 63538 86346
+
+</a>
+
+<a href="https://wa.me/916353886346" target="_blank">
+
+<i class="fab fa-whatsapp"></i>
+
+WhatsApp Booking
+
+</a>
+
+</div>
+
+<div class="top-right">
+
+<span>
+
+<i class="fa-solid fa-clock"></i>
+
+24×7 Available
+
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+<nav class="navbar">
+
+<div class="container">
+
+<a href="#" class="logo">
+
+<img src="images/logo.png" alt="Hitansh Cab Service Logo">
+
+<span>HITANSH CAB SERVICE</span>
+
+</a>
+
+<button class="menu-toggle">
+
+<i class="fa-solid fa-bars"></i>
+
+</button>
+
+<ul class="nav-links">
+
+<li><a href="#home">Home</a></li>
+
+<li><a href="#fare">Fare</a></li>
+
+<li><a href="#services">Services</a></li>
+
+<li><a href="#fleet">Fleet</a></li>
+
+<li><a href="#gallery">Gallery</a></li>
+
+<li><a href="#reviews">Reviews</a></li>
+
+<li><a href="#contact">Contact</a></li>
+
+</ul>
+
+<a href="https://wa.me/916353886346"
+
+target="_blank"
+
+class="book-btn">
+
+Book Now
+
+</a>
+
+</div>
+
+</nav>
+
+<!-- Hero -->
+
+<section class="hero" id="home">
+
+<div class="hero-overlay"></div>
+
+<div class="container hero-content">
+
+<h1>
+
+Premium Taxi Service in Vadodara
+
+</h1>
+
+<p>
+
+One Way Cab • Round Trip • Airport Pickup • Outstation Taxi
+
+</p>
+
+<div class="hero-buttons">
+
+<a href="#fare" class="btn">
+
+<i class="fa-solid fa-car"></i>
+
+Check Fare
+
+</a>
+
+<a href="https://wa.me/916353886346"
+
+target="_blank"
+
+class="btn btn-secondary">
+
+<i class="fab fa-whatsapp"></i>
+
+Book on WhatsApp
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+<!-- ===========================
+     BOOKING + FARE CALCULATOR
+=========================== -->
+
+<section class="booking-section" id="fare">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>Book Your Cab Instantly</h2>
+
+<p>Check Fare & Book on WhatsApp in One Click</p>
+
+</div>
+
+<div class="booking-card">
+
+<form id="bookingForm">
+
+<div class="form-row">
+
+<div class="form-group">
+
+<label>Pickup City</label>
+
+<select id="pickup" required>
+
+<option value="">Select Pickup</option>
+
+<option value="Vadodara">Vadodara</option>
+
+</select>
+
+</div>
+
+<div class="form-group">
+
+<label>Drop City</label>
+
+<select id="drop" required>
+
+<option value="">Select Destination</option>
+
+<option value="Ahmedabad">Ahmedabad</option>
+
+<option value="Surat">Surat</option>
+
+<option value="Rajkot">Rajkot</option>
+
+<option value="Jamnagar">Jamnagar</option>
+
+<option value="Dwarka">Dwarka</option>
+
+<option value="Somnath">Somnath</option>
+
+</select>
+
+</div>
+
+</div>
+
+<div class="form-row">
+
+<div class="form-group">
+
+<label>Trip Type</label>
+
+<select id="tripType">
+
+<option value="One Way">One Way</option>
+
+<option value="Round Trip">Round Trip</option>
+
+</select>
+
+</div>
+
+<div class="form-group">
+
+<label>Vehicle</label>
+
+<select id="vehicle">
+
+<option value="sedan">Sedan</option>
+
+<option value="suv">SUV</option>
+
+</select>
+
+</div>
+
+</div>
+
+<div class="form-row">
+
+<div class="form-group">
+
+<label>Pickup Date</label>
+
+<input type="date" id="pickupDate">
+
+</div>
+
+<div class="form-group">
+
+<label>Pickup Time</label>
+
+<input type="time" id="pickupTime">
+
+</div>
+
+</div>
+
+<div class="form-group">
+
+<label>Your Name</label>
+
+<input
+type="text"
+id="customerName"
+placeholder="Enter Your Name">
+
+</div>
+
+<div class="form-group">
+
+<label>Mobile Number</label>
+
+<input
+type="tel"
+id="customerPhone"
+placeholder="Enter Mobile Number">
+
+</div>
+
+<button
+type="button"
+id="fareBtn"
+class="fare-btn">
+
+<i class="fa-solid fa-calculator"></i>
+
+Check Fare
+
+</button>
+
+</form>
+
+<div id="fareResult" class="fare-result">
+
+<h3>Select Route & Click "Check Fare"</h3>
+
+<p>Your fare will appear here.</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===========================
+     POPULAR ROUTES
+=========================== -->
+
+<section class="popular-routes">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>Popular One Way Routes</h2>
+
+<p>Most Booked Destinations</p>
+
+</div>
+
+<div class="route-grid">
+
+<div class="route-card">
+
+<h3>Vadodara → Ahmedabad</h3>
+
+<p>Starting ₹1700</p>
+
+</div>
+
+<div class="route-card">
+
+<h3>Vadodara → Surat</h3>
+
+<p>Starting ₹2200</p>
+
+</div>
+
+<div class="route-card">
+
+<h3>Vadodara → Rajkot</h3>
+
+<p>Starting ₹3700</p>
+
+</div>
+
+<div class="route-card">
+
+<h3>Vadodara → Jamnagar</h3>
+
+<p>Starting ₹6000</p>
+
+</div>
+
+<div class="route-card">
+
+<h3>Vadodara → Dwarka</h3>
+
+<p>Starting ₹7500</p>
+
+</div>
+
+<div class="route-card">
+
+<h3>Vadodara → Somnath</h3>
+
+<p>Starting ₹7500</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<!-- ===========================
+     OUR FLEET
+=========================== -->
+
+<section class="fleet" id="fleet">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>Our Premium Fleet</h2>
+
+<p>Clean • Comfortable • Safe Journey</p>
+
+</div>
+
+<div class="fleet-grid">
+
+<div class="fleet-card">
+
+<img src="images/sedan.jpg" alt="Sedan Cab">
+
+<div class="fleet-content">
+
+<h3>Sedan</h3>
+
+<p>Swift Dzire / Similar</p>
+
+<ul>
+
+<li><i class="fa-solid fa-user-group"></i> 4 Passenger</li>
+
+<li><i class="fa-solid fa-suitcase"></i> 2 Bags</li>
+
+<li><i class="fa-solid fa-snowflake"></i> AC Vehicle</li>
+
+<li><i class="fa-solid fa-shield-halved"></i> Safe Ride</li>
+
+</ul>
+
+<a href="https://wa.me/916353886346?text=I want to book Sedan"
+class="fleet-btn"
+target="_blank">
+
+Book Sedan
+
+</a>
+
+</div>
+
+</div>
+
+<div class="fleet-card">
+
+<img src="images/suv.jpg" alt="SUV Cab">
+
+<div class="fleet-content">
+
+<h3>SUV</h3>
+
+<p>Ertiga / Similar</p>
+
+<ul>
+
+<li><i class="fa-solid fa-user-group"></i> 6-7 Passenger</li>
+
+<li><i class="fa-solid fa-suitcase"></i> Large Luggage</li>
+
+<li><i class="fa-solid fa-snowflake"></i> AC Vehicle</li>
+
+<li><i class="fa-solid fa-road"></i> Long Distance</li>
+
+</ul>
+
+<a href="https://wa.me/916353886346?text=I want to book SUV"
+class="fleet-btn"
+target="_blank">
+
+Book SUV
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===========================
+     WHY CHOOSE US
+=========================== -->
+
+<section class="why-us">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>Why Choose Hitansh Cab Service?</h2>
+
+</div>
+
+<div class="why-grid">
+
+<div class="why-card">
+
+<i class="fa-solid fa-clock"></i>
+
+<h3>24×7 Service</h3>
+
+<p>Available Anytime</p>
+
+</div>
+
+<div class="why-card">
+
+<i class="fa-solid fa-wallet"></i>
+
+<h3>Best Fare</h3>
+
+<p>No Hidden Charges</p>
+
+</div>
+
+<div class="why-card">
+
+<i class="fa-solid fa-shield-heart"></i>
+
+<h3>Verified Driver</h3>
+
+<p>Professional & Experienced</p>
+
+</div>
+
+<div class="why-card">
+
+<i class="fa-solid fa-headset"></i>
+
+<h3>Quick Support</h3>
+
+<p>Instant WhatsApp Booking</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===========================
+     GALLERY
+=========================== -->
+
+<section class="gallery" id="gallery">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>Our Gallery</h2>
+
+<p>Real Photos of Hitansh Cab Service</p>
+
+</div>
+
+<div class="gallery-grid">
+
+<img src="images/gallery1.jpg" alt="Cab">
+
+<img src="images/gallery2.jpg" alt="Taxi">
+
+<img src="images/gallery3.jpg" alt="Sedan">
+
+<img src="images/gallery4.jpg" alt="SUV">
+
+<img src="images/gallery5.jpg" alt="Customer">
+
+<img src="images/gallery6.jpg" alt="Journey">
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===========================
+     DRIVER EXPERIENCE
+=========================== -->
+
+<section class="driver-section">
+
+<div class="container">
+
+<div class="driver-card">
+
+<img src="images/driver.jpg" alt="Driver">
+
+<div class="driver-info">
+
+<h2>Professional Driver</h2>
+
+<p>
+
+Experienced Driver with 8+ Years of Safe Driving Experience.
+
+</p>
+
+<ul>
+
+<li>✔ Verified Driver</li>
+
+<li>✔ On Time Pickup</li>
+
+<li>✔ Clean Vehicle</li>
+
+<li>✔ Friendly Behaviour</li>
+
+<li>✔ Safe & Comfortable Journey</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<!-- ===========================
+     CUSTOMER REVIEWS
+=========================== -->
+
+<section class="reviews" id="reviews">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>What Our Customers Say</h2>
+
+<p>Trusted by Happy Travelers Across Gujarat</p>
+
+</div>
+
+<div class="review-grid">
+
+<div class="review-card">
+
+<div class="stars">★★★★★</div>
+
+<h3>Rahul Patel</h3>
+
+<p>
+Excellent service. Driver arrived on time and the car was very clean.
+Highly recommended.
+</p>
+
+</div>
+
+<div class="review-card">
+
+<div class="stars">★★★★★</div>
+
+<h3>Priya Shah</h3>
+
+<p>
+Booked airport pickup through WhatsApp. Very smooth experience.
+</p>
+
+</div>
+
+<div class="review-card">
+
+<div class="stars">★★★★★</div>
+
+<h3>Amit Mehta</h3>
+
+<p>
+Affordable price and professional driver. Will book again.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===========================
+     FAQ
+=========================== -->
+
+<section class="faq" id="faq">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>Frequently Asked Questions</h2>
+
+</div>
+
+<div class="faq-box">
+
+<h3>Do you provide One Way Taxi?</h3>
+
+<p>Yes, One Way Taxi is available from Vadodara to all major cities.</p>
+
+</div>
+
+<div class="faq-box">
+
+<h3>Is Airport Pickup Available?</h3>
+
+<p>Yes, 24×7 Airport Pickup & Drop service is available.</p>
+
+</div>
+
+<div class="faq-box">
+
+<h3>How do I book?</h3>
+
+<p>Simply click the WhatsApp button and send your trip details.</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===========================
+     SPECIAL OFFER
+=========================== -->
+
+<section class="offer">
+
+<div class="container">
+
+<div class="offer-box">
+
+<h2>🔥 Special Offer</h2>
+
+<p>
+
+Vadodara ➜ Ahmedabad
+
+<strong>Starting ₹1700</strong>
+
+</p>
+
+<a href="https://wa.me/916353886346?text=I want to book Ahmedabad Taxi"
+target="_blank"
+class="offer-btn">
+
+Book Now
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===========================
+     CONTACT
+=========================== -->
+
+<section class="contact" id="contact">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>Contact Us</h2>
+
+<p>We're available 24×7 for bookings.</p>
+
+</div>
+
+<div class="contact-grid">
+
+<div class="contact-card">
+
+<i class="fa-solid fa-phone"></i>
+
+<h3>Call</h3>
 
 <a href="tel:+916353886346">
 
@@ -55,747 +819,14 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 
 </div>
 
-<div>
+<div class="contact-card">
 
 <i class="fab fa-whatsapp"></i>
 
-<a href="https://wa.me/916353886346">
-
-WhatsApp Booking
-
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- HEADER -->
-
-<header class="header">
-
-<div class="container">
-
-<a href="#" class="logo">
-
-<img src="images/logo.png"
-alt="Hitansh Cab Service">
-
-<div>
-
-<h2>Hitansh Cab Service</h2>
-
-<p>One Way • Airport • Round Trip</p>
-
-</div>
-
-</a>
-
-<nav>
-
-<ul>
-
-<li><a href="#home">Home</a></li>
-
-<li><a href="#fare">Fare</a></li>
-
-<li><a href="#about">About</a></li>
-
-<li><a href="#contact">Contact</a></li>
-
-</ul>
-
-</nav>
-
-</div>
-
-</header>
-
-<!-- HERO -->
-
-<section id="home" class="hero">
-
-<div class="hero-overlay"></div>
-
-<div class="container hero-content">
-
-<h1>
-
-Book One Way Taxi Across Gujarat
-
-</h1>
-
-<p>
-
-Affordable Taxi Service with Professional Drivers
-
-</p>
-
-<a href="#fare"
-
-class="check-fare-btn">
-
-🚖 CHECK FARE
-
-</a>
-
-</div>
-
-</section>
-
-<!-- FARE SECTION -->
-
-<section id="fare"
-
-class="fare-section">
-
-<div class="container">
-
-<div class="section-title">
-
-<h2>
-
-Check Your Fare
-
-</h2>
-
-<p>
-
-Select your route to view available taxi fare.
-
-</p>
-
-</div>
-
-<form id="fareForm">
-
-<div class="form-grid">
-
-<input
-type="text"
-id="pickup"
-placeholder="Pickup City"
-required>
-
-<input
-type="text"
-id="drop"
-placeholder="Drop City"
-required>
-
-<select id="tripType">
-
-<option>One Way</option>
-
-<option>Round Trip</option>
-
-</select>
-
-<input
-type="date"
-id="journeyDate"
-required>
-
-<input
-type="time"
-id="journeyTime"
-required>
-
-<button
-type="button"
-id="searchFareBtn">
-
-Search Fare
-
-</button>
-
-</div>
-
-</form>
-
-<!-- Fare Result -->
-
-<div id="fareResult"
-
-style="display:none;">
-
-<h3>
-
-Available Vehicles
-
-  </h3>
-  <!-- ===========================
-SEDAN CARD
-=========================== -->
-
-<div class="car-card">
-
-<img src="images/sedan.png"
-alt="Sedan">
-
-<h3>Sedan</h3>
-
-<ul>
-
-<li>👤 4 Passenger</li>
-
-<li>🧳 2 Bags</li>
-
-<li>❄ Air Conditioned</li>
-
-<li>🚖 Clean & Comfortable</li>
-
-</ul>
-
-<div class="fare-price">
-
-₹ <span id="sedanFare">1700</span>
-
-</div>
-
-<button
-class="book-btn"
-
-onclick="bookCab('Sedan')">
-
-Book Sedan
-
-</button>
-
-</div>
-
-<!-- ===========================
-SUV CARD
-=========================== -->
-
-<div class="car-card">
-
-<img src="images/suv.png"
-alt="SUV">
-
-<h3>SUV</h3>
-
-<ul>
-
-<li>👤 6-7 Passenger</li>
-
-<li>🧳 Large Luggage</li>
-
-<li>❄ Air Conditioned</li>
-
-<li>🚖 Comfortable Ride</li>
-
-</ul>
-
-<div class="fare-price">
-
-₹ <span id="suvFare">2399</span>
-
-</div>
-
-<button
-class="book-btn"
-
-onclick="bookCab('SUV')">
-
-Book SUV
-
-</button>
-
-</div>
-
-</div>
-
-<!-- Route Details -->
-
-<div class="route-details">
-
-<div class="detail-box">
-
-<i class="fas fa-road"></i>
-
-<h4>Distance</h4>
-
-<p id="routeDistance">
-
-110 KM
-
-</p>
-
-</div>
-
-<div class="detail-box">
-
-<i class="fas fa-clock"></i>
-
-<h4>Travel Time</h4>
-
-<p id="routeTime">
-
-2 Hours
-
-</p>
-
-</div>
-
-<div class="detail-box">
-
-<i class="fas fa-location-dot"></i>
-
-<h4>Route</h4>
-
-<p id="routeName">
-
-Vadodara → Ahmedabad
-
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- ===========================
-POPULAR ROUTES
-=========================== -->
-
-<section class="popular-routes">
-
-<div class="container">
-
-<h2>
-
-Popular Routes
-
-</h2>
-
-<div class="route-grid">
-
-<button onclick="fillRoute('Vadodara','Ahmedabad')">
-
-Vadodara → Ahmedabad
-
-</button>
-
-<button onclick="fillRoute('Vadodara','Surat')">
-
-Vadodara → Surat
-
-</button>
-
-<button onclick="fillRoute('Vadodara','Rajkot')">
-
-Vadodara → Rajkot
-
-</button>
-
-<button onclick="fillRoute('Vadodara','Jamnagar')">
-
-Vadodara → Jamnagar
-
-</button>
-
-<button onclick="fillRoute('Vadodara','Dwarka')">
-
-Vadodara → Dwarka
-
-</button>
-
-<button onclick="fillRoute('Vadodara','Somnath')">
-
-Vadodara → Somnath
-
-</button>
-
-</div>
-
-</div>
-
-</section>
-<!-- ===========================
-ABOUT SECTION
-=========================== -->
-
-<section id="about" class="about-section">
-
-<div class="container">
-
-<div class="section-title">
-
-<h2>About Hitansh Cab Service</h2>
-
-<p>Your Trusted Taxi Partner Across Gujarat</p>
-
-</div>
-
-<div class="about-grid">
-
-<div class="about-image">
-
-<img src="images/about.jpg"
-alt="Hitansh Cab Service">
-
-</div>
-
-<div class="about-content">
-
-<h3>Professional Cab Service</h3>
-
-<p>
-
-Hitansh Cab Service provides safe, comfortable and affordable
-One Way Taxi, Airport Transfer, Round Trip and Outstation Taxi
-services across Gujarat.
-
-</p>
-
-<div class="about-features">
-
-<div class="feature">
-
-<i class="fas fa-check-circle"></i>
-
-<span>Verified Drivers</span>
-
-</div>
-
-<div class="feature">
-
-<i class="fas fa-check-circle"></i>
-
-<span>24×7 Support</span>
-
-</div>
-
-<div class="feature">
-
-<i class="fas fa-check-circle"></i>
-
-<span>Clean AC Vehicles</span>
-
-</div>
-
-<div class="feature">
-
-<i class="fas fa-check-circle"></i>
-
-<span>Affordable Pricing</span>
-
-</div>
-
-</div>
+<h3>WhatsApp</h3>
 
 <a href="https://wa.me/916353886346"
-class="primary-btn">
-
-Book on WhatsApp
-
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- ===========================
-WHY CHOOSE US
-=========================== -->
-
-<section class="why-us">
-
-<div class="container">
-
-<div class="section-title">
-
-<h2>Why Choose Hitansh Cab?</h2>
-
-</div>
-
-<div class="why-grid">
-
-<div class="why-card">
-
-<i class="fas fa-user-shield"></i>
-
-<h3>Verified Drivers</h3>
-
-<p>Experienced and professional drivers.</p>
-
-</div>
-
-<div class="why-card">
-
-<i class="fas fa-clock"></i>
-
-<h3>On-Time Pickup</h3>
-
-<p>Always punctual for your journey.</p>
-
-</div>
-
-<div class="why-card">
-
-<i class="fas fa-wallet"></i>
-
-<h3>No Hidden Charges</h3>
-
-<p>Transparent pricing with no surprises.</p>
-
-</div>
-
-<div class="why-card">
-
-<i class="fas fa-headset"></i>
-
-<h3>24×7 Support</h3>
-
-<p>Support whenever you need it.</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- ===========================
-COUNTER SECTION
-=========================== -->
-
-<section class="counter-section">
-
-<div class="container">
-
-<div class="counter-grid">
-
-<div class="counter-box">
-
-<h2 class="counter" data-target="8">0</h2>
-
-<p>Years Experience</p>
-
-</div>
-
-<div class="counter-box">
-
-<h2 class="counter" data-target="5000">0</h2>
-
-<p>Happy Customers</p>
-
-</div>
-
-<div class="counter-box">
-
-<h2 class="counter" data-target="300">0</h2>
-
-<p>Routes Covered</p>
-
-</div>
-
-<div class="counter-box">
-
-<h2>24×7</h2>
-
-<p>Support Available</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- ===========================
-OUR SERVICES
-=========================== -->
-
-<section class="services">
-
-<div class="container">
-
-<div class="section-title">
-
-<h2>Our Services</h2>
-
-</div>
-
-<div class="service-grid">
-
-<div class="service-card">
-
-<i class="fas fa-taxi"></i>
-
-<h3>One Way Taxi</h3>
-
-</div>
-
-<div class="service-card">
-
-<i class="fas fa-plane"></i>
-
-<h3>Airport Pickup & Drop</h3>
-
-</div>
-
-<div class="service-card">
-
-<i class="fas fa-route"></i>
-
-<h3>Round Trip</h3>
-
-</div>
-
-<div class="service-card">
-
-<i class="fas fa-city"></i>
-
-<h3>Outstation Taxi</h3>
-
-</div>
-
-</div>
-
-</div>
-
-  </section>
-  <!-- ===========================
-CUSTOMER REVIEWS
-=========================== -->
-
-<section class="reviews-section">
-
-<div class="container">
-
-<div class="section-title">
-
-<h2>Customer Reviews</h2>
-
-<p>Trusted by thousands of happy customers.</p>
-
-</div>
-
-<div class="reviews-grid">
-
-<div class="review-card">
-
-<img src="images/customer1.jpg" alt="Customer">
-
-<h3>Rahul Patel</h3>
-
-<div class="stars">⭐⭐⭐⭐⭐</div>
-
-<p>
-Excellent service, clean car and polite driver.
-Highly recommended.
-</p>
-
-</div>
-
-<div class="review-card">
-
-<img src="images/customer2.jpg" alt="Customer">
-
-<h3>Neha Shah</h3>
-
-<div class="stars">⭐⭐⭐⭐⭐</div>
-
-<p>
-Very comfortable journey.
-On-time pickup and affordable fare.
-</p>
-
-</div>
-
-<div class="review-card">
-
-<img src="images/customer3.jpg" alt="Customer">
-
-<h3>Amit Kumar</h3>
-
-<div class="stars">⭐⭐⭐⭐⭐</div>
-
-<p>
-Best taxi service in Gujarat.
-Professional drivers.
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- ===========================
-GALLERY
-=========================== -->
-
-<section class="gallery-section">
-
-<div class="container">
-
-<div class="section-title">
-
-<h2>Our Fleet Gallery</h2>
-
-</div>
-
-<div class="gallery-grid">
-
-<img src="images/gallery1.jpg" alt="Gallery">
-
-<img src="images/gallery2.jpg" alt="Gallery">
-
-<img src="images/gallery3.jpg" alt="Gallery">
-
-</div>
-
-</div>
-
-</section>
-
-<!-- ===========================
-CONTACT
-=========================== -->
-
-<section id="contact" class="contact-section">
-
-<div class="container">
-
-<div class="section-title">
-
-<h2>Contact Us</h2>
-
-<p>Book your taxi anytime.</p>
-
-</div>
-
-<div class="contact-grid">
-
-<div class="contact-card">
-
-<h3>Contact Details</h3>
-
-<p>📞 +91 63538 86346</p>
-
-<p>💬 WhatsApp Booking</p>
-
-<p>📧 manishrathava899@gmail.com</p>
-
-<p>📍 Vadodara, Gujarat</p>
-
-<a href="https://wa.me/916353886346"
-class="primary-btn">
+target="_blank">
 
 Book on WhatsApp
 
@@ -805,32 +836,56 @@ Book on WhatsApp
 
 <div class="contact-card">
 
-<h3>Google Map</h3>
+<i class="fa-solid fa-location-dot"></i>
+
+<h3>Address</h3>
+
+<p>
+
+Ajwa Road,
+
+Vadodara,
+
+Gujarat
+
+</p>
+
+</div>
+
+</div>
+
+<div class="map-box">
 
 <iframe
-
-src="https://www.google.com/maps?q=Vadodara,Gujarat&output=embed"
-
+src="https://www.google.com/maps?q=Ajwa+Road+Vadodara&output=embed"
 loading="lazy"
-
-width="100%"
-
-height="300"
-
-style="border:0;border-radius:12px;">
-
+allowfullscreen>
 </iframe>
 
 </div>
 
 </div>
 
-</div>
-
 </section>
 
-<!-- ===========================
-FOOTER
+<!-- Floating Buttons -->
+
+<a href="https://wa.me/916353886346"
+class="floating-whatsapp"
+target="_blank">
+
+<i class="fab fa-whatsapp"></i>
+
+</a>
+
+<a href="tel:+916353886346"
+class="floating-call">
+
+<i class="fa-solid fa-phone"></i>
+
+              </a>
+  <!-- ===========================
+     FOOTER
 =========================== -->
 
 <footer class="footer">
@@ -839,21 +894,25 @@ FOOTER
 
 <div class="footer-grid">
 
-<div>
+<div class="footer-about">
+
+<img src="images/logo.png" alt="Hitansh Cab Service Logo">
 
 <h3>Hitansh Cab Service</h3>
 
 <p>
 
-One Way Taxi | Airport Taxi | Round Trip | Gujarat
+Professional Taxi Service in Vadodara.
+
+One Way Cab • Round Trip • Airport Pickup • Outstation Taxi
 
 </p>
 
 </div>
 
-<div>
+<div class="footer-links">
 
-<h3>Quick Links</h3>
+<h4>Quick Links</h4>
 
 <ul>
 
@@ -861,7 +920,11 @@ One Way Taxi | Airport Taxi | Round Trip | Gujarat
 
 <li><a href="#fare">Fare</a></li>
 
-<li><a href="#about">About</a></li>
+<li><a href="#services">Services</a></li>
+
+<li><a href="#fleet">Fleet</a></li>
+
+<li><a href="#gallery">Gallery</a></li>
 
 <li><a href="#contact">Contact</a></li>
 
@@ -869,19 +932,59 @@ One Way Taxi | Airport Taxi | Round Trip | Gujarat
 
 </div>
 
-<div>
+<div class="footer-contact">
 
-<h3>Follow Us</h3>
+<h4>Contact</h4>
 
-<a href="#"><i class="fab fa-facebook"></i></a>
+<p>
+
+<i class="fa-solid fa-phone"></i>
+
+<a href="tel:+916353886346">
+
++91 63538 86346
+
+</a>
+
+</p>
+
+<p>
+
+<i class="fa-brands fa-whatsapp"></i>
+
+<a href="https://wa.me/916353886346" target="_blank">
+
+WhatsApp Booking
+
+</a>
+
+</p>
+
+<p>
+
+<i class="fa-solid fa-location-dot"></i>
+
+Ajwa Road, Vadodara, Gujarat
+
+</p>
+
+</div>
+
+<div class="footer-social">
+
+<h4>Follow Us</h4>
+
+<div class="social-icons">
+
+<a href="#"><i class="fab fa-facebook-f"></i></a>
 
 <a href="#"><i class="fab fa-instagram"></i></a>
 
-<a href="https://wa.me/916353886346">
+<a href="#"><i class="fab fa-google"></i></a>
 
-<i class="fab fa-whatsapp"></i>
+<a href="#"><i class="fab fa-whatsapp"></i></a>
 
-</a>
+</div>
 
 </div>
 
@@ -889,34 +992,56 @@ One Way Taxi | Airport Taxi | Round Trip | Gujarat
 
 <hr>
 
-<p style="text-align:center;">
+<div class="footer-bottom">
 
-© 2026 Hitansh Cab Service. All Rights Reserved.
+<p>
+
+© <span id="year"></span>
+
+Hitansh Cab Service.
+
+All Rights Reserved.
+
+</p>
+
+<p>
+
+Designed with ❤️ for Safe & Comfortable Travel
 
 </p>
 
 </div>
 
+</div>
+
 </footer>
 
-<!-- Floating Buttons -->
+<!-- ===========================
+     JSON-LD SEO
+=========================== -->
 
-<a href="tel:+916353886346" class="floating-call">
+<script type="application/ld+json">
+{
+"@context":"https://schema.org",
+"@type":"TaxiService",
+"name":"Hitansh Cab Service",
+"url":"https://hitanshcab.in",
+"telephone":"+91 6353886346",
+"address":{
+"@type":"PostalAddress",
+"addressLocality":"Vadodara",
+"addressRegion":"Gujarat",
+"addressCountry":"IN"
+},
+"areaServed":"Gujarat"
+}
+</script>
 
-<i class="fas fa-phone"></i>
-
-</a>
-
-<a href="https://wa.me/916353886346"
-
-class="floating-whatsapp">
-
-<i class="fab fa-whatsapp"></i>
-
-</a>
+<!-- Script -->
 
 <script src="script.js"></script>
 
 </body>
-
 </html>
+
+              
