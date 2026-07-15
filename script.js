@@ -1,7 +1,7 @@
-/*==================================================
-  HITANSH CAB SERVICE V15 ULTIMATE
-  SCRIPT.JS FINAL - PART 1
-==================================================*/
+/*=========================================
+  HITANSH CAB SERVICE V8
+  SCRIPT.JS - PART 1
+=========================================*/
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -12,24 +12,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const loader = document.querySelector(".loader");
 
     window.addEventListener("load", () => {
-
         if (loader) {
+            loader.style.opacity = "0";
+            loader.style.visibility = "hidden";
 
             setTimeout(() => {
-
-                loader.style.opacity = "0";
-                loader.style.visibility = "hidden";
-
-                setTimeout(() => {
-
-                    loader.remove();
-
-                }, 500);
-
-            }, 400);
-
+                loader.remove();
+            }, 500);
         }
-
     });
 
     /*==============================
@@ -37,13 +27,13 @@ document.addEventListener("DOMContentLoaded", () => {
     ==============================*/
 
     const menuBtn = document.querySelector(".menu-toggle");
-    const navMenu = document.querySelector(".nav-links");
+    const navLinks = document.querySelector(".nav-links");
 
-    if (menuBtn && navMenu) {
+    if (menuBtn && navLinks) {
 
         menuBtn.addEventListener("click", () => {
 
-            navMenu.classList.toggle("active");
+            navLinks.classList.toggle("active");
 
         });
 
@@ -51,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             link.addEventListener("click", () => {
 
-                navMenu.classList.remove("active");
+                navLinks.classList.remove("active");
 
             });
 
@@ -69,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!header) return;
 
-        if (window.scrollY > 60) {
+        if (window.scrollY > 50) {
 
             header.classList.add("sticky");
 
@@ -87,18 +77,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
-        anchor.addEventListener("click", function(e){
+        anchor.addEventListener("click", function (e) {
 
             const target = document.querySelector(this.getAttribute("href"));
 
-            if(target){
+            if (target) {
 
                 e.preventDefault();
 
                 target.scrollIntoView({
 
-                    behavior:"smooth",
-                    block:"start"
+                    behavior: "smooth"
 
                 });
 
@@ -109,11 +98,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     /*==============================
-      ACTIVE NAVIGATION
+      ACTIVE MENU
     ==============================*/
 
     const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll(".nav-links a");
 
     window.addEventListener("scroll", () => {
 
@@ -121,9 +109,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         sections.forEach(section => {
 
-            const top = section.offsetTop - 140;
+            const sectionTop = section.offsetTop - 120;
 
-            if (window.scrollY >= top) {
+            if (window.scrollY >= sectionTop) {
 
                 current = section.getAttribute("id");
 
@@ -131,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         });
 
-        navLinks.forEach(link => {
+        document.querySelectorAll(".nav-links a").forEach(link => {
 
             link.classList.remove("active");
 
@@ -146,126 +134,122 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
-/*==================================================
-  FARE CALCULATOR + WHATSAPP BOOKING
-==================================================*/
+/*=========================================
+  HITANSH CAB SERVICE V8
+  SCRIPT.JS - PART 2
+=========================================*/
+
+/*==============================
+  FARE DATA
+==============================*/
 
 const fareData = {
-  Ahmedabad: { sedan: 1700, suv: 2399 },
-  Surat: { sedan: 2200, suv: 2699 },
-  Rajkot: { sedan: 3700, suv: 4399 },
-  Jamnagar: { sedan: 6000, suv: 7000 },
-  Dwarka: { sedan: 7500, suv: 8000 },
-  Somnath: { sedan: 7500, suv: 8000 }
+    Ahmedabad: { sedan: 1700, suv: 2399 },
+    Surat: { sedan: 2200, suv: 2699 },
+    Rajkot: { sedan: 3700, suv: 4399 },
+    Jamnagar: { sedan: 6000, suv: 7000 },
+    Dwarka: { sedan: 7500, suv: 8000 },
+    Somnath: { sedan: 7500, suv: 8000 }
 };
+
+/*==============================
+  FARE BUTTON
+==============================*/
 
 const fareBtn = document.getElementById("fareBtn");
 
 if (fareBtn) {
-
     fareBtn.addEventListener("click", calculateFare);
-
 }
+
+/*==============================
+  CALCULATE FARE
+==============================*/
 
 function calculateFare() {
 
-    const pickup =
-    document.getElementById("pickup").value;
+    const pickup = document.getElementById("pickup").value;
+    const drop = document.getElementById("drop").value;
+    const vehicle = document.getElementById("vehicle").value;
+    const trip = document.getElementById("tripType").value;
 
-    const drop =
-    document.getElementById("drop").value;
+    const name = document.getElementById("customerName").value.trim();
+    const phone = document.getElementById("customerPhone").value.trim();
+    const date = document.getElementById("pickupDate").value;
+    const time = document.getElementById("pickupTime").value;
 
-    const vehicle =
-    document.getElementById("vehicle").value;
-
-    const tripType =
-    document.getElementById("tripType").value;
-
-    const name =
-    document.getElementById("customerName").value.trim();
-
-    const phone =
-    document.getElementById("customerPhone").value.trim();
-
-    const pickupDate =
-    document.getElementById("pickupDate").value;
-
-    const pickupTime =
-    document.getElementById("pickupTime").value;
-
-    const result =
-    document.getElementById("fareResult");
+    const result = document.getElementById("fareResult");
 
     if (!pickup || !drop) {
-
         result.innerHTML =
-        "<p>Please select Pickup and Drop.</p>";
-
+        "<h3>Please select Pickup & Drop location.</h3>";
         return;
-
-    }
-
-    if (pickup === drop) {
-
-        result.innerHTML =
-        "<p>Pickup and Drop cannot be the same.</p>";
-
-        return;
-
     }
 
     if (!fareData[drop]) {
-
         result.innerHTML =
-        "<p>Fare not available.</p>";
-
+        "<h3>Fare not available for this route.</h3>";
         return;
-
     }
 
     let fare = fareData[drop][vehicle];
 
-    if (tripType === "Round Trip") {
-
+    if (trip === "Round Trip") {
         fare = fare * 2;
-
     }
 
+    result.innerHTML = `
+        <h2>Estimated Fare</h2>
+        <h1>₹ ${fare}</h1>
+        <p>${pickup} → ${drop}</p>
+        <p>${trip}</p>
+    `;
+
+    sendWhatsApp(name, phone, pickup, drop, vehicle, trip, date, time, fare);
+}
+
+/*==============================
+  WHATSAPP BOOKING
+==============================*/
+
+function sendWhatsApp(name, phone, pickup, drop, vehicle, trip, date, time, fare) {
+
     const message =
-`🚖 HITANSH CAB SERVICE
+`🚖 *Hitansh Cab Service Booking*
 
-Name: ${name}
+👤 Name: ${name}
 
-Mobile: ${phone}
+📱 Mobile: ${phone}
 
-Trip: ${tripType}
+📍 Pickup: ${pickup}
 
-Pickup: ${pickup}
+📍 Drop: ${drop}
 
-Drop: ${drop}
+🚘 Vehicle: ${vehicle.toUpperCase()}
 
-Vehicle: ${vehicle.toUpperCase()}
+🔁 Trip: ${trip}
 
-Pickup Date: ${pickupDate}
+📅 Date: ${date}
 
-Pickup Time: ${pickupTime}
+🕒 Time: ${time}
 
-Estimated Fare: ₹${fare}
+💰 Estimated Fare: ₹${fare}
 
 Please confirm my booking.`;
 
-    result.innerHTML = `
+    const url =
+"https://wa.me/916353886346?text=" +
+encodeURIComponent(message);
 
-<h2>₹ ${fare}</h2>
+    const result = document.getElementById("fareResult");
 
-<p>${tripType}</p>
+    result.innerHTML += `
 
-<p>${pickup} ➜ ${drop}</p>
+<br><br>
 
-<a
-class="booking-btn"
+<a href="${url}"
 target="_blank"
-href="https://wa.me/916353886346?text=${encodeURIComponent(message)}">
+class="booking-btn">
 
 Book on WhatsApp
 
@@ -274,40 +258,43 @@ Book on WhatsApp
 `;
 
 }
-/*==================================================
-  HITANSH CAB SERVICE V15 ULTIMATE
-  SCRIPT.JS FINAL - PART 3
-==================================================*/
+/*=========================================
+  HITANSH CAB SERVICE V8
+  SCRIPT.JS - PART 3
+=========================================*/
 
 /*==============================
   GALLERY LIGHTBOX
 ==============================*/
 
-const galleryImages = document.querySelectorAll(".gallery-grid img");
+const gallery = document.querySelectorAll(".gallery-grid img");
 
-galleryImages.forEach((image) => {
+gallery.forEach(img => {
 
-    image.addEventListener("click", () => {
+    img.addEventListener("click", () => {
 
-        const overlay = document.createElement("div");
-        overlay.className = "lightbox";
+        const lightbox = document.createElement("div");
 
-        overlay.innerHTML = `
+        lightbox.className = "lightbox";
+
+        lightbox.innerHTML = `
             <div class="lightbox-content">
-                <span class="lightbox-close">&times;</span>
-                <img src="${image.src}" alt="">
+                <span class="close-lightbox">&times;</span>
+                <img src="${img.src}" alt="">
             </div>
         `;
 
-        document.body.appendChild(overlay);
+        document.body.appendChild(lightbox);
 
-        overlay.addEventListener("click", function(e){
+        lightbox.addEventListener("click", (e) => {
 
-            if(
+            if (
                 e.target.classList.contains("lightbox") ||
-                e.target.classList.contains("lightbox-close")
-            ){
-                overlay.remove();
+                e.target.classList.contains("close-lightbox")
+            ) {
+
+                lightbox.remove();
+
             }
 
         });
@@ -317,24 +304,24 @@ galleryImages.forEach((image) => {
 });
 
 /*==============================
-  SCROLL REVEAL
+  SCROLL ANIMATION
 ==============================*/
 
-const revealItems = document.querySelectorAll(
+const animatedItems = document.querySelectorAll(
 
-".fleet-card,.route-card,.review-card,.contact-card,.why-card,.gallery-grid img,.faq-box"
+".service-box,.fleet-card,.route-card,.review-card,.why-card,.contact-card"
 
 );
 
-function revealElements(){
+function revealOnScroll() {
 
     const trigger = window.innerHeight - 100;
 
-    revealItems.forEach(item=>{
+    animatedItems.forEach(item => {
 
         const top = item.getBoundingClientRect().top;
 
-        if(top < trigger){
+        if (top < trigger) {
 
             item.classList.add("show");
 
@@ -344,225 +331,102 @@ function revealElements(){
 
 }
 
-window.addEventListener("scroll", revealElements);
+window.addEventListener("scroll", revealOnScroll);
 
-revealElements();
-
-/*==============================
-  COUNTER
-==============================*/
-
-const counters = document.querySelectorAll(".counter");
-
-counters.forEach(counter=>{
-
-    const target = Number(counter.dataset.target);
-
-    let count = 0;
-
-    const speed = target/100;
-
-    function update(){
-
-        count += speed;
-
-        if(count < target){
-
-            counter.innerText = Math.floor(count);
-
-            requestAnimationFrame(update);
-
-        }else{
-
-            counter.innerText = target;
-
-        }
-
-    }
-
-    update();
-
-});
+revealOnScroll();
 
 /*==============================
   BACK TO TOP
 ==============================*/
 
-const topButton = document.createElement("button");
+const backButton = document.createElement("button");
 
-topButton.className = "backToTop";
+backButton.className = "back-to-top";
 
-topButton.innerHTML = "↑";
+backButton.innerHTML =
+'<i class="fa-solid fa-arrow-up"></i>';
 
-document.body.appendChild(topButton);
+document.body.appendChild(backButton);
 
-window.addEventListener("scroll",()=>{
+window.addEventListener("scroll", () => {
 
-    if(window.scrollY>400){
+    if (window.scrollY > 400) {
 
-        topButton.classList.add("show");
+        backButton.classList.add("show");
 
-    }else{
+    } else {
 
-        topButton.classList.remove("show");
+        backButton.classList.remove("show");
 
     }
 
 });
 
-topButton.addEventListener("click",()=>{
+backButton.addEventListener("click", () => {
 
     window.scrollTo({
 
-        top:0,
+        top: 0,
 
-        behavior:"smooth"
+        behavior: "smooth"
 
     });
 
 });
 
 /*==============================
-  AUTO YEAR
+  AUTO COPYRIGHT YEAR
 ==============================*/
 
 const year = document.getElementById("year");
 
-if(year){
+if (year) {
 
     year.textContent = new Date().getFullYear();
 
 }
 
 /*==============================
-  PAGE READY
-==============================*/
-
-console.log("✅ Hitansh Cab Service V15 Loaded Successfully");
-/*==================================================
-  HITANSH CAB SERVICE V15 ULTIMATE
-  SCRIPT.JS FINAL - PART 4
-==================================================*/
-
-/*==============================
   IMAGE LAZY LOADING
 ==============================*/
 
-document.querySelectorAll("img").forEach((img) => {
-    img.setAttribute("loading", "lazy");
-});
+document.querySelectorAll("img").forEach(image => {
 
-/*==============================
-  BUTTON CLICK EFFECT
-==============================*/
-
-document.querySelectorAll(
-".btn,.booking-btn,.fleet-btn,.fare-btn,.offer-btn"
-).forEach((button) => {
-
-    button.addEventListener("click", () => {
-
-        button.classList.add("clicked");
-
-        setTimeout(() => {
-
-            button.classList.remove("clicked");
-
-        }, 250);
-
-    });
+    image.loading = "lazy";
 
 });
 
 /*==============================
-  PHONE NUMBER VALIDATION
+  PAGE READY
 ==============================*/
 
-const phoneInput = document.getElementById("customerPhone");
+console.log("✅ Hitansh Cab Service V8 Part 3 Loaded");
+/*=========================================
+  HITANSH CAB SERVICE V8
+  SCRIPT.JS - PART 4
+=========================================*/
 
-if (phoneInput) {
+/*==============================
+  PHONE VALIDATION
+==============================*/
 
-    phoneInput.addEventListener("input", function () {
+const phoneField = document.getElementById("customerPhone");
 
-        this.value = this.value.replace(/[^0-9]/g, "");
+if (phoneField) {
+
+    phoneField.addEventListener("input", function () {
+
+        this.value = this.value.replace(/\D/g, "");
 
         if (this.value.length > 10) {
 
-            this.value = this.value.slice(0, 10);
+            this.value = this.value.substring(0, 10);
 
         }
 
     });
 
 }
-
-/*==============================
-  DISABLE MULTIPLE CLICKS
-==============================*/
-
-const bookingButtons = document.querySelectorAll(".booking-btn");
-
-bookingButtons.forEach(btn => {
-
-    btn.addEventListener("click", () => {
-
-        btn.style.pointerEvents = "none";
-
-        btn.innerHTML = "Opening WhatsApp...";
-
-        setTimeout(() => {
-
-            btn.style.pointerEvents = "auto";
-
-            btn.innerHTML = "Book on WhatsApp";
-
-        }, 3000);
-
-    });
-
-});
-
-/*==============================
-  PREVENT EMPTY LINKS
-==============================*/
-
-document.querySelectorAll("a[href='#']").forEach(link => {
-
-    link.addEventListener("click", function(e){
-
-        e.preventDefault();
-
-    });
-
-});
-
-/*==============================
-  SIMPLE ERROR HANDLER
-==============================*/
-
-window.addEventListener("error", function(e){
-
-    console.error("JavaScript Error:", e.message);
-
-});
-
-/*==============================
-  PERFORMANCE
-==============================*/
-
-window.addEventListener("pageshow", () => {
-
-    console.log("Hitansh Cab Service Ready");
-
-});
-
-/*==============================
-  END OF PART 4
-==============================*/
-/*==================================================
-  HITANSH CAB SERVICE V15 ULTIMATE
-  SCRIPT.JS FINAL - PART 5
-==================================================*/
 
 /*==============================
   BOOKING FORM VALIDATION
@@ -576,6 +440,28 @@ if (bookingForm) {
 
         e.preventDefault();
 
+        const name =
+            document.getElementById("customerName").value.trim();
+
+        const phone =
+            document.getElementById("customerPhone").value.trim();
+
+        if (name.length < 3) {
+
+            showToast("Please enter your full name.");
+
+            return;
+
+        }
+
+        if (phone.length !== 10) {
+
+            showToast("Please enter a valid 10 digit mobile number.");
+
+            return;
+
+        }
+
         calculateFare();
 
     });
@@ -583,40 +469,94 @@ if (bookingForm) {
 }
 
 /*==============================
-  SUCCESS MESSAGE
+  SUCCESS TOAST
 ==============================*/
 
-function showSuccess(message) {
+function showToast(message) {
 
-    const toast = document.createElement("div");
+    let toast = document.querySelector(".toast");
 
-    toast.className = "success-toast";
+    if (!toast) {
 
-    toast.innerHTML = `
-        <i class="fa-solid fa-circle-check"></i>
-        <span>${message}</span>
-    `;
+        toast = document.createElement("div");
 
-    document.body.appendChild(toast);
+        toast.className = "toast";
 
-    setTimeout(() => {
+        document.body.appendChild(toast);
 
-        toast.classList.add("show");
+    }
 
-    }, 100);
+    toast.textContent = message;
+
+    toast.classList.add("show");
 
     setTimeout(() => {
 
         toast.classList.remove("show");
 
-        setTimeout(() => {
-
-            toast.remove();
-
-        }, 300);
-
     }, 3000);
 
+}
+
+/*==============================
+  BUTTON CLICK EFFECT
+==============================*/
+
+document.querySelectorAll(
+".btn,.booking-btn,.fare-btn,.fleet-btn"
+).forEach(button => {
+
+    button.addEventListener("click", function () {
+
+        this.classList.add("clicked");
+
+        setTimeout(() => {
+
+            this.classList.remove("clicked");
+
+        }, 200);
+
+    });
+
+});
+
+/*==============================
+  ERROR HANDLER
+==============================*/
+
+window.addEventListener("error", function (e) {
+
+    console.error("Error:", e.message);
+
+});
+
+/*==============================
+  PAGE PERFORMANCE
+==============================*/
+
+window.addEventListener("pageshow", () => {
+
+    console.log("🚖 Hitansh Cab Service Ready");
+
+});
+
+/*==============================
+  END OF PART 4
+==============================*/
+/*=========================================
+  HITANSH CAB SERVICE V8
+  SCRIPT.JS - PART 5 (FINAL)
+=========================================*/
+
+/*==============================
+  SET TODAY AS MIN DATE
+==============================*/
+
+const pickupDateField = document.getElementById("pickupDate");
+
+if (pickupDateField) {
+    const today = new Date().toISOString().split("T")[0];
+    pickupDateField.setAttribute("min", today);
 }
 
 /*==============================
@@ -629,7 +569,7 @@ document.querySelectorAll(".copy-number").forEach(btn => {
 
         navigator.clipboard.writeText("6353886346");
 
-        showSuccess("Phone Number Copied");
+        showToast("Phone Number Copied");
 
     });
 
@@ -667,23 +607,60 @@ document.querySelectorAll(".whatsapp-now").forEach(btn => {
 });
 
 /*==============================
-  CURRENT DATE
+  RESET FORM
 ==============================*/
 
-const pickupDate = document.getElementById("pickupDate");
+const resetButton = document.getElementById("resetForm");
 
-if (pickupDate) {
+if (resetButton && bookingForm) {
 
-    const today = new Date();
+    resetButton.addEventListener("click", () => {
 
-    pickupDate.min = today.toISOString().split("T")[0];
+        bookingForm.reset();
+
+        const fareResult = document.getElementById("fareResult");
+
+        if (fareResult) {
+
+            fareResult.innerHTML = `
+                <h3>Select Route & Click Check Fare</h3>
+                <p>Your fare will appear here.</p>
+            `;
+
+        }
+
+        showToast("Form Reset Successfully");
+
+    });
 
 }
 
 /*==============================
-  PAGE FINISHED
+  NETWORK STATUS
 ==============================*/
 
-console.log("🚖 Hitansh Cab Service V15 Ultimate Loaded Successfully");
+window.addEventListener("offline", () => {
+    showToast("No Internet Connection");
+});
 
-showSuccess("Welcome to Hitansh Cab Service");
+window.addEventListener("online", () => {
+    showToast("Internet Connected");
+});
+
+/*==============================
+  PAGE READY
+==============================*/
+
+window.addEventListener("load", () => {
+
+    console.log("================================");
+    console.log(" HITANSH CAB SERVICE V8 READY ");
+    console.log(" Version : V8 Professional");
+    console.log(" WhatsApp : +91 63538 86346");
+    console.log("================================");
+
+});
+
+/*==============================
+  END OF FILE
+==============================*/
