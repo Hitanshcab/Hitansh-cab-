@@ -7,42 +7,42 @@
 
 const fareData = {
 
-"Vadodara-Ahmedabad": {
+"vadodara-ahmedabad": {
 sedan:1700,
 suv:2399,
 distance:"110 KM",
 time:"2 Hours"
 },
 
-"Vadodara-Surat": {
+"vadodara-surat": {
 sedan:2200,
 suv:2699,
 distance:"155 KM",
 time:"3 Hours"
 },
 
-"Vadodara-Rajkot": {
+"vadodara-rajkot": {
 sedan:3700,
 suv:4399,
 distance:"300 KM",
 time:"5 Hours"
 },
 
-"Vadodara-Jamnagar": {
+"vadodara-jamnagar": {
 sedan:6000,
 suv:7000,
 distance:"450 KM",
 time:"8 Hours"
 },
 
-"Vadodara-Dwarka": {
+"vadodara-dwarka": {
 sedan:7500,
 suv:8000,
 distance:"520 KM",
 time:"9 Hours"
 },
 
-"Vadodara-Somnath": {
+"vadodara-somnath": {
 sedan:7500,
 suv:8000,
 distance:"510 KM",
