@@ -1,531 +1,234 @@
 /* ==========================================
-   HITANSH CAB SERVICE
-   SCRIPT.JS V9.0 ULTRA
-   PART 1
-   LOADER + MENU + SCROLL + UI
+   HITANSH CAB SERVICE V11.1
+   SMART BOOKING ENGINE
 ========================================== */
 
-// ===========================
-// LOADER
-// ===========================
+// ================= SETTINGS =================
 
-window.addEventListener("load", () => {
+const WHATSAPP_NUMBER = "916353886346";
 
-document.body.classList.add("loaded");
+const BASE_FARE = {
+    Sedan: 1700,
+    SUV: 2399
+};
 
-});
+// ================= POPULAR ROUTES =================
 
-// ===========================
-// MOBILE MENU
-// ===========================
+const ROUTES = {
 
-const menuBtn = document.getElementById("menuBtn");
-const navMenu = document.getElementById("navMenu");
+"Vadodara-Ahmedabad": {
+distance:111,
+sedan:1700,
+suv:2399,
+time:"2 Hr"
+},
 
-if(menuBtn){
+"Ahmedabad-Vadodara": {
+distance:111,
+sedan:1700,
+suv:2399,
+time:"2 Hr"
+},
 
-menuBtn.addEventListener("click",()=>{
+"Vadodara-Surat": {
+distance:150,
+sedan:2200,
+suv:2699,
+time:"3 Hr"
+},
 
-navMenu.classList.toggle("active");
+"Surat-Vadodara": {
+distance:150,
+sedan:2200,
+suv:2699,
+time:"3 Hr"
+},
 
-});
+"Vadodara-Rajkot": {
+distance:300,
+sedan:3700,
+suv:4399,
+time:"6 Hr"
+},
 
+"Rajkot-Vadodara": {
+distance:300,
+sedan:3700,
+suv:4399,
+time:"6 Hr"
+},
+
+"Vadodara-Dwarka": {
+distance:470,
+sedan:7500,
+suv:8000,
+time:"9 Hr"
+},
+
+"Dwarka-Vadodara": {
+distance:470,
+sedan:7500,
+suv:8000,
+time:"9 Hr"
+},
+
+"Vadodara-Somnath": {
+distance:460,
+sedan:7500,
+suv:8000,
+time:"9 Hr"
+},
+
+"Somnath-Vadodara": {
+distance:460,
+sedan:7500,
+suv:8000,
+time:"9 Hr"
 }
-
-document.querySelectorAll("#navMenu a").forEach(link=>{
-
-link.addEventListener("click",()=>{
-
-navMenu.classList.remove("active");
-
-});
-
-});
-
-// ===========================
-// HEADER SHADOW
-// ===========================
-
-const header=document.querySelector(".header");
-
-window.addEventListener("scroll",()=>{
-
-if(window.scrollY>30){
-
-header.style.background="rgba(17,17,17,.97)";
-header.style.boxShadow="0 10px 30px rgba(0,0,0,.18)";
-
-}else{
-
-header.style.background="rgba(17,17,17,.92)";
-header.style.boxShadow="none";
-
-}
-
-});
-
-// ===========================
-// SCROLL TO TOP
-// ===========================
-
-const topBtn=document.getElementById("topBtn");
-
-window.addEventListener("scroll",()=>{
-
-if(window.scrollY>500){
-
-topBtn.style.display="flex";
-
-}else{
-
-topBtn.style.display="none";
-
-}
-
-});
-
-if(topBtn){
-
-topBtn.onclick=()=>{
-
-window.scrollTo({
-
-top:0,
-behavior:"smooth"
-
-});
 
 };
 
-}
+// ================= DOM =================
 
-// ===========================
-// AUTO YEAR
-// ===========================
+const pickupInput =
+document.getElementById("pickup");
 
-const year=document.querySelector(".year");
+const dropInput =
+document.getElementById("drop");
 
-if(year){
+const fareButton =
+document.getElementById("checkFare");
 
-year.textContent=new Date().getFullYear();
+const sedanFare =
+document.getElementById("sedanFare");
 
-}
+const suvFare =
+document.getElementById("suvFare");
 
-// ===========================
-// HERO BUTTON
-// ===========================
+const distanceBox =
+document.getElementById("distance");
 
-const heroBookBtn=document.getElementById("heroBookBtn");
+const travelTime =
+document.getElementById("travelTime");
 
-if(heroBookBtn){
+// ================= FORMAT =================
 
-heroBookBtn.addEventListener("click",()=>{
+function money(price){
 
-document.getElementById("booking")
-.scrollIntoView({
-
-behavior:"smooth"
-
-});
-
-});
+return "₹" + Number(price).toLocaleString("en-IN");
 
 }
-
-// ===========================
-// FADE-UP ANIMATION
-// ===========================
-
-const observer=new IntersectionObserver(entries=>{
-
-entries.forEach(entry=>{
-
-if(entry.isIntersecting){
-
-entry.target.classList.add("show");
-
-}
-
-});
-
-});
-
-document.querySelectorAll(
-".service-box,.fleet-card,.why-card,.review-card,.contact-card,.faq-item"
-).forEach(el=>{
-
-el.classList.add("fade-up");
-
-observer.observe(el);
-
-});
-
-console.log("Hitansh Cab Service V9.0 Ultra Loaded");
 /* ==========================================
-   SCRIPT.JS V9.0 ULTRA
-   PART 2
-   SMART SEARCH + ROUTES DATABASE
-========================================== */
-
-// ===========================
-// ROUTES DATABASE
-// ===========================
-
-const routes = {
-
-"Vadodara - Ahmedabad": {
-Sedan:1700,
-SUV:2399,
-"Tempo Traveller":4500
-},
-
-"Vadodara - Surat": {
-Sedan:2200,
-SUV:2699,
-"Tempo Traveller":5200
-},
-
-"Vadodara - Bharuch": {
-Sedan:1200,
-SUV:1700,
-"Tempo Traveller":3200
-},
-
-"Vadodara - Anand": {
-Sedan:900,
-SUV:1400,
-"Tempo Traveller":2600
-},
-
-"Vadodara - Rajkot": {
-Sedan:3700,
-SUV:4399,
-"Tempo Traveller":7200
-},
-
-"Vadodara - Jamnagar": {
-Sedan:6000,
-SUV:7000,
-"Tempo Traveller":11000
-},
-
-"Vadodara - Dwarka": {
-Sedan:7500,
-SUV:8000,
-"Tempo Traveller":12500
-},
-
-"Vadodara - Somnath": {
-Sedan:7500,
-SUV:8000,
-"Tempo Traveller":12500
-},
-
-"Vadodara - Bhavnagar": {
-Sedan:4200,
-SUV:4800,
-"Tempo Traveller":7600
-},
-
-"Vadodara - Gandhinagar": {
-Sedan:1900,
-SUV:2600,
-"Tempo Traveller":4500
-},
-
-"Vadodara - Kevadiya": {
-Sedan:1800,
-SUV:2400,
-"Tempo Traveller":4300
-},
-
-"Vadodara - Mount Abu": {
-Sedan:6500,
-SUV:7600,
-"Tempo Traveller":12000
-},
-
-"Vadodara - Udaipur": {
-Sedan:6000,
-SUV:7200,
-"Tempo Traveller":11500
-},
-
-"Vadodara - Mumbai": {
-Sedan:6999,
-SUV:8999,
-"Tempo Traveller":13500
-}
-
-};
-
-// ===========================
-// SMART SEARCH
-// ===========================
-
-const routeSearch =
-document.getElementById("routeSearch");
-
-const searchResults =
-document.getElementById("searchResults");
-
-const selectedRoute =
-document.getElementById("selectedRoute");
-
-let selectedRouteName = "";
-
-if(routeSearch){
-
-routeSearch.addEventListener("input",function(){
-
-const keyword =
-this.value.toLowerCase().trim();
-
-searchResults.innerHTML="";
-
-if(keyword===""){
-
-searchResults.style.display="none";
-return;
-
-}
-
-const matched =
-Object.keys(routes).filter(route=>
-
-route.toLowerCase().includes(keyword)
-
-);
-
-matched.forEach(route=>{
-
-const item=document.createElement("div");
-
-item.className="search-item";
-
-item.textContent=route;
-
-item.onclick=()=>{
-
-routeSearch.value=route;
-
-selectedRouteName=route;
-
-selectedRoute.innerHTML=
-"Route : "+route;
-
-searchResults.style.display="none";
-
-};
-
-searchResults.appendChild(item);
-
-});
-
-searchResults.style.display=
-matched.length?"block":"none";
-
-});
-
-}
-
-// ===========================
-// CLICK OUTSIDE
-// ===========================
-
-document.addEventListener("click",(e)=>{
-
-if(
-routeSearch &&
-searchResults &&
-!routeSearch.contains(e.target) &&
-!searchResults.contains(e.target)
-){
-
-searchResults.style.display="none";
-
-}
-
-});
-
-console.log("Smart Search Ready");
-/* ==========================================
-   SCRIPT.JS V9.0 ULTRA
-   PART 3
    SMART FARE CALCULATOR
 ========================================== */
 
-const carType = document.getElementById("carType");
-const tripMode = document.getElementById("tripMode");
-const calculateFare = document.getElementById("calculateFare");
-const fareResult = document.getElementById("fareResult");
+fareButton.addEventListener("click", calculateFare);
 
-// ===========================
-// CALCULATE FARE
-// ===========================
+function calculateFare() {
 
-if (calculateFare) {
+const pickup = pickupInput.value.trim();
 
-calculateFare.addEventListener("click", () => {
+const drop = dropInput.value.trim();
 
-if (selectedRouteName === "") {
+if (pickup === "" || drop === "") {
 
-alert("Please select a route first.");
+alert("Please select Pickup and Drop City.");
 
 return;
 
 }
 
-const vehicle = carType.value;
+if (pickup === drop) {
 
-let fare = routes[selectedRouteName][vehicle];
-
-if (!fare) {
-
-fareResult.innerHTML = "N/A";
+alert("Pickup and Drop City cannot be same.");
 
 return;
 
 }
 
-// Round Trip
+const routeKey = pickup + "-" + drop;
 
-if (tripMode.value === "round") {
+if (ROUTES[routeKey]) {
 
-fare = fare * 2;
+const route = ROUTES[routeKey];
 
-}
+sedanFare.innerHTML = money(route.sedan);
 
-animateFare(fare);
+suvFare.innerHTML = money(route.suv);
 
-});
+distanceBox.innerHTML = route.distance + " KM";
 
-}
+travelTime.innerHTML = route.time;
 
-// ===========================
-// FARE ANIMATION
-// ===========================
+document.getElementById("fromCity").innerHTML = pickup;
 
-function animateFare(targetFare){
+document.getElementById("toCity").innerHTML = drop;
 
-let current = 0;
-
-const speed = Math.max(20, Math.floor(targetFare / 80));
-
-const timer = setInterval(()=>{
-
-current += speed;
-
-if(current >= targetFare){
-
-current = targetFare;
-
-clearInterval(timer);
+return;
 
 }
 
-fareResult.innerHTML = "₹" + current.toLocaleString("en-IN");
+// ================= ESTIMATED FARE =================
 
-},15);
+const estimatedDistance = 100;
 
-}
+const sedan = Math.round(estimatedDistance * 15);
 
-// ===========================
-// AUTO UPDATE
-// ===========================
+const suv = Math.round(estimatedDistance * 21);
 
-carType.addEventListener("change",()=>{
+sedanFare.innerHTML = money(sedan);
 
-if(selectedRouteName!==""){
+suvFare.innerHTML = money(suv);
 
-calculateFare.click();
+distanceBox.innerHTML =
+estimatedDistance + " KM (Estimated)";
 
-}
+travelTime.innerHTML =
+Math.round(estimatedDistance / 50) + " Hr";
 
-});
+document.getElementById("fromCity").innerHTML = pickup;
 
-tripMode.addEventListener("change",()=>{
-
-if(selectedRouteName!==""){
-
-calculateFare.click();
+document.getElementById("toCity").innerHTML = drop;
 
 }
 
-});
-
-// ===========================
-// HERO SEARCH AUTO FILL
-// ===========================
-
-const pickupSearch = document.getElementById("pickupSearch");
-const dropSearch = document.getElementById("dropSearch");
-
-if(heroBookBtn){
-
-heroBookBtn.addEventListener("click",()=>{
-
-if(dropSearch.value.trim()!==""){
-
-routeSearch.value =
-"Vadodara - " + dropSearch.value.trim();
-
-routeSearch.dispatchEvent(new Event("input"));
-
-}
-
-});
-
-}
-
-console.log("Fare Calculator Ready");
 /* ==========================================
-   SCRIPT.JS V9.0 ULTRA
-   PART 4
-   WHATSAPP BOOKING SYSTEM
+   POPULAR ROUTE AUTO FILL
 ========================================== */
 
-const bookingForm = document.getElementById("bookingForm");
-const tripType = document.getElementById("tripType");
-const returnDateBox = document.getElementById("returnDateBox");
-const bookNowBtn = document.getElementById("bookNowBtn");
+function selectRoute(from, to) {
 
-// ===========================
-// SHOW / HIDE RETURN DATE
-// ===========================
+pickupInput.value = from;
 
-if (tripType && returnDateBox) {
+dropInput.value = to;
 
-tripType.addEventListener("change", () => {
+calculateFare();
 
-returnDateBox.style.display =
-tripType.value === "Round Trip"
-? "block"
-: "none";
+window.scrollTo({
+
+top: document.getElementById("booking").offsetTop - 80,
+
+behavior: "smooth"
 
 });
 
+   }
+/* ==========================================
+   WHATSAPP BOOKING ENGINE
+========================================== */
+
+function bookCab(carType) {
+
+const pickup = pickupInput.value.trim();
+const drop = dropInput.value.trim();
+
+if (pickup === "" || drop === "") {
+
+alert("Please select Pickup and Drop City first.");
+
+return;
+
 }
-
-// ===========================
-// WHATSAPP BOOKING
-// ===========================
-
-if (bookNowBtn) {
-
-bookNowBtn.addEventListener("click", () => {
-
-const name =
-document.getElementById("customerName").value.trim();
-
-const phone =
-document.getElementById("customerPhone").value.trim();
-
-const pickup =
-document.getElementById("pickupLocation").value.trim();
-
-const drop =
-document.getElementById("dropLocation").value.trim();
 
 const pickupDate =
 document.getElementById("pickupDate").value;
@@ -533,396 +236,479 @@ document.getElementById("pickupDate").value;
 const pickupTime =
 document.getElementById("pickupTime").value;
 
-const vehicle =
-document.getElementById("vehicleType").value;
+const passengers =
+document.getElementById("passenger").value;
 
-const note =
-document.getElementById("note").value.trim();
+const tripTypeButton =
+document.querySelector(".trip-type button.active");
 
-const returnDate =
-document.getElementById("returnDate").value;
+const tripType =
+tripTypeButton ? tripTypeButton.innerText : "One Way";
 
-// Validation
+const fare =
+(carType === "SUV")
+? suvFare.innerText
+: sedanFare.innerText;
 
-if (
-!name ||
-!phone ||
-!pickup ||
-!drop ||
-!pickupDate ||
-!pickupTime
-) {
+const message =
+`🚖 *Hitansh Cab Service Booking*
 
-alert("Please fill all required fields.");
-
-return;
-
-}
-
-let fareText = fareResult.innerText;
-
-if (fareText === "₹0") {
-
-fareText = "Fare will be confirmed";
-
-}
-
-// WhatsApp Message
-
-let message =
-
-`🚖 HITANSH CAB SERVICE
-
-📝 New Booking Request
-
-👤 Name : ${name}
-
-📱 Mobile : ${phone}
+🛣 Trip : ${tripType}
 
 📍 Pickup : ${pickup}
 
 📍 Drop : ${drop}
 
-📅 Pickup Date : ${pickupDate}
+📅 Date : ${pickupDate}
 
-🕒 Pickup Time : ${pickupTime}
+🕒 Time : ${pickupTime}
 
-🚘 Vehicle : ${vehicle}
+🚗 Vehicle : ${carType}
 
-🔁 Trip : ${tripType.value}`;
+👥 Passengers : ${passengers}
 
-if (tripType.value === "Round Trip") {
+💰 Fare : ${fare}
 
-message += `
-
-📅 Return Date : ${returnDate}`;
-
-}
-
-message += `
-
-💰 Estimated Fare : ${fareText}`;
-
-if (note !== "") {
-
-message += `
-
-📝 Note : ${note}`;
-
-}
-
-message += `
-
-Please confirm my booking.
-Thank you.`;
+Please confirm my booking.`;
 
 window.open(
 
-"https://wa.me/916353886346?text=" +
+"https://wa.me/" +
+WHATSAPP_NUMBER +
+"?text=" +
 encodeURIComponent(message),
 
 "_blank"
 
 );
 
-});
-
 }
 
-console.log("WhatsApp Booking Ready");
 /* ==========================================
-   SCRIPT.JS V9.0 ULTRA
-   PART 5
-   COUNTER + ANIMATION + GALLERY
+   TRIP TYPE BUTTONS
 ========================================== */
 
-// ===========================
-// COUNTER ANIMATION
-// ===========================
+const tripButtons =
+document.querySelectorAll(".trip-type button");
 
-const counters = document.querySelectorAll(".counter-box h2");
+tripButtons.forEach(button=>{
 
-const counterObserver = new IntersectionObserver((entries) => {
+button.addEventListener("click",()=>{
 
-entries.forEach(entry => {
+tripButtons.forEach(btn=>{
 
-if (!entry.isIntersecting) return;
+btn.classList.remove("active");
 
-const counter = entry.target;
+});
 
-const target = parseInt(counter.innerText.replace(/\D/g, "")) || 0;
-
-const suffix = counter.innerText.replace(/[0-9]/g, "");
-
-let current = 0;
-
-const step = Math.max(1, Math.floor(target / 100));
-
-const timer = setInterval(() => {
-
-current += step;
-
-if (current >= target) {
-
-current = target;
-
-clearInterval(timer);
-
-}
-
-counter.innerHTML = current.toLocaleString("en-IN") + suffix;
-
-}, 20);
-
-counterObserver.unobserve(counter);
+button.classList.add("active");
 
 });
 
 });
 
-counters.forEach(counter => {
-
-counterObserver.observe(counter);
-
-});
-
-// ===========================
-// SCROLL ANIMATION
-// ===========================
-
-const animationItems = document.querySelectorAll(
-
-".fleet-card,.service-box,.review-card,.why-card,.gallery-grid img,.contact-card,.faq-item"
-
-);
-
-const animationObserver = new IntersectionObserver((entries) => {
-
-entries.forEach(entry => {
-
-if (entry.isIntersecting) {
-
-entry.target.classList.add("show");
-
-}
-
-});
-
-}, {
-
-threshold:0.15
-
-});
-
-animationItems.forEach(item => {
-
-animationObserver.observe(item);
-
-});
-
-// ===========================
-// GALLERY ZOOM EFFECT
-// ===========================
-
-document.querySelectorAll(".gallery-grid img").forEach(img => {
-
-img.addEventListener("click", () => {
-
-img.classList.toggle("zoom");
-
-});
-
-});
-
-// ===========================
-// BUTTON RIPPLE EFFECT
-// ===========================
-
-document.querySelectorAll(
-
-".btn,.book-btn,.fare-btn,.fleet-btn"
-
-).forEach(button => {
-
-button.addEventListener("click", function(e){
-
-const ripple = document.createElement("span");
-
-const rect = this.getBoundingClientRect();
-
-const size = Math.max(rect.width, rect.height);
-
-ripple.style.width = size + "px";
-ripple.style.height = size + "px";
-
-ripple.style.left =
-(e.clientX - rect.left - size / 2) + "px";
-
-ripple.style.top =
-(e.clientY - rect.top - size / 2) + "px";
-
-ripple.className = "ripple";
-
-this.appendChild(ripple);
-
-setTimeout(() => {
-
-ripple.remove();
-
-},600);
-
-});
-
-});
-
-// ===========================
-// IMAGE LAZY LOADING
-// ===========================
-
-document.querySelectorAll("img").forEach(img => {
-
-img.loading = "lazy";
-
-});
-
-console.log("Animations Loaded Successfully");
 /* ==========================================
-   SCRIPT.JS V9.0 ULTRA
-   PART 6
-   FINAL OPTIMIZATION + BUG FIXES
+   AUTO SELECT DEFAULT
 ========================================== */
 
-// ===========================
-// ACTIVE MENU ON SCROLL
-// ===========================
+if(tripButtons.length){
 
-const sections = document.querySelectorAll("section[id]");
-const navLinks = document.querySelectorAll("#navMenu a");
+tripButtons[0].classList.add("active");
 
-window.addEventListener("scroll", () => {
+   }
+/* ==========================================
+   CITY SEARCH & FORM UTILITIES
+========================================== */
 
-let current = "";
+// Main Gujarat Cities
+const CITY_DATABASE = [
 
-sections.forEach(section => {
+"Ahmedabad",
+"Vadodara",
+"Surat",
+"Rajkot",
+"Jamnagar",
+"Dwarka",
+"Somnath",
+"Junagadh",
+"Bhavnagar",
+"Amreli",
+"Porbandar",
+"Morbi",
+"Bhuj",
+"Gandhidham",
+"Anjar",
+"Mandvi",
+"Anand",
+"Nadiad",
+"Bharuch",
+"Ankleshwar",
+"Rajpipla",
+"Kevadiya",
+"Godhra",
+"Dahod",
+"Palanpur",
+"Mehsana",
+"Patan",
+"Himmatnagar",
+"Modasa",
+"Navsari",
+"Valsad",
+"Vapi",
+"Saputara",
+"Gandhinagar",
+"Mumbai",
+"Udaipur"
 
-const sectionTop = section.offsetTop - 120;
+];
 
-if (window.scrollY >= sectionTop) {
+// Remove Duplicate Cities
+const cities = [...new Set(CITY_DATABASE)].sort();
 
-current = section.getAttribute("id");
+/* ==========================================
+   CREATE DATALIST
+========================================== */
+
+const cityList = document.getElementById("cityList");
+
+if(cityList){
+
+cityList.innerHTML = "";
+
+cities.forEach(city=>{
+
+const option = document.createElement("option");
+
+option.value = city;
+
+cityList.appendChild(option);
+
+});
+
+}
+
+/* ==========================================
+   INPUT VALIDATION
+========================================== */
+
+[pickupInput, dropInput].forEach(input=>{
+
+input.addEventListener("change",()=>{
+
+input.value = input.value.trim();
+
+});
+
+});
+
+/* ==========================================
+   SWAP PICKUP & DROP
+========================================== */
+
+function swapCities(){
+
+const temp = pickupInput.value;
+
+pickupInput.value = dropInput.value;
+
+dropInput.value = temp;
+
+calculateFare();
+
+}
+
+/* ==========================================
+   RESET FORM
+========================================== */
+
+function resetBookingForm(){
+
+pickupInput.value = "";
+
+dropInput.value = "";
+
+document.getElementById("pickupDate").value = "";
+
+document.getElementById("pickupTime").value = "";
+
+document.getElementById("carType").selectedIndex = 0;
+
+document.getElementById("passenger").selectedIndex = 0;
+
+sedanFare.innerHTML = "₹1700";
+
+suvFare.innerHTML = "₹2399";
+
+distanceBox.innerHTML = "--";
+
+travelTime.innerHTML = "--";
+
+document.getElementById("fromCity").innerHTML = "Pickup City";
+
+document.getElementById("toCity").innerHTML = "Drop City";
+
+}
+
+/* ==========================================
+   ENTER KEY SUPPORT
+========================================== */
+
+[pickupInput, dropInput].forEach(input=>{
+
+input.addEventListener("keypress",function(e){
+
+if(e.key==="Enter"){
+
+e.preventDefault();
+
+calculateFare();
 
 }
 
 });
 
-navLinks.forEach(link => {
+});
+/* ==========================================
+   SMART FARE ENGINE V11.1
+========================================== */
 
-link.classList.remove("active");
+// Per KM Rates
+const RATE = {
+    Sedan: 15,
+    SUV: 21
+};
 
-if (link.getAttribute("href") === "#" + current) {
+// Round Trip Multiplier
+const ROUND_TRIP = 2;
 
-link.classList.add("active");
+// Calculate Estimated Fare
+function calculateEstimatedFare(distance, car, tripType) {
+
+    let fare = distance * RATE[car];
+
+    // Minimum Fare
+    if (fare < BASE_FARE[car]) {
+        fare = BASE_FARE[car];
+    }
+
+    // Round Trip
+    if (tripType === "Round Trip") {
+        fare = fare * ROUND_TRIP;
+    }
+
+    return Math.round(fare);
+}
+
+/* ==========================================
+   LIVE CAR TYPE CHANGE
+========================================== */
+
+const carTypeSelect =
+document.getElementById("carType");
+
+if (carTypeSelect) {
+
+carTypeSelect.addEventListener("change", () => {
+
+calculateFare();
+
+});
 
 }
 
-});
+/* ==========================================
+   LIVE TRIP TYPE CHANGE
+========================================== */
 
-});
-
-// ===========================
-// BOOK VEHICLE BUTTON
-// ===========================
-
-document.querySelectorAll(".fleet-btn").forEach(btn => {
+tripButtons.forEach(btn => {
 
 btn.addEventListener("click", () => {
 
-document.getElementById("booking").scrollIntoView({
-
-behavior: "smooth"
-
-});
-
-});
-
-});
-
-// ===========================
-// PHONE NUMBER VALIDATION
-// ===========================
-
-const phoneInput = document.getElementById("customerPhone");
-
-if (phoneInput) {
-
-phoneInput.addEventListener("input", function () {
-
-this.value = this.value.replace(/[^0-9]/g, "");
-
-if (this.value.length > 10) {
-
-this.value = this.value.substring(0, 10);
-
-}
-
-});
-
-}
-
-// ===========================
-// PREVENT DOUBLE SUBMIT
-// ===========================
-
-let bookingSending = false;
-
-if (bookNowBtn) {
-
-bookNowBtn.addEventListener("click", () => {
-
-if (bookingSending) return;
-
-bookingSending = true;
-
 setTimeout(() => {
 
-bookingSending = false;
+if (
+pickupInput.value !== "" &&
+dropInput.value !== ""
+) {
 
-}, 3000);
-
-});
+calculateFare();
 
 }
 
-// ===========================
-// ONLINE / OFFLINE STATUS
-// ===========================
-
-window.addEventListener("offline", () => {
-
-alert("Internet connection lost.");
+},100);
 
 });
 
-window.addEventListener("online", () => {
+});
 
-console.log("Internet Connected");
+/* ==========================================
+   SHOW LOADING
+========================================== */
+
+function showLoading(){
+
+fareButton.disabled = true;
+
+fareButton.innerHTML =
+'<i class="fa-solid fa-spinner fa-spin"></i> Calculating...';
+
+}
+
+function hideLoading(){
+
+fareButton.disabled = false;
+
+fareButton.innerHTML =
+'<i class="fa-solid fa-magnifying-glass"></i> CHECK INSTANT FARE';
+
+}
+
+/* ==========================================
+   UPDATE RESULT
+========================================== */
+
+function updateFareResult(route){
+
+showLoading();
+
+setTimeout(()=>{
+
+sedanFare.innerHTML = money(route.sedan);
+
+suvFare.innerHTML = money(route.suv);
+
+distanceBox.innerHTML =
+route.distance + " KM";
+
+travelTime.innerHTML =
+route.time;
+
+hideLoading();
+
+},500);
+
+   }
+/* ==========================================
+   HITANSH CAB SERVICE V11.1 FINAL
+========================================== */
+
+/* ========== PAGE LOADED ========== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    console.log("Hitansh Cab Service V11.1 Loaded");
+
+    // Default Pickup Date = Today
+    const pickupDate = document.getElementById("pickupDate");
+
+    if (pickupDate) {
+        const today = new Date().toISOString().split("T")[0];
+        pickupDate.min = today;
+        pickupDate.value = today;
+    }
 
 });
 
-// ===========================
-// CONSOLE MESSAGE
-// ===========================
+/* ========== SCROLL TO TOP ========== */
 
-console.log(`
-==================================
- HITANSH CAB SERVICE
- Version : V9.0 Ultra
- Developed for GitHub Pages
-==================================
-`);
+const scrollBtn = document.getElementById("scrollTop");
 
-// ===========================
-// END
-// ===========================
+window.addEventListener("scroll", () => {
 
-console.log("V9.0 Ultra Loaded Successfully");
+    if (!scrollBtn) return;
+
+    if (window.scrollY > 400) {
+        scrollBtn.style.display = "flex";
+    } else {
+        scrollBtn.style.display = "none";
+    }
+
+});
+
+if (scrollBtn) {
+
+    scrollBtn.addEventListener("click", () => {
+
+        window.scrollTo({
+
+            top: 0,
+
+            behavior: "smooth"
+
+        });
+
+    });
+
+}
+
+/* ========== FADE ANIMATION ========== */
+
+const observer = new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+
+            entry.target.classList.add("show");
+
+        }
+
+    });
+
+}, {
+
+    threshold: 0.15
+
+});
+
+document.querySelectorAll(".fade-up").forEach(item => {
+
+    observer.observe(item);
+
+});
+
+/* ========== AUTO HIGHLIGHT MENU ========== */
+
+const sections = document.querySelectorAll("section");
+
+const navLinks = document.querySelectorAll(".nav-links a");
+
+window.addEventListener("scroll", () => {
+
+    let current = "";
+
+    sections.forEach(section => {
+
+        const top = section.offsetTop - 120;
+
+        const height = section.clientHeight;
+
+        if (pageYOffset >= top) {
+
+            current = section.getAttribute("id");
+
+        }
+
+    });
+
+    navLinks.forEach(link => {
+
+        link.classList.remove("active");
+
+        if (link.getAttribute("href") === "#" + current) {
+
+            link.classList.add("active");
+
+        }
+
+    });
+
+});
+
+/* ========== PERFORMANCE ========== */
+
+window.addEventListener("load", () => {
+
+    console.log("Website Ready");
+
+});
