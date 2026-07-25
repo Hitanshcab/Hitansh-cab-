@@ -172,7 +172,102 @@ console.log("Hitansh Cab Service V9.0 Ultra Loaded");
 // ===========================
 
 const routes = {
+"Ahmedabad - Vadodara": {
+  Sedan:1700,
+  SUV:2399,
+  "Tempo Traveller":4500
+},
 
+"Ahmedabad Airport - Vadodara": {
+  Sedan:1700,
+  SUV:2399,
+  "Tempo Traveller":4500
+},
+
+"Ahmedabad - Surat": {
+  Sedan:2200,
+  SUV:2699,
+  "Tempo Traveller":5200
+},
+
+"Ahmedabad - Bharuch": {
+  Sedan:1700,
+  SUV:2200,
+  "Tempo Traveller":4200
+},
+
+"Ahmedabad - Anand": {
+  Sedan:1500,
+  SUV:2100,
+  "Tempo Traveller":4000
+},
+
+"Ahmedabad - Nadiad": {
+  Sedan:1200,
+  SUV:1800,
+  "Tempo Traveller":3500
+},
+
+"Ahmedabad - Rajkot": {
+  Sedan:3700,
+  SUV:4399,
+  "Tempo Traveller":7200
+},
+
+"Ahmedabad - Jamnagar": {
+  Sedan:6000,
+  SUV:7000,
+  "Tempo Traveller":11000
+},
+
+"Ahmedabad - Dwarka": {
+  Sedan:7500,
+  SUV:8000,
+  "Tempo Traveller":12500
+},
+
+"Ahmedabad - Somnath": {
+  Sedan:7500,
+  SUV:8000,
+  "Tempo Traveller":12500
+},
+
+"Ahmedabad - Bhavnagar": {
+  Sedan:4200,
+  SUV:4800,
+  "Tempo Traveller":7600
+},
+
+"Ahmedabad - Gandhinagar": {
+  Sedan:1200,
+  SUV:1700,
+  "Tempo Traveller":3200
+},
+
+"Ahmedabad - Kevadiya": {
+  Sedan:2200,
+  SUV:2800,
+  "Tempo Traveller":5000
+},
+
+"Ahmedabad - Mount Abu": {
+  Sedan:6500,
+  SUV:7600,
+  "Tempo Traveller":12000
+},
+
+"Ahmedabad - Udaipur": {
+  Sedan:6000,
+  SUV:7200,
+  "Tempo Traveller":11500
+},
+
+"Ahmedabad - Mumbai": {
+  Sedan:6999,
+  SUV:8999,
+  "Tempo Traveller":13500
+},
+   
 "Vadodara - Ahmedabad": {
 Sedan:1700,
 SUV:2399,
@@ -226,7 +321,375 @@ Sedan:4200,
 SUV:4800,
 "Tempo Traveller":7600
 },
+"Surat - Ahmedabad": {
+  Sedan:2200,
+  SUV:2699,
+  "Tempo Traveller":5200
+},
 
+"Surat - Vadodara": {
+  Sedan:2200,
+  SUV:2699,
+  "Tempo Traveller":5200
+},
+
+"Surat - Bharuch": {
+  Sedan:1200,
+  SUV:1700,
+  "Tempo Traveller":3200
+},
+
+"Surat - Anand": {
+  Sedan:2400,
+  SUV:3000,
+  "Tempo Traveller":5400
+},
+
+"Surat - Nadiad": {
+  Sedan:2600,
+  SUV:3200,
+  "Tempo Traveller":5600
+},
+
+"Surat - Rajkot": {
+  Sedan:4500,
+  SUV:5400,
+  "Tempo Traveller":8500
+},
+
+"Surat - Jamnagar": {
+  Sedan:7000,
+  SUV:8200,
+  "Tempo Traveller":12500
+},
+
+"Surat - Dwarka": {
+  Sedan:8200,
+  SUV:9200,
+  "Tempo Traveller":14000
+},
+
+"Surat - Somnath": {
+  Sedan:8000,
+  SUV:9000,
+  "Tempo Traveller":13800
+},
+
+"Surat - Bhavnagar": {
+  Sedan:5200,
+  SUV:6200,
+  "Tempo Traveller":9800
+},
+
+"Surat - Mumbai": {
+  Sedan:4500,
+  SUV:5600,
+  "Tempo Traveller":9000
+},
+
+"Bharuch - Ahmedabad": {
+  Sedan:1700,
+  SUV:2200,
+  "Tempo Traveller":4200
+},
+
+"Bharuch - Vadodara": {
+  Sedan:1200,
+  SUV:1700,
+  "Tempo Traveller":3200
+},
+
+"Bharuch - Surat": {
+  Sedan:1200,
+  SUV:1700,
+  "Tempo Traveller":3200
+},
+
+"Anand - Ahmedabad": {
+  Sedan:1500,
+  SUV:2100,
+  "Tempo Traveller":4000
+},
+
+"Anand - Vadodara": {
+  Sedan:900,
+  SUV:1400,
+  "Tempo Traveller":2800
+},
+
+"Nadiad - Ahmedabad": {
+  Sedan:1200,
+  SUV:1800,
+  "Tempo Traveller":3500
+},
+
+"Nadiad - Vadodara": {
+  Sedan:1200,
+  SUV:1800,
+  "Tempo Traveller":3400
+},
+
+"Rajkot - Ahmedabad": {
+  Sedan:3700,
+  SUV:4399,
+  "Tempo Traveller":7200
+},
+
+"Rajkot - Vadodara": {
+  Sedan:3700,
+  SUV:4399,
+  "Tempo Traveller":7200
+},
+ "Rajkot - Jamnagar": {
+  Sedan:2500,
+  SUV:3200,
+  "Tempo Traveller":5200
+},
+
+"Rajkot - Dwarka": {
+  Sedan:3800,
+  SUV:4600,
+  "Tempo Traveller":7600
+},
+
+"Rajkot - Somnath": {
+  Sedan:3500,
+  SUV:4300,
+  "Tempo Traveller":7200
+},
+
+"Rajkot - Bhavnagar": {
+  Sedan:3000,
+  SUV:3800,
+  "Tempo Traveller":6200
+},
+
+"Rajkot - Surat": {
+  Sedan:4500,
+  SUV:5400,
+  "Tempo Traveller":8500
+},
+
+"Jamnagar - Ahmedabad": {
+  Sedan:6000,
+  SUV:7000,
+  "Tempo Traveller":11000
+},
+
+"Jamnagar - Rajkot": {
+  Sedan:2500,
+  SUV:3200,
+  "Tempo Traveller":5200
+},
+
+"Jamnagar - Dwarka": {
+  Sedan:1800,
+  SUV:2400,
+  "Tempo Traveller":4200
+},
+
+"Jamnagar - Somnath": {
+  Sedan:3500,
+  SUV:4300,
+  "Tempo Traveller":7000
+},
+
+"Dwarka - Somnath": {
+  Sedan:2500,
+  SUV:3200,
+  "Tempo Traveller":5200
+},
+
+"Dwarka - Rajkot": {
+  Sedan:3800,
+  SUV:4600,
+  "Tempo Traveller":7600
+},
+
+"Dwarka - Ahmedabad": {
+  Sedan:7500,
+  SUV:8000,
+  "Tempo Traveller":12500
+},
+
+"Somnath - Rajkot": {
+  Sedan:3500,
+  SUV:4300,
+  "Tempo Traveller":7200
+},
+
+"Somnath - Ahmedabad": {
+  Sedan:7500,
+  SUV:8000,
+  "Tempo Traveller":12500
+},
+
+"Bhavnagar - Ahmedabad": {
+  Sedan:4200,
+  SUV:4800,
+  "Tempo Traveller":7600
+},
+
+"Bhavnagar - Vadodara": {
+  Sedan:4200,
+  SUV:4800,
+  "Tempo Traveller":7600
+},
+
+"Gandhinagar - Ahmedabad": {
+  Sedan:1200,
+  SUV:1700,
+  "Tempo Traveller":3200
+},
+
+"Kevadiya - Vadodara": {
+  Sedan:1800,
+  SUV:2400,
+  "Tempo Traveller":4300
+},
+
+"Godhra - Vadodara": {
+  Sedan:1600,
+  SUV:2200,
+  "Tempo Traveller":4000
+},
+
+"Dahod - Vadodara": {
+  Sedan:2500,
+  SUV:3200,
+  "Tempo Traveller":5200
+},  
+ "Anand - Bharuch": {
+  Sedan:1400,
+  SUV:1900,
+  "Tempo Traveller":3400
+},
+
+"Anand - Surat": {
+  Sedan:2400,
+  SUV:3000,
+  "Tempo Traveller":5400
+},
+
+"Nadiad - Anand": {
+  Sedan:900,
+  SUV:1400,
+  "Tempo Traveller":2600
+},
+
+"Mehsana - Ahmedabad": {
+  Sedan:1800,
+  SUV:2400,
+  "Tempo Traveller":4300
+},
+
+"Mehsana - Vadodara": {
+  Sedan:3200,
+  SUV:3900,
+  "Tempo Traveller":6200
+},
+
+"Palanpur - Ahmedabad": {
+  Sedan:3000,
+  SUV:3800,
+  "Tempo Traveller":6200
+},
+
+"Palanpur - Vadodara": {
+  Sedan:4600,
+  SUV:5600,
+  "Tempo Traveller":9000
+},
+
+"Himmatnagar - Ahmedabad": {
+  Sedan:1800,
+  SUV:2400,
+  "Tempo Traveller":4200
+},
+
+"Himmatnagar - Vadodara": {
+  Sedan:3200,
+  SUV:3900,
+  "Tempo Traveller":6200
+},
+
+"Vapi - Surat": {
+  Sedan:1800,
+  SUV:2400,
+  "Tempo Traveller":4200
+},
+
+"Vapi - Vadodara": {
+  Sedan:4200,
+  SUV:5000,
+  "Tempo Traveller":8000
+},
+
+"Navsari - Surat": {
+  Sedan:900,
+  SUV:1400,
+  "Tempo Traveller":2600
+},
+
+"Navsari - Ahmedabad": {
+  Sedan:3200,
+  SUV:3900,
+  "Tempo Traveller":6200
+},
+
+"Valsad - Surat": {
+  Sedan:1200,
+  SUV:1700,
+  "Tempo Traveller":3200
+},
+
+"Valsad - Ahmedabad": {
+  Sedan:3800,
+  SUV:4600,
+  "Tempo Traveller":7200
+},
+
+"Morbi - Rajkot": {
+  Sedan:1800,
+  SUV:2400,
+  "Tempo Traveller":4200
+},
+
+"Porbandar - Rajkot": {
+  Sedan:3200,
+  SUV:3900,
+  "Tempo Traveller":6200
+},
+
+"Bhuj - Ahmedabad": {
+  Sedan:7500,
+  SUV:8500,
+  "Tempo Traveller":13000
+},
+
+"Statue of Unity - Vadodara": {
+  Sedan:2200,
+  SUV:2800,
+  "Tempo Traveller":5000
+},
+
+"Saputara - Surat": {
+  Sedan:3200,
+  SUV:3900,
+  "Tempo Traveller":6200
+},
+
+"Abu Road - Ahmedabad": {
+  Sedan:5200,
+  SUV:6200,
+  "Tempo Traveller":9800
+},
+
+"Abu Road - Vadodara": {
+  Sedan:6500,
+  SUV:7600,
+  "Tempo Traveller":12000
+   }  
 "Vadodara - Gandhinagar": {
 Sedan:1900,
 SUV:2600,
