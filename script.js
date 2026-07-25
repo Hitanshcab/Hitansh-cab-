@@ -689,7 +689,7 @@ SUV:4800,
   Sedan:6500,
   SUV:7600,
   "Tempo Traveller":12000
-   }  
+   },
 "Vadodara - Gandhinagar": {
 Sedan:1900,
 SUV:2600,
