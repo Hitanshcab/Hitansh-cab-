@@ -830,7 +830,7 @@ const fareResult = document.getElementById("fareResult");
 if (calculateFare) {
 
 calculateFare.addEventListener("click", () => {
-
+selectedRouteName = selectedRouteName.replace(" to ", " - ");
 if (selectedRouteName === "") {
 
 alert("Please select a route first.");
