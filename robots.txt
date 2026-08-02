@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://hitanshcab.github.io/Hitansh-cab-/sitemap.xml
+Sitemap: https://hitanshcab.in/sitemap.xml
